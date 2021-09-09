@@ -1,30 +1,38 @@
-$('#btn_open_cashin').on('click', function(){
-    $('#modal_cashin').modal('show')
-})
+// $('#btn_open_cashin').on('click', function(){
+//     $('#modal_cashin').modal('show')
+// })
 
-$('#btn_open_cashout').on('click', function(){
-    $('#modal_cashout').modal('show')
-})
+// $('#btn_open_cashout').on('click', function(){
+//     $('#modal_cashout').modal('show')
+// })
 
-$('#btn_dashboard').on('click', function(){
-    showPage( $(this).attr('aria-page') )
-})
+// $('#btn_dashboard').on('click', function(){
+//     showPage( $(this).attr('aria-page') )
+// })
 
-$('#btn_cashincashout').on('click', function(){
+// $('#btn_cashincashout').on('click', function(){
+//     showPage($(this).attr('aria-page'))
+// })
+
+// $('#btn_bets').on('click', function(){
+//     showPage($(this).attr('aria-page'))
+// })
+
+// $('#btn_winnings').on('click', function(){
+//     showPage($(this).attr('aria-page'))
+// })
+
+// $('#btn_registrar_admission').on('click', function(){
+//     showPage($(this).attr('aria-page'))
+// })
+
+
+
+$('.ld-nav-item').on('click', function(){
     showPage($(this).attr('aria-page'))
 })
 
-$('#btn_bets').on('click', function(){
-    showPage($(this).attr('aria-page'))
-})
 
-$('#btn_winnings').on('click', function(){
-    showPage($(this).attr('aria-page'))
-})
-
-$('#btn_registrar_admission').on('click', function(){
-    showPage($(this).attr('aria-page'))
-})
 
 
 function showPage(pagename){
@@ -73,16 +81,9 @@ $('#btn_logout').on('click',function(){
         },
   
         success: function (e) {
-  
-          $.each(e, function(key, val){
-  
-            if(val.status == 200)
-            {
-                validated_success(val.feedback)
+            if(e == 200){
+                alert('helo')
             }
-  
-          })
-       
         },
   
         complete: function() {},

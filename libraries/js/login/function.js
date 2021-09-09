@@ -6,9 +6,16 @@ $('#form_login').on('submit', function (e) {
 
       type: 'post',
 
-      url: 'api/func/authenticate/login.php',
+      url: 'api/func/authenticate/authenticate.php',
 
-      data:  $('#form_login').serialize(),
+      data:  {
+                token:$('#txt_token').val(),
+                action: 'login',
+                POSTDATA:{
+                  email: $('#txt_email').val(),
+                  password: $('#txt_password').val()
+                }
+              },
 
       datatype: 'json',
 

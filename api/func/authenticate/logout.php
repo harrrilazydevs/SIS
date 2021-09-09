@@ -1,5 +1,10 @@
 <?php
 
-session_destroy();
-setcookie(session_name(), session_id(), 1); // to expire the session
-$_SESSION = [];
+session_start();
+if(session_destroy()){
+    header('location:../../../login.php');
+}
+else{
+    header('location:../../../login.php');
+}
+?>

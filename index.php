@@ -1,22 +1,17 @@
 <?php
 
-  $USER_TYPE = 'ADMINISTRATOR';
+  $USER_TYPE = 'REGISTRAR';
   $page_title = 'Dashboard';
 
   include_once 'inc/header.php';
   include_once 'api/func/authenticate/authenticate.php';
-  
-  
 
-
-  // var_dump(authenticated());
-  // var_dump($_SESSION['sesh_id']);
-  
-
- 
-
-  
-
+  if(!$_SESSION['authenticated']){
+    header('location:login.php');
+  }
+  else{
+    
+  }
 
 ?>
 
@@ -97,7 +92,7 @@
       </div>
 
       <!-- ADMINISTRATOR -->
-      <div class="page" id="page_admission">
+      <div class="d-none page" id="page_admission">
 
         <?php 
 
