@@ -1,6 +1,6 @@
 <?php
 
-  $USER_TYPE = 'REGISTRAR';
+  $USER_TYPE = 'APPLICANT';
   $page_title = 'Dashboard';
 
   include_once 'inc/header.php';
@@ -25,7 +25,7 @@
 
     <div class="content-inside">
 
-      <div class="d-none page" id="page_dashboard">
+      <div class="page" id="page_dashboard">
 
         <?php 
 

@@ -51,7 +51,7 @@
         <div class="col-lg-7 pt-lg-2 px-0 " style="font-size: 12pt;"> 
             <div class="row ml-lg-2">
                 <div class="col tab_container">
-                    <nav>
+                    <nav class="tabbable">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <!-- <a class="nav-link active" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Application Status</a>
                             <a class="nav-link" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
@@ -648,13 +648,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-4 pr-0 ">
+                                <div class="col-lg-4 pr-0 ">
 
                                     <label class=" pr-0 pt-0"> Primary School/Addr.,</label>        
 
                                 </div>
 
-                                <div class="col-8 pr-0">
+                                <div class="col-lg-8 pr-0">
 
                                     <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
@@ -664,13 +664,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-4 pr-0 ">
+                                <div class="col-lg-4 pr-0 ">
 
                                     <label class=" pr-0 pt-0"> Primary Year Attended</label>        
 
                                 </div>
 
-                                <div class="col-8 pr-0">
+                                <div class="col-lg-8 pr-0">
 
                                     <input class=" form-control form-control-sm" name="primary_year_attended" type="text">
 
