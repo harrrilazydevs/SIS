@@ -3,13 +3,20 @@
   $USER_TYPE = 'APPLICANT';
   $page_title = 'Dashboard';
 
-  include_once 'inc/header.php'; 
-  include_once 'inc/variables.php'; 
+  include_once 'inc/header.php';
+  include_once 'api/func/authenticate/authenticate.php';
+  
+  
 
-  // if(!$GLOBALS['authenticated'])
-  // {
-  //   echo '<script>location.href="login.php"</script>';
-  // }
+
+  var_dump(authenticated());
+  var_dump($_SESSION['sesh_id']);
+  
+
+ 
+
+  
+
 
 ?>
 

@@ -6,7 +6,7 @@ $('#form_login').on('submit', function (e) {
 
       type: 'post',
 
-      url: 'api/func/authenticate.php',
+      url: 'api/func/authenticate/login.php',
 
       data:  $('#form_login').serialize(),
 

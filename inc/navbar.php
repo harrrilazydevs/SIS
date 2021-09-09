@@ -101,7 +101,7 @@
 
                             </a>
 
-                            <a class="dropdown-item py-1" type="button"  href=""  onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item py-1" type="button" id="btn_logout" >
 
                                 <i class="fas fa-sign-out-alt pr-2 pl-0 ml-0" style="font-size: 12pt;"></i>
 
@@ -110,9 +110,7 @@
 
                         </div>
                         
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            
-                            @csrf
+                        <form id="logout-form" action="" method="POST" class="d-none">
             
                         </form>
                 

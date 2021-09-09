@@ -58,3 +58,36 @@ $(document).ready(function(){
 
 
 })
+
+$('#btn_logout').on('click',function(){
+    $.ajax({
+
+        type: 'post',
+  
+        url: 'api/func/authenticate/logout.php',
+  
+        datatype: 'json',
+  
+        beforeSend: function() {
+  
+        },
+  
+        success: function (e) {
+  
+          $.each(e, function(key, val){
+  
+            if(val.status == 200)
+            {
+                validated_success(val.feedback)
+            }
+  
+          })
+       
+        },
+  
+        complete: function() {},
+  
+        error: function(xhr) { display_error() },
+  
+      });
+})
