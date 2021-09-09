@@ -178,3 +178,14 @@
    background: #007BFF; 
  }
 /* SCROLLBAR */
+
+/* Basic Information */
+
+.info-box{
+
+   border-bottom: black;
+   width: max-content !important;
+   margin-right: 0px!important;
+   padding: inherit;
+
+}
