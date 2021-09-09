@@ -1,15 +1,22 @@
 <?php
 
-  $USER_TYPE = 'APPLICANT';
+  $USER_TYPE = 'ADMINISTRATOR';
   $page_title = 'Dashboard';
 
-  include_once 'inc/header.php'; 
-  include_once 'inc/variables.php'; 
+  include_once 'inc/header.php';
+  include_once 'api/func/authenticate/authenticate.php';
+  
+  
 
-  // if(!$GLOBALS['authenticated'])
-  // {
-  //   echo '<script>location.href="login.php"</script>';
-  // }
+
+  // var_dump(authenticated());
+  // var_dump($_SESSION['sesh_id']);
+  
+
+ 
+
+  
+
 
 ?>
 
@@ -89,6 +96,24 @@
 
       </div>
 
+      <!-- ADMINISTRATOR -->
+      <div class="page" id="page_admission">
+
+        <?php 
+
+          if ($USER_TYPE == 'ADMINISTRATOR')
+          {
+            include_once 'assets/administrator/enrollee_list.php'; 
+          }
+
+         
+        ?>
+
+      </div>
+
+
+
+
 
 
     </div>
@@ -108,6 +133,12 @@ if ($USER_TYPE == 'REGISTRAR')
 {
   include_once 'assets/registrar/sidebar.php';  
 }
+
+if ($USER_TYPE == 'ADMINISTRATOR')
+{
+  include_once 'assets/administrator/sidebar.php';  
+}
+
 
 ?>
 
