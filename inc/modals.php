@@ -194,6 +194,27 @@
 </div>
 
 
+<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_user">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-center pt-3 pb-0">
+               <h6> Requirement Information </h6>
+            </div>
+            <form id="form_modal_applicant_requirement" enctype="multipart/form-data">
+                <div class="modal-body"></div>
+                <div class="modal-footer text-center">
+                    <div class="row">
+                        <div class="col px-0 btn-full-width">
+                            <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="modal fade" id="modal_input_enrollee" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 

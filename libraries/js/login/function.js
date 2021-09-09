@@ -19,9 +19,7 @@ $('#form_login').on('submit', function (e) {
 
       datatype: 'json',
 
-      beforeSend: function() {
-
-      },
+      beforeSend: function() {},
 
       success: function (e) {
 
@@ -29,7 +27,7 @@ $('#form_login').on('submit', function (e) {
 
           if(val.status == 200)
           {
-              validated_success(val.feedback)
+              validated_success(val)
           }
 
         })
@@ -47,16 +45,15 @@ $('#form_login').on('submit', function (e) {
 
 
   
-  function validated_success(feedback)
+  function validated_success(data)
     {
         $('#modal_login').modal('show');
 
-        $('.modal-body p').append(feedback);
+        $('.modal-body p').append(data.feedback);
 
         $('.modal-body i').addClass('far fa-check-circle fa-2x');
 
         $('.modal-body i').css('color','green');
 
         $('#btn_modal').text('Go to Login');
-
     }

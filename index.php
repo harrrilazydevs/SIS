@@ -1,6 +1,6 @@
 <?php
 
-  $USER_TYPE = 'APPLICANT';
+  $USER_TYPE = 'ADMINISTRATOR';
   $page_title = 'Dashboard';
 
   include_once 'inc/header.php';
@@ -9,14 +9,11 @@
   if(!$_SESSION['authenticated']){
     header('location:login.php');
   }
-  else{
-    
-  }
 
 ?>
 
 
-<div class="content">
+<div class="content" >
 
     <?php include_once 'inc/navbar.php'; ?>
 
@@ -43,38 +40,7 @@
 
       </div>
 
-      <div class="d-none page" id="page_cashincashout">
-
-        <?php 
-
-          $table_name = 'Cash In / Cash Out';
-          include_once 'assets/table_view.php'; 
-          
-        ?>
-
-      </div>
-
-      <div class="d-none page" id="page_bets">
-
-        <?php 
-
-          $table_name = 'Bets';
-          include_once 'assets/table_view.php'; 
-          
-        ?>
-
-      </div>
-
-      <div class="d-none page" id="page_winnings">
-
-        <?php 
-
-          $table_name = 'Winnings';
-          include_once 'assets/table_view.php'; 
-          
-        ?>
-
-      </div>
+    
 
       <!-- REGISTRAR -->
       <div class="d-none page" id="page_admission">

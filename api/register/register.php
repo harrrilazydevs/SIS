@@ -4,6 +4,8 @@
     include_once '../func/validator.php';
     include_once '../func/password_generator.php';
     include_once '../func/emailer.php';
+
+    exec_register('test');
  
 
     header('Content-Type: application/json');
@@ -118,63 +120,65 @@
 
     }
 
-    function exec_register( $data ){
+    
 
-        $db = new db();
+    // function exec_register( $data ){
 
-        $status = false;
+    //     $db = new db();
 
-        $count = count( $data );
+    //     $status = false;
 
-        $counter = 1;
+    //     $count = count( $data );
 
-        $values = array();
+    //     $counter = 1;
 
-        $sql = '
-                    INSERT INTO
-                                applicant_accounts
-                                (
-                                    email,
-                                    mobile_no,
-                                    password,
-                                    date_of_application
-                                )
-                    VALUES
-                                (
-                                    :email, 
-                                    :mobile_no, 
-                                    :password, 
-                                    :date_of_application
-                                )';
+    //     $values = array();
 
-        $password = generate_password();
+    //     $sql = '
+    //                 INSERT INTO
+    //                             applicant_accounts
+    //                             (
+    //                                 email,
+    //                                 mobile_no,
+    //                                 password,
+    //                                 date_of_application
+    //                             )
+    //                 VALUES
+    //                             (
+    //                                 :email, 
+    //                                 :mobile_no, 
+    //                                 :password, 
+    //                                 :date_of_application
+    //                             )';
 
-        $value = [
-            ":email" => $data['email'],
-            ":mobile_no" => $data['mobile_no'],
-            ":password" => sha1($password),
-            ":date_of_application" => date("Y/m/d")
-        ];
+    //     $password = generate_password();
 
-        $message = 'Password is : '.$password;
+    //     $value = [
+    //         ":email" => $data['email'],
+    //         ":mobile_no" => $data['mobile_no'],
+    //         ":password" => sha1($password),
+    //         ":date_of_application" => date("Y/m/d")
+    //     ];
 
-        $stmt = $db->connect()->prepare($sql);
+    //     $message = 'Password is : '.$password;
 
-        $v = $stmt->execute( $value );
+    //     $stmt = $db->connect()->prepare($sql);
 
-        // var_dump($v);
+    //     $v = $stmt->execute( $value );
 
-        if ( $v )
-        {   
-            send_mail($message, 'Your password', $data['email']);
+    //     // var_dump($v);
 
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    //     if ( $v )
+    //     {   
+    //         send_mail($message, 'Your password', $data['email']);
+
+    //         return true;
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
 
 
 

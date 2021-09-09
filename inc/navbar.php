@@ -75,15 +75,15 @@
 
                                 <div class="col-5 px-0 pl-3">
 
-                                    <img src="{{ $page_settings['profile_url'] }}" class="img-fluid rounded-circle" style="height:55px; width:55px;" alt="Avatar">
+                                    <img src="../storage/img/employee1.jpg" class="img-fluid rounded-circle" style="height:55px; width:55px;" alt="Avatar">
                                     
                                 </div>
 
                                 <div class="col-7 pl-0">
 
-                                    <h6 class="dropdown-header font-weight-bold pt-2 pl-2" id="nav_user_username">USERNAME</h6>
+                                    <h6 class="dropdown-header font-weight-bold pt-2 pl-2" id="nav_user_username"><?php echo $_SESSION['usn']?></h6>
                                     
-                                    <h6 class="dropdown-header py-0 pl-2" id="nav_user_role">USER ROLE</h6>
+                                    <h6 class="dropdown-header py-0 pl-2" id="nav_user_role"><?php echo $_SESSION['usr']?></h6>
 
                                 </div>
 
@@ -106,6 +106,7 @@
                                 <i class="fas fa-sign-out-alt pr-2 pl-0 ml-0" style="font-size: 12pt;"></i>
 
                                 Log-out
+                                
                             </a>
 
                         </div>
