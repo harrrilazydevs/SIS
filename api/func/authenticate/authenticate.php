@@ -59,16 +59,40 @@ session_start();
         }
         else
         {
-        
-            if( checkif_account_exists($_POST['POSTDATA']) )
+            if ( checkif_account_employee($_POST['POSTDATA']) !== null )
             {
+                $_RETURN_DATA = checkif_account_employee($_POST['POSTDATA']);
+
+                $userId = $_RETURN_DATA[0]['user_id'];
+
+                $userFname = $_RETURN_DATA[0]['firstname'];
+
+                $userRole = $_RETURN_DATA[0]['role'];
+
+                $_SESSION['uid'] = $userId;
+
+                $_SESSION['usn'] = $userFname;
+
+                $_SESSION['usr'] = $userRole;
+
                 $_SESSION['authenticated'] = true;
+
                 array_push( $output, $feedback[0]);
-            }   
+            }
             else
             {
-                $_SESSION['authenticated'] = false;
-                array_push( $output, $feedback[2]);
+                if( checkif_account_exists($_POST['POSTDATA']) )
+                {
+                    $_SESSION['uid'] = true;
+                    $_SESSION['usn'] = true;
+                    $_SESSION['authenticated'] = true;
+                    array_push( $output, $feedback[0]);
+                }   
+                else
+                {
+                    $_SESSION['authenticated'] = false;
+                    array_push( $output, $feedback[2]);
+                }
             }
         }
     
@@ -77,11 +101,11 @@ session_start();
     }
     
     function checkif_account_exists($POST_DATA){
-
-        
     
         $status = false;
+       
         $db = new db();
+      
         $sql = '  
                     SELECT 
                             * 
@@ -92,7 +116,9 @@ session_start();
                     AND     
                             password = ?
                 ';
+
         $stmt = $db->connect()->prepare($sql);
+
         $stmt->execute( 
                         [ 
                             $POST_DATA['email'], 
@@ -102,8 +128,50 @@ session_start();
     
         if ( count( $stmt->fetchAll() ) > 0 )
         {
-            $status = true;
+            $status = $stmt->fetchAll();
         }
+        return $status;
+    }
+    
+    function checkif_account_employee($POST_DATA){
+
+        $status = false;
+
+        $db = new db();
+    
+        $sql = '  
+                    SELECT 
+                            firstname,
+                            user_id,
+                            role
+                    FROM 
+                            users a
+                    INNER JOIN
+                            employee_information b
+                    ON
+                            a.id = b.user_id
+                    WHERE
+                            email = ?
+                    AND     
+                            password = ?
+                ';
+    
+        $stmt = $db->connect()->prepare($sql);
+    
+        $stmt->execute( 
+                        [ 
+                            $POST_DATA['email'], 
+                            sha1($POST_DATA['password'])
+                        ]
+        );
+
+        $result = $stmt->fetchAll();
+
+        if ( isset( $result ) )
+        {
+            $status = $result;
+        }
+     
         return $status;
     }
     

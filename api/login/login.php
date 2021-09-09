@@ -40,15 +40,25 @@ if ( $validation_result == 403 )
 }
 else
 {
-
-    if( checkif_account_exists($_POST) )
+    var_dump(checkif_account_employee($_POST));
+    // CHECK IF EMPLOYEE
+    if ( checkif_account_employee($_POST))
     {
         array_push( $output, $feedback[0]);
-    }   
+    }
     else
     {
-        array_push( $output, $feedback[2]);
+        if ( checkif_account_exists($_POST) )
+        {
+            array_push( $output, $feedback[0]);
+        }   
+        else
+        {
+            array_push( $output, $feedback[2]);
+        }
     }
+
+    
 }
 
 
@@ -58,41 +68,73 @@ echo json_encode($output);
 
 
 
+function checkif_account_employee($POST_DATA){
 
+    $db = new db();
 
+    $sql = '  
+                SELECT 
+                        * 
+                FROM 
+                        users
+                WHERE
+                        email = ?
+                AND     
+                        password = ?
+            ';
+
+    $stmt = $db->connect()->prepare($sql);
+
+    $stmt->execute( 
+                    [ 
+                        $POST_DATA['email'], 
+                        sha1($POST_DATA['password'])
+                    ]
+    );
+
+    if ( count( $stmt->fetchAll() ) > 0 )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}
 
 function checkif_account_exists($POST_DATA){
 
     $db = new db();
 
-        $sql = '  
-                    SELECT 
-                            * 
-                    FROM 
-                            applicant_accounts
-                    WHERE
-                            email = ?
-                    AND     
-                            password = ?
-                ';
+    $sql = '  
+                SELECT 
+                        * 
+                FROM 
+                        applicant_accounts
+                WHERE
+                        email = ?
+                AND     
+                        password = ?
+            ';
 
-        $stmt = $db->connect()->prepare($sql);
+    $stmt = $db->connect()->prepare($sql);
 
-        $stmt->execute( 
-                        [ 
-                            $POST_DATA['email'], 
-                            sha1($POST_DATA['password'])
-                        ]
-        );
+    $stmt->execute( 
+                    [ 
+                        $POST_DATA['email'], 
+                        sha1($POST_DATA['password'])
+                    ]
+    );
 
-        if ( count( $stmt->fetchAll() ) > 0 )
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    if ( count( $stmt->fetchAll() ) > 0 )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 
 
 }

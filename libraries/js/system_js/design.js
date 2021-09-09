@@ -50,5 +50,10 @@ $(document).ready(function($) {
        return false;
     });
  });
-//  SIDEBAR JS
+
+$('#username_a').on('click',function(){
+   $('#modal_user').modal('show')
+})
+ //  SIDEBAR JS
+
 
