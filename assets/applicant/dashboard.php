@@ -20,7 +20,7 @@
     <div class="row border-top">
 
         <!--REQUIREMENTS CONTENT -->
-        <div class="col-lg-5 pt-lg-4 pt-5 px-0 " style="font-size: 12pt;"> 
+        <div class="col-lg-5 pt-lg-4 pt-5 px-0 mb-4 " style="font-size: 12pt;"> 
 
             <h6>Requirements List</h6>
             <div class="table-responsive mt-3 border-right border-left border-bottom rounded">
@@ -73,10 +73,10 @@
                         <div class="tab-pane fade show active container tab_container" id="nav_application_status" role="tabpanel">
 
                             <div class="row mb-3 ">
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pl-0 pl-lg-3  pr-0">
                                     <label > Status </label>
                                 </div>
-                                <div class="col-10 pl-0 text-left" >    
+                                <div class="col-lg-10 pl-0 text-left" >    
                                     <label style="font-size: 12pt !Important;"> Pending </label>
                                 </div>
 
@@ -85,10 +85,10 @@
                             <div class="border-bottom text-secondary">
 
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-lg-2 pl-0 pl-lg-3">
                                 <h6>Degree</h6>
                                 </div>
-                                <div class="col-10 pl-0 text-left">
+                                <div class="col-lg-10 pl-0 text-left">
                                     <small class="text-secondary">Choose the degree program you are applying to.</small>
                                 </div>
                             </div>
@@ -96,19 +96,19 @@
                             </div>
 
                             <div class="row mt-4">
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-0 pl-lg-3">
                                     <label class="pt-1"> School of </label>
                                 </div>
-                                <div class="col-10 pl-0 text-left"> 
+                                <div class="col-lg-10 pl-0 text-left"> 
                                     <select name="" id="" class="form-control form-control-sm"></select>
                                 </div>
                             </div>
 
                             <div class="row mt-4">
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-0 pl-lg-3">
                                     <label class="pt-1"> Program </label>
                                 </div>
-                                <div class="col-10 pl-0 text-left"> 
+                                <div class="col-lg-10 pl-0 text-left"> 
                                     <select name="" id="" class="form-control form-control-sm"></select>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
 
                                 <div class="row">
 
-                                    <div class="col-3">
+                                    <div class="col-lg-3 ">
 
                                         <h6>Basic Information</h6>
 
@@ -140,13 +140,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Last Name </label>       
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="lastname" type="text">
 
@@ -156,13 +156,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> First Name </label>
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class="form-control form-control-sm" name="firstname" type="text">
 
@@ -172,13 +172,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Middle Name </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class="form-control form-control-sm" name="middlename" type="text">
 
@@ -188,13 +188,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Suffix</label> 
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0 pl-3 pl-lg-3">
 
                                     <input class="form-control form-control-sm" name="suffix" type="text">
 
@@ -204,13 +204,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Date of Birth </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class="form-control form-control-sm" name="birthdate" type="date">
 
@@ -220,13 +220,13 @@
                             
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Place of Birth </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class="form-control form-control-sm" name="birthplace" type="text">
 
@@ -236,13 +236,13 @@
                             
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
                                     
                                     <label class="pt-1"> Age </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class="form-control form-control-sm" name="age" type="text">
 
@@ -252,13 +252,13 @@
                             
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Contact Number </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class="form-control form-control-sm" name="mobileno" type="text">
 
@@ -268,13 +268,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
                                     
                                     <label class="pt-1"> Gender </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <select name="gender" id="" class="form-control form-control-sm"></select>
 
@@ -284,13 +284,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Religion </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
                                     
                                     <input class="form-control form-control-sm" name="religion" type="text">
 
@@ -300,13 +300,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Civil Status </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <select name="civilstatus" id="" class="form-control form-control-sm"></select>
 
@@ -316,13 +316,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Citizenship </label>
                                    
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <select name="citizenship" id="" class="form-control form-control-sm"></select>
 
@@ -372,13 +372,13 @@
 
                             <div class="row mt-1">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1 pr-0"> No./St./Sbdv. </label>      
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="city_no_street_subdivision" type="text">
 
@@ -388,7 +388,7 @@
 
                             <div class="row mt-4">
                                 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Barangay </label>   
 
@@ -404,13 +404,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> City </label>     
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="city_city" type="text">
 
@@ -420,13 +420,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Zip Code </label>       
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="city_zipcode" type="text">
 
@@ -450,13 +450,13 @@
 
                             <div class="row mt-1">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Barangay </label>      
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0 pl-3 pl-lg-3">
 
                                     <input class=" form-control form-control-sm" name="province_barangay" type="text">
 
@@ -466,13 +466,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> No./St./Sbdv. </label>        
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0 pl-3 pl-lg-3">
 
                                     <input class=" form-control form-control-sm" name="province_no_street_subdivision" type="text">
 
@@ -482,13 +482,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> City </label>    
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
                                     
                                     <input class=" form-control form-control-sm" name="province_city" type="text">
 
@@ -498,13 +498,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1"> Zip Code </label>     
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="province_zipcode" type="text">
 
@@ -521,7 +521,7 @@
 
                                 <div class="row">
 
-                                    <div class="col-3">
+                                    <div class="col-lg-3">
 
                                         <h6>Family Record</h6>
 
@@ -533,13 +533,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0 ">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3 ">
 
                                     <label class="pt-1 pr-0"> Father's Full Name </label> 
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="fathers_fullname" type="text">
 
@@ -549,13 +549,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0 ">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3 ">
 
                                     <label class="pt-1 pr-0"> Occupation </label>        
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="fathers_occupation" type="text">
 
@@ -565,13 +565,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0 ">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1 pr-0"> Mother's Full Name </label>    
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="mothers_fullname" type="text">
 
@@ -581,13 +581,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0 ">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3 ">
 
                                     <label class="pt-1 pr-0"> Occupation </label> 
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="mothers_occupation" type="text">
 
@@ -597,13 +597,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0 ">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1 pr-0"> No. of Siblings </label>   
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <input class=" form-control form-control-sm" name="no_of_siblings" type="text">
 
@@ -613,13 +613,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-2 pr-0 ">
+                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
 
                                     <label class="pt-1 pr-0"> Monthly Family Income </label>    
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
 
                                     <select name="monthly_family_income" id="" class="form-control form-control-sm"></select>
 
@@ -636,7 +636,7 @@
 
                                 <div class="row">
 
-                                    <div class="col-3">
+                                    <div class="col-lg-3">
 
                                         <h6>Scholastic Record</h6>
 
@@ -680,14 +680,14 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-4 pr-0 ">
+                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3 ">
 
                                     <label class=" pr-0 pt-0 ">Secondary School/Addr.,</label>     
 
                                                             
                                 </div>
 
-                                <div class="col-8 pr-0">
+                                <div class="col-lg-8 pr-0">
 
                                     <input class=" form-control form-control-sm" name="secondary_school_address" type="text">
 
@@ -697,13 +697,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-4 pr-0 ">
+                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3 ">
 
                                     <label class=" pr-0 pt-0"> Secondary School Year Attended</label>    
 
                                 </div>
 
-                                <div class="col-8 pr-0">
+                                <div class="col-lg-8 pr-0">
 
                                     <input class=" form-control form-control-sm" name="secondary_school_year_attended" type="text">
 
@@ -713,13 +713,13 @@
                             
                             <div class="row mt-4">
 
-                                <div class="col-4 pr-0 ">
+                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3 ">
 
                                     <label class=" pr-0 pt-0 ">Honors Received</label>     
 
                                 </div>
 
-                                <div class="col-8 pr-0">
+                                <div class="col-lg-8 pr-0">
                                     
                                     <input class=" form-control form-control-sm" name="honors_received" type="text">
                                     
@@ -731,13 +731,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-4 pr-0">
+                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
 
                                     <label class=" pr-0 pt-0 ">Affiliated Educational Organization(s) and Position(s)</label>    
                          
                                 </div>
 
-                                <div class="col-8 pr-0">
+                                <div class="col-lg-8 pr-0">
 
                                     <input class=" form-control form-control-sm" name="affiliated_educational_organizations_and_position" type="text">
 
@@ -749,14 +749,14 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-4 pr-0">
+                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
 
                                     <label class=" pr-0 pt-0 ">Scholarships/Grants Received</label>     
 
                                                             
                                 </div>
 
-                                <div class="col-8 pr-0">
+                                <div class="col-lg-8 pr-0">
 
                                     <input class=" form-control form-control-sm" name="scholarships_grants_received" type="text">
 
@@ -768,14 +768,14 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-4 pr-0">
+                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
 
                                     <label class=" pr-0 pt-0 ">Are you a working student?</label>     
 
                                                             
                                 </div>
 
-                                <div class="col-8 pr-0">
+                                <div class="col-lg-8 pr-0">
 
                                     <select name="working_student" id="" class="form-control form-control-sm"></select>    
 
@@ -797,7 +797,7 @@
                                     
                                 </div>
 
-                                <div class="row mt-4">
+                                <div class="row mt-4 mb-1">
 
                                     <div class="col pr-0 ">
 
@@ -829,7 +829,7 @@
 
                                 </div>
 
-                                <div class="row mt-4">
+                                <div class="row mt-lg-4 mt-3">
 
                                     <div class="col pr-0 ">
 
@@ -839,7 +839,7 @@
 
                                 </div> 
 
-                                <div class="row">
+                                <div class="row mb-3">
 
                                     <div class="col pr-0">
 
@@ -859,7 +859,7 @@
 
                                 </div>
 
-                                <div class="row">
+                                <div class="row mb-3">
 
                                     <div class="col pr-0">
 
