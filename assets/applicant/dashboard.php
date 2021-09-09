@@ -394,7 +394,7 @@
 
                                 </div>
 
-                                <div class="col-10 pr-0">
+                                <div class="col-lg-10 pr-0">
                                     
                                     <input class=" form-control form-control-sm" name="city_barangay" type="text">
 
@@ -723,13 +723,13 @@
                                     
                                     <input class=" form-control form-control-sm" name="honors_received" type="text">
                                     
-                                    <p class="text-secondary" style="font-size: 8pt;"> Type N/A if not applicable</p> 
+                                    <p class="text-secondary " style="font-size: 8pt;"> Type N/A if not applicable</p> 
 
                                 </div>
                           
                             </div> 
 
-                            <div class="row mt-4">
+                            <div class="row mt-3">
 
                                 <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
 
@@ -747,7 +747,7 @@
                           
                             </div> 
 
-                            <div class="row mt-4">
+                            <div class="row mt-3">
 
                                 <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
 
@@ -766,7 +766,7 @@
                           
                             </div> 
 
-                            <div class="row mt-4">
+                            <div class="row mt-3">
 
                                 <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
 
