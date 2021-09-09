@@ -9,8 +9,6 @@ function required_fields_validated($REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = ar
     $POST_DATA_KEYS = array_keys( $_POSTDATA );
 
     $REQUIRED_DATA_KEYS = array_keys( $REQUIRED_FIELDS );
-
-    
  
 
     if( !isset_fields( $POST_DATA_KEYS, $REQUIRED_DATA_KEYS ) )

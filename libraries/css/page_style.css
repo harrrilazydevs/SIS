@@ -60,30 +60,6 @@
 
 
 
-
-   
-
- @media all and (min-width: 1024px) {
-
-    .scrollable-500{
-       max-height: 65vh;
-       overflow-y: auto;
-       overflow-x: hidden;
-    }  
-
-    .body_design{
-
-       height: 92vh !important;
-    }
- 
-    .footer_design{
-       width: 100vw !important;
-       height: 8vh !important;
-    }
-
-}
-
-
  
 /* SCROLLBAR */
 /* width */

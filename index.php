@@ -1,7 +1,18 @@
 <?php
-    $page_title = 'Dashboard';
-    include_once 'inc/header.php'; 
+
+  $USER_TYPE = 'APPLICANT';
+  $page_title = 'Dashboard';
+
+  include_once 'inc/header.php'; 
+  include_once 'inc/variables.php'; 
+
+  // if(!$GLOBALS['authenticated'])
+  // {
+  //   echo '<script>location.href="login.php"</script>';
+  // }
+
 ?>
+
 
 <div class="content">
 
@@ -9,19 +20,24 @@
 
     <?php include_once 'inc/modals.php'; ?>
 
+
     <div class="content-inside">
 
-    <div class="d-none page" id="page_login">
-
-      <?php include_once 'assets/login.php'; ?>
-
-    </div>
-
-
-      <div class="page" id="page_dashboard">
+      <div class="d-none page" id="page_dashboard">
 
         <?php 
-        include_once 'assets/dashboard.php'; ?>
+
+          if ($USER_TYPE == 'APPLICANT')
+          {
+            include_once 'assets/applicant/dashboard.php'; 
+          }
+
+          if ($USER_TYPE == 'REGISTRAR')
+          {
+            include_once 'assets/registrar/dashboard.php'; 
+          }
+            
+        ?>
 
       </div>
 
@@ -58,13 +74,47 @@
 
       </div>
 
+      <!-- REGISTRAR -->
+      <div class="d-none page" id="page_admission">
+
+        <?php 
+
+          if ($USER_TYPE == 'REGISTRAR')
+          {
+            include_once 'assets/registrar/admission.php'; 
+          }
+
+         
+        ?>
+
+      </div>
+
 
 
     </div>
   
 </div>
 
+
+<?php
+
+
+if ($USER_TYPE == 'APPLICANT')
+{
+  include_once 'assets/applicant/sidebar.php';  
+}
+
+if ($USER_TYPE == 'REGISTRAR')
+{
+  include_once 'assets/registrar/sidebar.php';  
+}
+
+?>
+
+
 <?php include_once 'inc/footer.php'; ?>
+
+
 
 
 <footer class="footer bg-secondary text-light text-center py-2" style="font-size: 10pt !Important;">

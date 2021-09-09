@@ -1,6 +1,3 @@
-<?php
-include_once 'sidebar.php'; 
-?>
 
 
 <script src="libraries/jquery/jquery-3.5.1.min.js"></script>
@@ -10,5 +7,6 @@ include_once 'sidebar.php';
 <script src="libraries/js/register/function.js"></script>
 <script src="libraries/js/login/function.js"></script>
 <script src="libraries/js/dashboard/function.js"></script>
+<script src="libraries/js/dashboard/registrar/function.js"></script>
 </body>
 </html>

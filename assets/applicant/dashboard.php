@@ -818,7 +818,12 @@
 
                                     <div class="col pr-0">
 
-                                    <select name="oi_1" class="form-control"></select>
+                                    <select name="oi_1" class="form-control">
+
+                                        <option value="YES">Yes</option>
+                                        <option value="NO">No</option>
+
+                                    </select>
 
                                     </div>
 

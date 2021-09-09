@@ -6,7 +6,7 @@ $('#form_login').on('submit', function (e) {
 
       type: 'post',
 
-      url: 'api/login/login.php',
+      url: 'api/func/authenticate.php',
 
       data:  $('#form_login').serialize(),
 
@@ -18,16 +18,12 @@ $('#form_login').on('submit', function (e) {
 
       success: function (e) {
 
-        console.log(e);
-
         $.each(e, function(key, val){
 
-        
-
-            if(val.status == 200)
-            {
-                validated_success(val.feedback)
-            }
+          if(val.status == 200)
+          {
+              validated_success(val.feedback)
+          }
 
         })
      

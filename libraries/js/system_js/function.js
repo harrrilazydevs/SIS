@@ -22,6 +22,10 @@ $('#btn_winnings').on('click', function(){
     showPage($(this).attr('aria-page'))
 })
 
+$('#btn_registrar_admission').on('click', function(){
+    showPage($(this).attr('aria-page'))
+})
+
 
 function showPage(pagename){
 
