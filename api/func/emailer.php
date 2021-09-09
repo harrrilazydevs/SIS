@@ -59,3 +59,4 @@ function send_mail($message, $subject, $sendTo)
 
     return $status;
 }
+?>

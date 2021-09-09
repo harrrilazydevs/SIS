@@ -1,10 +1,5 @@
 <?php
 
-if(isset($_SESSION['sesh_id'])){
-    $_SESSION['sesh_id'] = [];
-    session_id($_SESSION['sesh_id']);
-    session_destroy();
-}
 session_start();
 
 include_once '../../../database/database.php';
@@ -97,3 +92,4 @@ function checkif_account_exists($POST_DATA){
     return $status;
 }
 
+?>

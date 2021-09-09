@@ -96,3 +96,5 @@ function checkif_account_exists($POST_DATA){
 
 
 }
+
+?>

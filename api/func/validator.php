@@ -159,3 +159,5 @@ function birth_date_valid($date){
     else
     return false;
 }
+
+?>

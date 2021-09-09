@@ -11,3 +11,4 @@ function generate_password() {
     }
     return $randomString;
 }
+?>

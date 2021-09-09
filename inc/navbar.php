@@ -81,9 +81,9 @@
 
                                 <div class="col-7 pl-0">
 
-                                    <h6 class="dropdown-header font-weight-bold pt-2 pl-2">USERNAME</h6>
+                                    <h6 class="dropdown-header font-weight-bold pt-2 pl-2" id="nav_user_username">USERNAME</h6>
                                     
-                                    <h6 class="dropdown-header py-0 pl-2">USER ROLE</h6>
+                                    <h6 class="dropdown-header py-0 pl-2" id="nav_user_role">USER ROLE</h6>
 
                                 </div>
 
@@ -101,7 +101,7 @@
 
                             </a>
 
-                            <a class="dropdown-item py-1" type="button" id="btn_logout" >
+                            <a class="dropdown-item py-1" type="button" href="../api/func/authenticate/logout.php" >
 
                                 <i class="fas fa-sign-out-alt pr-2 pl-0 ml-0" style="font-size: 12pt;"></i>
 
