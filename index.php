@@ -22,7 +22,9 @@
 
     <div class="content-inside">
 
-      <div class="page" id="page_dashboard">
+      <div class="d-none page" id="page_dashboard">
+
+      <button class="btn-primary"> test</button>
 
         <?php 
 
