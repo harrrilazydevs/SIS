@@ -25,7 +25,7 @@ $('#form_login').on('submit', function (e) {
 
         $.each(e, function(key, val){
 
-          if(val.status == 200)
+          if (val.status == 200)
           {
               validated_success(val)
           }

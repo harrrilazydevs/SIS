@@ -219,11 +219,12 @@ html, body {
    overflow-y:hidden;
    flex-wrap: nowrap;
    border-bottom: 0px !important;
-   
+  
 }
+
 .tabbable .nav-tabs .nav-link {
   white-space: nowrap;
-  font-size: 10pt !important;
+  font-size: 9pt !important;
  
 }
 .tab_border{
@@ -243,3 +244,19 @@ html, body {
    font-size: 9pt !important;
    
 }
+
+
+/* MODALS */
+.input-modal .modal-body label, .modal-body input{
+   font-size:10pt !important;
+}
+.input-modal .modal-body label{
+  color: #000000 !important;
+}
+.input-modal .modal-content {
+   border-left: 2px outset #2569C3;
+}
+.input-modal-file{
+   border: 2px dashed #2569C3;
+}
+

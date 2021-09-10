@@ -162,9 +162,9 @@
 
     //     $message = 'Password is : '.$password;
 
-    //     $stmt = $db->connect()->prepare($sql);
+        // $stmt = $db->connect()->prepare($sql);
 
-    //     $v = $stmt->execute( $value );
+        // $v = $stmt->execute( $value );
 
     //     // var_dump($v);
 

@@ -10,7 +10,7 @@ $('.ld-nav-item').on('click', function(){
 
 $(document).ready(function(){
 
-    prepareUserPage();
+    // prepareUserPage();
 })
 
 $('#btn_logout').on('click',function(){
@@ -57,6 +57,6 @@ function showPage(pagename){
 
 }
 
-function prepareUserPage(){
-    
-}
+// function prepareUserPage(test){
+//     console.log(test)
+// }

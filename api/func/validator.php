@@ -160,4 +160,9 @@ function birth_date_valid($date){
     return false;
 }
 
+function validate_file(){
+    
+}
+
+
 ?>

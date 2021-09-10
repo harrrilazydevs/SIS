@@ -1,10 +1,11 @@
 <?php
 
-  $USER_TYPE = 'ADMINISTRATOR';
   $page_title = 'Dashboard';
 
   include_once 'inc/header.php';
   include_once 'api/func/authenticate/authenticate.php';
+
+  $USER_TYPE = $_SESSION['usr'];
 
   if(!$_SESSION['authenticated']){
     header('location:login.php');
@@ -19,12 +20,9 @@
 
     <?php include_once 'inc/modals.php'; ?>
 
-
     <div class="content-inside">
 
-      <div class="d-none page" id="page_dashboard">
-
-      <button class="btn-primary"> test</button>
+      <div class="page" id="page_dashboard">
 
         <?php 
 
@@ -36,6 +34,11 @@
           if ($USER_TYPE == 'REGISTRAR')
           {
             include_once 'assets/registrar/dashboard.php'; 
+          }
+
+          if ($USER_TYPE == 'DEVELOPER')
+          {
+            include_once 'assets/administrator/dashboard.php'; 
           }
             
         ?>
@@ -97,16 +100,26 @@ if ($USER_TYPE == 'REGISTRAR')
   include_once 'assets/registrar/sidebar.php';  
 }
 
-if ($USER_TYPE == 'ADMINISTRATOR')
+if ($USER_TYPE == 'ADMINISTRATOR' || $USER_TYPE == 'DEVELOPER')
 {
   include_once 'assets/administrator/sidebar.php';  
 }
 
+?>
+
+
+<?php 
+
+include_once 'inc/footer.php';  
+
+if ($USER_TYPE == 'APPLICANT')
+{
+  echo '<script src="libraries/js/dashboard/applicant/function.js"></script>';  
+}
 
 ?>
 
 
-<?php include_once 'inc/footer.php'; ?>
 
 
 

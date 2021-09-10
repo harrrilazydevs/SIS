@@ -7,7 +7,7 @@
         </div>
 
         <div class="col-12 col-lg-8 pt-lg-3 pt-4 px-0">
-            <label class="">Hi, <b>APPLICANT!</b></label>
+            <label class="user_info" ur="<?php echo $_SESSION['usr']?>" id="<?php echo $_SESSION['uid']?>">Hi, <b><?php echo $_SESSION['usn']?></b></label>
         </div>
         
         <div class="col-12 col-lg-4 pt-lg-2 text-right px-0 d-none d-lg-block" style="font-size: 12pt;"> 
@@ -22,7 +22,12 @@
         <!--REQUIREMENTS CONTENT -->
         <div class="col-lg-5 pt-lg-4 pt-5 px-0 mb-4 " style="font-size: 12pt;"> 
 
+         
+
             <h6>Requirements List</h6>
+
+            <small class="border p-2"> Please </small>
+
             <div class="table-responsive mt-3 border-right border-left border-bottom rounded">
                 <table class="table table-sm" id="tbl_requirement">
                     <thead style="font-size: 10pt;" class="border-bottom">
@@ -48,16 +53,16 @@
         </div>
 
         <!-- TAB CONTENT -->
-        <div class="col-lg-7 pt-lg-2 px-0 " style="font-size: 12pt;"> 
+        <div class="col-lg-7 pt-lg-2 px-0 " > 
             <div class="row ml-lg-2">
                 <div class="col tab_container">
                     <nav class="tabbable">
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist" >
                             <!-- <a class="nav-link active" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Application Status</a>
                             <a class="nav-link" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
                             <a class="nav-link" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> -->
 
-                            <a class="nav-link active" data-toggle="tab" href="#nav_application_status" role="tab">Application Status</a>
+                            <a class="nav-link active" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_status" role="tab">Application Status</a>
                             <a class="nav-link" data-toggle="tab" href="#nav_profile" role="tab">Profile</a>
                             <a class="nav-link" data-toggle="tab" href="#nav-mailingaddress" role="tab">Mailing Address</a>
                             <a class="nav-link" data-toggle="tab" href="#nav-familyrecord" role="tab">Family Record</a>
@@ -893,9 +898,6 @@
                             </div>
                         </div>
                     </div>
-                    
-
-
                 </div>
             </div>
 

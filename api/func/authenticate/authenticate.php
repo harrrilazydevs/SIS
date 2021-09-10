@@ -1,9 +1,12 @@
 <?php
 
-session_start();
+    if (!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 
-    if(isset($_POST['action'])){
-
+    if (isset($_POST['action']))
+    {
         if( $_POST['token'] === $_SESSION['TOKEN'] )
         {
             if ($_POST['action'] == "login") {
@@ -20,11 +23,6 @@ session_start();
 
         include_once '../../../database/database.php';
         include_once '../validator.php';
-            
-        $REQUIRED_FIELDS = [
-            'email'=>'*',
-            'password'=>'*'
-        ];
     
         $feedback = [
             [
@@ -51,6 +49,11 @@ session_start();
     
         $output = array();
 
+        $REQUIRED_FIELDS = [
+            'email'=>'*',
+            'password'=>'*'
+        ];
+
         $validation_result = required_fields_validated($REQUIRED_FIELDS, $_POST['POSTDATA']);
 
         if ( $validation_result == 403 )
@@ -59,10 +62,11 @@ session_start();
         }
         else
         {
-            if ( checkif_account_employee($_POST['POSTDATA']) !== null )
-            {
-                $_RETURN_DATA = checkif_account_employee($_POST['POSTDATA']);
+            $_RETURN_DATA = checkif_account_employee($_POST['POSTDATA']);
 
+            if (  !empty($_RETURN_DATA) )
+            {
+               
                 $userId = $_RETURN_DATA[0]['user_id'];
 
                 $userFname = $_RETURN_DATA[0]['firstname'];
@@ -81,11 +85,23 @@ session_start();
             }
             else
             {
-                if( checkif_account_exists($_POST['POSTDATA']) )
+                
+                $_RETURN_DATA = checkif_account_exists($_POST['POSTDATA']);
+
+                if( !empty($_RETURN_DATA) )
                 {
-                    $_SESSION['uid'] = true;
-                    $_SESSION['usn'] = true;
+                    $userId = $_RETURN_DATA[0]['user_id'];
+
+                    $userFname = $_RETURN_DATA[0]['firstname'];
+
+                    $_SESSION['uid'] = $userId;
+
+                    $_SESSION['usn'] = $userFname;
+
+                    $_SESSION['usr'] = 'APPLICANT';
+
                     $_SESSION['authenticated'] = true;
+
                     array_push( $output, $feedback[0]);
                 }   
                 else
@@ -101,41 +117,35 @@ session_start();
     }
     
     function checkif_account_exists($POST_DATA){
-    
-        $status = false;
-       
+
         $db = new db();
-      
+
         $sql = '  
                     SELECT 
-                            * 
+                            a.id as `user_id`,
+                            b.firstname 
                     FROM 
-                            applicant_accounts
+                            applicant_accounts a
+                    INNER JOIN
+                            applicant_information b
+                    ON
+                            a.id = b.applicant_id
                     WHERE
                             email = ?
                     AND     
                             password = ?
                 ';
 
-        $stmt = $db->connect()->prepare($sql);
+        $data = [ 
+                    $POST_DATA['email'], 
+                    sha1($POST_DATA['password'])
+        ];
 
-        $stmt->execute( 
-                        [ 
-                            $POST_DATA['email'], 
-                            sha1($POST_DATA['password'])
-                        ]
-        );
-    
-        if ( count( $stmt->fetchAll() ) > 0 )
-        {
-            $status = $stmt->fetchAll();
-        }
-        return $status;
+        return $db->get_( $sql, $data );
+       
     }
     
     function checkif_account_employee($POST_DATA){
-
-        $status = false;
 
         $db = new db();
     
@@ -156,23 +166,13 @@ session_start();
                             password = ?
                 ';
     
-        $stmt = $db->connect()->prepare($sql);
-    
-        $stmt->execute( 
-                        [ 
-                            $POST_DATA['email'], 
-                            sha1($POST_DATA['password'])
-                        ]
-        );
+        $data = [ 
+                    $POST_DATA['email'], 
+                    sha1($POST_DATA['password'])
+        ];
 
-        $result = $stmt->fetchAll();
+        return $db->get_( $sql, $data );
 
-        if ( isset( $result ) )
-        {
-            $status = $result;
-        }
-     
-        return $status;
     }
     
     

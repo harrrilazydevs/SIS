@@ -4,10 +4,6 @@
 
     <div class="bs-canvas-content px-3 py-5 text-muted ">
 
-
-
-    
-
         <div class="1-cut d-block d-lg-none  container-fluid py-2 px-0">
 
             <div class="col text-right px-0 mr-0">
@@ -32,10 +28,8 @@
                 <label style="font-size:9pt;"><?php echo $_SESSION['usr']?></label>
             </div>
         </div>
-        
-            
 
-        <div class="1-cut mt-4">
+        <div class="1-cut mt-4 mt-lg-0">
 
             <div class="d-flex justify-content-between align-items-center mt-2 mb-1 pl-2 text-dark font-weight-bold" style="font-size: 10pt;">
                 
@@ -50,7 +44,7 @@
                         
                         <i class="far fa-sticky-note fa-fw mr-2" style="font-size: 13pt;"></i>
 
-                        Enrollee List
+                        Monitoring 
                     </a>
                     
                 </li>
