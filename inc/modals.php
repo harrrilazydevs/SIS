@@ -173,43 +173,41 @@
 
 <!-- APPLICANT MODALS -->
 
-<div class="modal fade input-modal"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_post_requirement">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="">
-            <div class="modal-header text-center pt-3 pb-0">
-               <h6> Submit Requirement </h6>
-            </div>
-            <form id="form_modal_applicant_requirement" enctype="multipart/form-data">
+    <div class="modal fade input-modal"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_post_requirement">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="">
+                <div class="modal-header text-center pt-3 pb-0">
+                <h6> Submit Requirement </h6>
+                </div>
+                <form id="form_modal_applicant_requirement" enctype="multipart/form-data">
 
-                <div class="modal-body container" style="" >
+                    <div class="modal-body container" style="" >
 
-                    <label>Requirement</label>
-                    <p id="txt_requirement" class="font-weight-bold pl-1"></p>
-                    <!-- <input type="text" class="form-control form-control-sm"  readonly> -->
+                        <label>Requirement</label>
+                        <p id="txt_requirement" class="font-weight-bold pl-1"></p>
+                        <!-- <input type="text" class="form-control form-control-sm"  readonly> -->
 
 
-                    <label class="mt-1">Attach Document</label><br>
-                    <div class="border py-2 px-1 rounded">
-                        <input type="file" id="file" accept=".xls,.xlsx,.pdf,.doc,.docx" >
+                        <label class="mt-1">Attach Document</label><br>
+                        <div class="border py-2 px-1 rounded">
+                            <input type="file" id="file" accept=".xls,.xlsx,.pdf,.doc,.docx" >
+                        </div>
+
                     </div>
 
-                </div>
-
-                <div class="modal-footer text-center" style="border: none !important">
-                    <div class="row">
-                        <div class="col px-0 btn-full-width">
-                            <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                            <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                    <div class="modal-footer text-center" style="border: none !important">
+                        <div class="row">
+                            <div class="col px-0 btn-full-width">
+                                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
-
 
 <!-- APPLICANT MODALS -->
 

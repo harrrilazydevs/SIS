@@ -9,14 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="libraries/css/fonts/pt-serif.css" >
-    <link rel="stylesheet" href="libraries/css/style2.css">
+    <!-- <link rel="stylesheet" href="libraries/css/style2.css"> -->
     <link rel="stylesheet" href="libraries/css/page_style.css">
     <link rel="stylesheet" href="libraries/bootstrap-4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="libraries/fontawesome-5.15.4/css/all.min.css">
-
-
- 
-
 
 
     <title> <?php echo $page_title ?></title>

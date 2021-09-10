@@ -20,13 +20,27 @@
     <div class="row border-top">
 
         <!--REQUIREMENTS CONTENT -->
-        <div class="col-lg-5 pt-lg-4 pt-5 px-0 mb-4 " style="font-size: 12pt;"> 
-
-         
+        <div class="col-lg-5 pt-lg-4 pt-5 px-0 mb-4  " style="font-size: 12pt;"> 
 
             <h6>Requirements List</h6>
 
-            <small class="border p-2"> Please </small>
+            <div class="card">
+                <div class="card-body pb-0">
+                    <div class="row px-0 py-0">
+                        <div class="col-1 text-primary pb-2 pt-0">  <i class="fas fa-exclamation-circle"></i></div>
+                        <div class="col-11 pl-2 pl-lg-0 pt-1" ><h6 style="font-size: 10pt !Important;">Note</h6></div>
+                    </div>
+                    <div class=" row ">
+                        <div class="col border-top pt-3 pb-0" >
+                            <ul>
+                                <li><p style="font-size: 10pt !important;" class="py-0">Upload only PDF format documents.</p></li>
+                                <li><p style="font-size: 10pt !important;" class="py-0">Upload only PDF format documents.</p></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="table-responsive mt-3 border-right border-left border-bottom rounded">
                 <table class="table table-sm" id="tbl_requirement">
