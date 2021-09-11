@@ -46,9 +46,17 @@
 
                         Monitoring 
                     </a>
-                    
                 </li>
 
+                <li class="nav-item">
+                    
+                    <a class="nav-link ld-nav-item text-dark py-1 "  style="font-size: 10pt;" id="btn_dashboard" aria-page="page_dashboard">
+                        
+                        <i class="far fa-sticky-note fa-fw mr-2" style="font-size: 13pt;"></i>
+
+                        Monitoring 
+                    </a>
+                </li>
             </ul>
 
         </div>

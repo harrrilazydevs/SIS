@@ -34,6 +34,21 @@
    -ms-transition: all .4s ease-out;
 }
 
+a.ld-nav-item {
+   font-size: 11pt !important;
+ }
+
+ .ld-nav-item a:hover {
+   color: #AFAE67 !important;
+ }
+
+ a.ld-nav-item:hover {
+   cursor: pointer;
+   border-bottom: 1px solid white;
+   transform: scale(1.1);
+ }
+
+
 /* SIDEBAR CSS */
 
 
@@ -254,7 +269,7 @@ html, body {
   color: #000000 !important;
 }
 .input-modal .modal-content {
-   border-left: 2px outset #2569C3;
+   border-left: 2px outset #82b9f9;
 }
 .input-modal-file{
    border: 2px dashed #2569C3;

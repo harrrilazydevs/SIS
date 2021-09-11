@@ -14,11 +14,12 @@
                                 SELECT 
                                         a.id,
                                         a.requirement_status as `status`,
+                                        a.requirement_id,
                                         b.name as `requirement_name`,
                                         a.file_name as `file_name`
                                         
                                 FROM 
-                                        student_requirement_records a
+                                        applicant_requirement_records a
                                 INNER JOIN
                                         requirement_list b
                                 ON

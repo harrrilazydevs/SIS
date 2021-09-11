@@ -20,29 +20,27 @@
     <div class="row border-top">
 
         <!--REQUIREMENTS CONTENT -->
-        <div class="col-lg-5 pt-lg-4 pt-5 px-0 mb-4  " style="font-size: 12pt;"> 
+        <div class="col-lg-5 pt-lg-4 pt-3 px-0 mb-4  " style="font-size: 12pt;"> 
 
             <h6>Requirements List</h6>
 
-            <div class="card">
+            <div class="card shadow-sm" style="border-left: 2px solid #037DFF;">
                 <div class="card-body pb-0">
                     <div class="row px-0 py-0">
-                        <div class="col-1 text-primary pb-2 pt-0">  <i class="fas fa-exclamation-circle"></i></div>
-                        <div class="col-11 pl-2 pl-lg-0 pt-1" ><h6 style="font-size: 10pt !Important;">Note</h6></div>
+                        <div class="col-lg-1 col-2 pr-0 text-primary pb-2 pt-0">  <i class="fas fa-exclamation-circle"></i></div>
+                        <div class="col-lg-11 col-10 pl-0 pl-lg-0 pt-1" ><h6 style="font-size: 10pt !Important;">Note</h6></div>
                     </div>
                     <div class=" row ">
                         <div class="col border-top pt-3 pb-0" >
-                            <ul>
-                                <li><p style="font-size: 10pt !important;" class="py-0">Upload only PDF format documents.</p></li>
-                                <li><p style="font-size: 10pt !important;" class="py-0">Upload only PDF format documents.</p></li>
-                            </ul>
+
+                            <p style="font-size: 10pt !important;" class="py-0"> You can only upload documents in PDF format .</p>
                             
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="table-responsive mt-3 border-right border-left border-bottom rounded">
+            <div class="table-responsive mt-3  border-right border-left border-bottom rounded">
                 <table class="table table-sm" id="tbl_requirement">
                     <thead style="font-size: 10pt;" class="border-bottom">
                     <tr>
@@ -55,7 +53,7 @@
                 </table>
             </div>
 
-            <div class="border-right border-left border-bottom rounded text-right pr-2 mt-2 pb-0">
+            <div class="border-right border-left border-bottom shadow-sm rounded text-right pr-2 mt-2 pb-0">
                 <label class="pl-lg-4 pl-2" style="font-size: 9pt !important;">SUBMITTED:</label>
                 <i style=" font-size:10pt !important;" class="far fa-check-circle bg-warning i-design  rounded-circle"></i>
                 <label class="pl-lg-4 pl-2" style="font-size: 9pt !important;">APPROVED:</label>
@@ -67,7 +65,7 @@
         </div>
 
         <!-- TAB CONTENT -->
-        <div class="col-lg-7 pt-lg-2 px-0 " > 
+        <div class="col-lg-7 pt-lg-3 px-0 " > 
             <div class="row ml-lg-2">
                 <div class="col tab_container">
                     <nav class="tabbable">
@@ -76,41 +74,149 @@
                             <a class="nav-link" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
                             <a class="nav-link" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> -->
 
-                            <a class="nav-link active" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_status" role="tab">Application Status</a>
+                            <a class="nav-link active" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_status" role="tab">Status</a>
                             <a class="nav-link" data-toggle="tab" href="#nav_profile" role="tab">Profile</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-mailingaddress" role="tab">Mailing Address</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-familyrecord" role="tab">Family Record</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-scholasticrecord" role="tab">Scholastic Record</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-otherinformation" role="tab">Other Information</a>
+                            <a class="nav-link" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_degree" role="tab">Degree</a>
+
+                            <a class="nav-link" data-toggle="tab" href="#nav-mailingaddress" role="tab">Address</a>
+                            <a class="nav-link" data-toggle="tab" href="#nav-familyrecord" role="tab">Family</a>
+                            <a class="nav-link" data-toggle="tab" href="#nav-scholasticrecord" role="tab">Scholastic</a>
+                            <a class="nav-link" data-toggle="tab" href="#nav-otherinformation" role="tab">Other</a>
 
                         </div>
                     </nav>
-                    <div class="tab-content border rounded tab_border  py-3 px-3" id="nav-tabContent">
-
+                    <div class="tab-content border rounded tab_border  shadow-sm py-3 px-3" id="nav-tabContent">
 
                     <!-- Application Status -->
-                        <div class="tab-pane fade show active container tab_container" id="nav_application_status" role="tabpanel">
-
-                            <div class="row mb-3 ">
-                                <div class="col-lg-2 pl-0 pl-lg-3  pr-0">
-                                    <label > Status </label>
-                                </div>
-                                <div class="col-lg-10 pl-0 text-left" >    
-                                    <label style="font-size: 12pt !Important;"> Pending </label>
-                                </div>
-
+                        <div class="tab-pane fade show active container tab_container " id="nav_application_status" role="tabpanel">
+                         
+                            <div class="border-bottom text-secondary pb-2">
+                                <h6 class=" my-0">Application Status</h6>
+                                <small class="text-secondary my-0">Summary of your application progress</small>
                             </div>
-                            
-                            <div class="border-bottom text-secondary">
 
-                            <div class="row">
-                                <div class="col-lg-2 pl-0 pl-lg-3">
-                                <h6>Degree</h6>
+                            <div class="row mt-4">
+                                
+                                <div class="col">
+
+                                    <label class="pt-1"><i class="fas fa-tasks pr-4 fa-fw"></i> Requirements </label>
+                                    
+                                    <div class="progress">
+
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                   
+                                    </div>
+                                  
                                 </div>
-                                <div class="col-lg-10 pl-0 text-left">
-                                    <small class="text-secondary">Choose the degree program you are applying to.</small>
-                                </div>
+                             
                             </div>
+
+                            <div class="row mt-2">
+                                
+                                <div class="col">
+
+                                    <label class="pt-1"><i class="fas fa-user-graduate  pr-4 fa-fw"></i> Degree </label>
+                                    
+                                    <div class="progress">
+
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                   
+                                    </div>
+                                  
+                                </div>
+                             
+                            </div>
+
+                            <div class="row mt-2">
+                                
+                                <div class="col">
+
+                                    <label class="pt-1"><i class="fas fa-address-card pr-4 fa-fw"></i> Profile </label>
+                                    
+                                    <div class="progress">
+
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                   
+                                    </div>
+                                  
+                                </div>
+                             
+                            </div>
+
+                            <div class="row mt-2">
+                                
+                                <div class="col">
+
+                                    <label class="pt-1"><i class="fas fa-house-user pr-4 fa-fw"></i> Address </label>
+                                    
+                                    <div class="progress">
+
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                   
+                                    </div>
+                                  
+                                </div>
+                             
+                            </div>
+
+                            <div class="row mt-2">
+                                
+                                <div class="col">
+
+                                    <label class="pt-1"><i class="fas fa-user-friends pr-4 fa-fw"></i> Family </label>
+                                    
+                                    <div class="progress">
+
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                   
+                                    </div>
+                                  
+                                </div>
+                             
+                            </div>
+
+                            <div class="row mt-2">
+                                
+                                <div class="col">
+
+                                    <label class="pt-1"><i class="fas fa-graduation-cap fa-fw pr-4"></i> Scholastic </label>
+                                    
+                                    <div class="progress">
+
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                   
+                                    </div>
+                                  
+                                </div>
+                             
+                            </div>
+
+                            <div class="row mt-2 mb-3">
+                                
+                                <div class="col">
+
+                                    <label class="pt-1"><i class="fas fa-sticky-note fa-fw pr-4"></i> Other </label>
+                                    
+                                    <div class="progress">
+
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                   
+                                    </div>
+                                  
+                                </div>
+                             
+                            </div>
+
+
+                        </div>
+
+                    <!-- Degree -->
+                        <div class="tab-pane fade container tab_container " id="nav_application_degree" role="tabpanel">
+                         
+                            <div class="border-bottom text-secondary pb-2">
+
+                                <h6 class="my-0">Degree</h6>
+                                <small class="text-secondary my-0">Choose the degree program you are applying to.</small>
                                
                             </div>
 
@@ -134,6 +240,7 @@
 
                         </div>
 
+                        
                          
                     <!-- Basic Information -->
 
@@ -141,8 +248,7 @@
 
                             <div class="border-bottom text-secondary">
 
-                                <div class="row">
-
+                                <div class="row py-2">
                                     <div class="col-lg-3 ">
 
                                         <h6>Basic Information</h6>
@@ -359,7 +465,7 @@
                         <div class="tab-pane fade container tab_container" id="nav-mailingaddress" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
-                                <div class="row">
+                                <div class="row py-2">
 
                                     <div class="col-3">
 
@@ -538,7 +644,7 @@
                         <div class="tab-pane fade container tab_container" id="nav-familyrecord" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
-                                <div class="row">
+                                <div class="row py-2">
 
                                     <div class="col-lg-3">
 
@@ -653,7 +759,7 @@
                         <div class="tab-pane fade container tab_container" id="nav-scholasticrecord" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
-                                <div class="row">
+                                <div class="row py-2">
 
                                     <div class="col-lg-3">
 
@@ -807,110 +913,114 @@
                     <!-- Other Information -->
 
                         <div class="tab-pane fade container tab_container" id="nav-otherinformation" role="tabpanel">
+
                             <div class="border-bottom text-secondary">
 
-                                <div class="row">
+                                <div class="row py-2">
                                     <div class="col-3">
                                         <h6>Other Information</h6>
                                     </div>
                                     
                                 </div>
 
-                                <div class="row mt-4 mb-1">
+                            </div>
 
-                                    <div class="col pr-0 ">
+                            <div class="row mt-4 mb-1">
 
-                                        <label style="font-size: 15px !important;" class="font-weight-bold" > Do you have physical disability (e.g. heart condition, visual/hearing impairment, etc.), 
-                                            special learning needs (e.g. dyslexia, ADHD, ASD, etc.), or psychological condition that
-                                             affected your schooling before and/or may affect your schooling at MLQU?</label>
-                                        
-                                        <label class="">Manuel L. Quezon University aims to provide educational opportunities for all types of learners including applicants with special learning needs. 
-                                            The final acceptance or non-acceptance of these applicants are based on the merits of their application and the ability of the University to provide services for their declared conditions. 
-                                            It is important to remember that non-disclosure means the University is not obliged to provide you with any support or reasonable 
-                                            accommodation with regards to your condition and you will be treated as a regular applicant/student.</label>
+                                <div class="col pr-0 ">
 
-                                    </div>
-              
-                                </div> 
-
-                                <div class="row">
-
-                                    <div class="col pr-0">
-
-                                    <select name="oi_1" class="form-control">
-
-                                        <option value="YES">Yes</option>
-                                        <option value="NO">No</option>
-
-                                    </select>
-
-                                    </div>
+                                    <label style="font-size: 15px !important;" class="font-weight-bold" > Do you have physical disability (e.g. heart condition, visual/hearing impairment, etc.), 
+                                        special learning needs (e.g. dyslexia, ADHD, ASD, etc.), or psychological condition that
+                                            affected your schooling before and/or may affect your schooling at MLQU?</label>
+                                    
+                                    <label class="">Manuel L. Quezon University aims to provide educational opportunities for all types of learners including applicants with special learning needs. 
+                                        The final acceptance or non-acceptance of these applicants are based on the merits of their application and the ability of the University to provide services for their declared conditions. 
+                                        It is important to remember that non-disclosure means the University is not obliged to provide you with any support or reasonable 
+                                        accommodation with regards to your condition and you will be treated as a regular applicant/student.</label>
 
                                 </div>
+            
+                            </div> 
 
-                                <div class="row mt-lg-4 mt-3">
+                            <div class="row">
 
-                                    <div class="col pr-0 ">
+                                <div class="col pr-0">
 
-                                        <label >How did you hear about MLQU?</label>  
+                                <select name="oi_1" class="form-control">
 
-                                    </div> 
+                                    <option value="YES">Yes</option>
+                                    <option value="NO">No</option>
 
-                                </div> 
-
-                                <div class="row mb-3">
-
-                                    <div class="col pr-0">
-
-                                        <input class=" form-control form-control-sm" name="oi_2" type="text">
-
-                                    </div>
+                                </select>
 
                                 </div>
-                                
-                                <div class="row">
-
-                                    <div class="col">
-
-                                        <label> Do you plan to apply for a scholarship?</label>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row mb-3">
-
-                                    <div class="col pr-0">
-
-                                       <select name="oi_3"  class="form-control"></select>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col">
-
-                                        <label> What type of scholarship?</label>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col pr-0">
-
-                                       <select name="oi_4" class="form-control"></select>
-
-                                    </div>
-
-                                </div>
-
 
                             </div>
+
+                            <div class="row mt-lg-4 mt-3">
+
+                                <div class="col pr-0 ">
+
+                                    <label >How did you hear about MLQU?</label>  
+
+                                </div> 
+
+                            </div> 
+
+                            <div class="row mb-3">
+
+                                <div class="col pr-0">
+
+                                    <input class=" form-control form-control-sm" name="oi_2" type="text">
+
+                                </div>
+
+                            </div>
+                            
+                            <div class="row">
+
+                                <div class="col">
+
+                                    <label> Do you plan to apply for a scholarship?</label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+
+                                <div class="col pr-0">
+
+                                    <select name="oi_3"  class="form-control"></select>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col">
+
+                                    <label> What type of scholarship?</label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col pr-0">
+
+                                    <select name="oi_4" class="form-control"></select>
+
+                                </div>
+
+                            </div>
+
+
+                            
                         </div>
+
                     </div>
                 </div>
             </div>

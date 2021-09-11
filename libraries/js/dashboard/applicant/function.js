@@ -14,9 +14,9 @@ function append_to_table(data)
 
     $.each(data, function(key,v){
 
-        output += '<tr class="clickable_tr" aria-requirement-id="'+v.id+'" aria-requirement="'+v.requirement_name+'" aria-file="'+v.file_name+'" aria-status="'+v.status+'">';
+        output += '<tr class="clickable_tr" aria-requirement-id="'+v.requirement_id+'" aria-record-id="'+v.id+'" aria-requirement="'+v.requirement_name+'" aria-file="'+v.file_name+'" aria-status="'+v.status+'">';
         output += '<td class="text-center">'+row_count+'</td>';
-        output += '<td >'+v.requirement_name+'</td>';
+        output += '<td style="color:#007BFF !important">'+v.requirement_name+'</td>';
 
         if (v.status == 'SUBMITTED')
         {
@@ -48,38 +48,48 @@ function append_to_table(data)
 
 function addEvents(){
 
-    $('#form_modal_applicant_requirement').on('submit', function (e) {
+    $('form#form_modal_applicant_requirement').on('submit', function (e) {
 
         e.preventDefault();
     
         $.ajax({
-    
-          type: 'post',
-    
-          url: 'api/dashboard/applicant/post_applicant_requirement.php',
 
-          data:  new FormData(this),
+            type: 'post',
 
-          contentType: false,
-          
-        cache: false,
+            url: 'api/dashboard/applicant/post_applicant_requirement.php',
 
-          processData:false,
-          
-          beforeSend: function() {
-    
-          },
-    
-          success: function (e) {
-    
-           
-         
-          },
-    
-          complete: function() {},
-    
-          error: function(xhr) { display_error() },
-    
+            data:  new FormData(this),
+            
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            beforeSend: function() {
+
+            },
+
+            success: function (e) {
+
+                if (e.status == 200)
+                {
+                    $('#md_applicant_post_requirement').modal('hide')
+                    $('#modal_success .modal-body p').text(e.feedback)
+                    $('#modal_success .modal-footer button').text('Close');
+                    $('#modal_success').modal('show')
+                  
+                   
+                }
+
+            },
+
+            complete: function() {
+                loadData();
+                document.getElementById("applicant_post_file").value=null; 
+            },
+
+            error: function(xhr) { display_error() },
+
         });
     
     });
@@ -90,15 +100,15 @@ function addEvents(){
     {
         
     }
-
-
         
     $('.clickable_tr').on('click',function(){
 
         var status = $(this).attr('aria-status');
         var file_name = $(this).attr('aria-file');
         var requirement_id = $(this).attr('aria-requirement-id');
+        var record_id = $(this).attr('aria-record-id');
         var requirement = $(this).attr('aria-requirement');
+        var applicant_id = $('.user_info').attr('id');
     
         $('#txt_modal_requirement_status').val(status)
 
@@ -114,6 +124,9 @@ function addEvents(){
         else
         {
             $('#txt_requirement').text(requirement)
+            $('#txt_requirement_id').val(requirement_id)
+            $('#txt_applicant_id').val(applicant_id)
+            $('#txt_record_id').val(record_id)
             $('#md_applicant_post_requirement').modal('show')
         }
 
@@ -165,5 +178,6 @@ function loadData(){
 
 
 }
+
 
 

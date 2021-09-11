@@ -1,8 +1,8 @@
 <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_login">
             
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
     
-        <div class="modal-content">
+        <div class="modal-content ">
     
             <div class="modal-body text-center py-5">
     
@@ -145,7 +145,7 @@
 
 <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_success">
             
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
     
         <div class="modal-content">
     
@@ -173,7 +173,7 @@
 
 <!-- APPLICANT MODALS -->
 
-    <div class="modal fade input-modal"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_post_requirement">
+    <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_post_requirement">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="">
                 <div class="modal-header text-center pt-3 pb-0">
@@ -181,16 +181,20 @@
                 </div>
                 <form id="form_modal_applicant_requirement" enctype="multipart/form-data">
 
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                    <input type="hidden" name="applicant_id"  id="txt_applicant_id">
+                    <input type="hidden" name="requirement_id"  id="txt_requirement_id">
+                    <input type="hidden" name="record_id"  id="txt_record_id">
+
                     <div class="modal-body container" style="" >
 
                         <label>Requirement</label>
                         <p id="txt_requirement" class="font-weight-bold pl-1"></p>
-                        <!-- <input type="text" class="form-control form-control-sm"  readonly> -->
 
 
                         <label class="mt-1">Attach Document</label><br>
                         <div class="border py-2 px-1 rounded">
-                            <input type="file" id="file" accept=".xls,.xlsx,.pdf,.doc,.docx" >
+                            <input type="file" name="file" id="applicant_post_file" accept=".xls,.xlsx,.pdf,.doc,.docx" >
                         </div>
 
                     </div>

@@ -6,6 +6,7 @@
   include_once 'api/func/authenticate/authenticate.php';
 
   $USER_TYPE = $_SESSION['usr'];
+  // $USER_TYPE = 'REGISTRAR';
 
   if(!$_SESSION['authenticated']){
     header('location:login.php');
@@ -33,7 +34,7 @@
 
           if ($USER_TYPE == 'REGISTRAR')
           {
-            include_once 'assets/registrar/dashboard.php'; 
+            include_once 'assets/registrar/admission.php'; 
           }
 
           if ($USER_TYPE == 'DEVELOPER')
