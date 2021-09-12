@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="libraries/css/page_style.css">
+        <link rel="stylesheet" href="libraries/bootstrap-4.6.0/css/bootstrap.min.css">
+        <title>Progress Bar</title>
+    </head>
+
+    <body>
+
+        <div class="container mt-5" style="width: 30%;">
+
+            <div class="loading">
+
+                <div class="progress_bar" style="background-color: #E9ECEF;">
+                
+                    <div class="progress p-2 text-white" style="background-color: #007BFF; height: 1.2rem;">100%</div>
+                  
+                </div>
+
+            </div>
+ 
+        </div>
+
+        <script>
+
+            function progress(){
+                var progress = document.querySelector('.progress');
+                var count = 4;
+                var per = 16;
+                var loading = setInterval(animate, 50);
+                function animate(){
+                    if(count == 100 && per == 400){
+                    clearInterval(loading);
+                    }else{
+                    per = per + 4;
+                    count = count + 1;
+                    progress.style.width = per + 'px';
+                    percent.textContent = count + '%';
+                    }
+                }
+            }
+            progress();
+
+        </script>
+
+    </body>
+
+</html>
