@@ -262,7 +262,7 @@ html, body {
 
 
 /* MODALS */
-.input-modal .modal-body label, .modal-body input{
+.input-modal .modal-body label, .modal-body input, .modal-body a{
    font-size:10pt !important;
 }
 .input-modal .modal-body label{
@@ -274,4 +274,3 @@ html, body {
 .input-modal-file{
    border: 2px dashed #2569C3;
 }
-
