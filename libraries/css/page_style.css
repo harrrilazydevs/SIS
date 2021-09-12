@@ -261,6 +261,8 @@ html, body {
 }
 
 
+
+
 /* MODALS */
 .input-modal .modal-body label, .modal-body input, .modal-body a{
    font-size:10pt !important;
@@ -290,4 +292,12 @@ html, body {
 .no-border{
    border: none !important;
 }
+<<<<<<< HEAD
 >>>>>>> f1798b7f985412cf80fc58e39e6d63ac35857650
+=======
+
+
+body{
+   overflow-x: hidden !important;
+}
+>>>>>>> 81306f2cf7c37e546b6eb39d64702623284ce8b4

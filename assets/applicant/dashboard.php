@@ -27,7 +27,7 @@
             <div class="card shadow-sm" style="border-left: 2px solid #037DFF;">
                 <div class="card-body pb-0">
                     <div class="row px-0 py-0">
-                        <div class="col-lg-1 col-2 pr-0 text-primary pb-2 pt-0">  <i class="fas fa-exclamation-circle"></i></div>
+                        <div class="col-lg-1 col-2  text-primary pb-2 pt-0">  <i class="fas fa-exclamation-circle"></i></div>
                         <div class="col-lg-11 col-10 pl-0 pl-lg-0 pt-1" ><h6 style="font-size: 10pt !Important;">Note</h6></div>
                     </div>
                     <div class=" row ">
@@ -65,9 +65,12 @@
         </div>
 
         <!-- TAB CONTENT -->
-        <div class="col-lg-7 pt-lg-3 px-0 " > 
-            <div class="row ml-lg-2">
+        <div class="col-lg-7 pt-lg-3 mb-5 container pr-0 pl-0" > 
+
+            <div class="row">
+
                 <div class="col tab_container">
+                    
                     <nav class="tabbable">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist" >
                             <a class="nav-link active" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_status" role="tab">Status</a>
@@ -80,37 +83,40 @@
                         </div>
                     </nav>
 
-                    <div class="tab-content border rounded tab_border  shadow-sm py-3 px-3" id="nav-tabContent">
+                    <div class="tab-content border rounded tab_border  shadow-sm py-3 " id="nav-tabContent">
 
                         <!-- Application Status -->
-                        <div class="tab-pane fade show active container tab_container " id="nav_application_status" role="tabpanel">
-                         
-                            <div class="border-bottom text-secondary pb-2">
-                                <h6 class=" my-0">Application Status</h6>
-                                <small class="text-secondary my-0">Summary of your application progress</small>
+                        <div class="tab-pane fade show active container" id="nav_application_status" role="tabpanel">
+
+                            <div class="row">
+                                <div class="col border-bottom text-secondary pb-2">
+                                    <h6 class=" my-0">Application Status</h6>
+                                    <small class="text-secondary my-0">Summary of your application progress</small>
+                                </div>
                             </div>
+                                
 
                             <div class="row mt-4">
                                 
                                 <div class="col">
 
-                                    <label class="pt-1"><i class="fas fa-tasks pr-4 fa-fw"></i> Requirements </label>
-                                    
-                                    <div class="progress" style="background-color: #E9ECEF;">
+                                    <label class="pt-1"><i class="fas fa-tasks fa-fw"></i> Requirements </label>
+                          
+                                        <div class="progress" style="background-color: #E9ECEF; " >
 
-                                        <div class="progress py-2 " style=" height: 1rem;" id="pg_requirements"></div>
-                                     
-                                    </div>
+                                            <div class=" py-2 " style="height: 1rem;" id="pg_requirements"></div>
+                                        
+                                        </div>
                                   
                                 </div>
                              
                             </div>
 
-                             <div class="row mt-2">
+                             <!-- <div class="row mt-2">
                                 
                                 <div class="col">
 
-                                    <label class="pt-1"><i class="fas fa-address-card pr-4 fa-fw"></i> Profile </label>
+                                    <label class="pt-1"><i class="fas fa-address-card fa-fw"></i> Profile </label>
                                     
                                        <div class="progress" style="background-color: #E9ECEF;">
 
@@ -126,7 +132,7 @@
                                 
                                 <div class="col">
 
-                                    <label class="pt-1"><i class="fas fa-user-graduate  pr-4 fa-fw"></i> Degree </label>
+                                    <label class="pt-1"><i class="fas fa-user-graduate  fa-fw"></i> Degree </label>
                                     
                                        <div class="progress" style="background-color: #E9ECEF;">
 
@@ -144,7 +150,7 @@
                                 
                                 <div class="col">
 
-                                    <label class="pt-1"><i class="fas fa-house-user pr-4 fa-fw"></i> Address </label>
+                                    <label class="pt-1"><i class="fas fa-house-user fa-fw"></i> Address </label>
                                     
                                        <div class="progress" style="background-color: #E9ECEF;">
 
@@ -160,7 +166,7 @@
                                 
                                 <div class="col">
 
-                                    <label class="pt-1"><i class="fas fa-user-friends pr-4 fa-fw"></i> Family </label>
+                                    <label class="pt-1"><i class="fas fa-user-friends fa-fw"></i> Family </label>
                                     
                                        <div class="progress" style="background-color: #E9ECEF;">
 
@@ -176,7 +182,7 @@
                                 
                                 <div class="col">
 
-                                    <label class="pt-1"><i class="fas fa-graduation-cap fa-fw pr-4"></i> Scholastic </label>
+                                    <label class="pt-1"><i class="fas fa-graduation-cap fa-fw"></i> Scholastic </label>
                                     
                                        <div class="progress" style="background-color: #E9ECEF;">
 
@@ -192,7 +198,7 @@
                                 
                                 <div class="col">
 
-                                    <label class="pt-1"><i class="fas fa-sticky-note fa-fw pr-4"></i> Other </label>
+                                    <label class="pt-1"><i class="fas fa-sticky-note fa-fw"></i> Other </label>
                                     
                                        <div class="progress" style="background-color: #E9ECEF;">
 
@@ -202,13 +208,13 @@
                                   
                                 </div>
                              
-                            </div>
+                            </div> -->
 
 
                         </div>
 
                         <!-- Degree -->
-                        <div class="tab-pane fade container tab_container " id="nav_application_degree" role="tabpanel">
+                        <!-- <div class="tab-pane fade container tab_container" id="nav_application_degree" role="tabpanel">
                          
                             <div class="border-bottom text-secondary pb-2">
 
@@ -218,7 +224,7 @@
                             </div>
 
                             <div class="row mt-4">
-                                <div class="col-lg-2 pr-0 pl-0 pl-lg-3">
+                                <div class="col-lg-2  pl-0">
                                     <label class="pt-1"> School of </label>
                                 </div>
                                 <div class="col-lg-10 pl-0 text-left"> 
@@ -227,7 +233,7 @@
                             </div>
 
                             <div class="row mt-4">
-                                <div class="col-lg-2 pr-0 pl-0 pl-lg-3">
+                                <div class="col-lg-2  pl-0">
                                     <label class="pt-1"> Program </label>
                                 </div>
                                 <div class="col-lg-10 pl-0 text-left"> 
@@ -235,10 +241,10 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
                          
                         <!-- Basic Information -->
-                        <div class="tab-pane fade container tab_container mb-3" id="nav_profile" role="tabpanel">
+                        <!-- <div class="tab-pane fade container tab_container mb-3" id="nav_profile" role="tabpanel">
 
                             <form id="f_applicant_bi">
                                 <div class="border-bottom text-secondary">
@@ -251,7 +257,6 @@
                                         </div>
                                         <div class="col-9 pl-0 text-left">
 
-                                            <!-- <small class="text-secondary">Choose the degree program you are applying to.</small> -->
                                         </div>
 
                                     </div>
@@ -260,13 +265,13 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> First Name </label>
 
                                     </div>
 
-                                    <div class="col-lg-10 pr-0">
+                                    <div class="col-lg-10 ">
 
                                         <input class="form-control form-control-sm form_bi" name="firstname" type="text">
 
@@ -276,13 +281,13 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Middle Name </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-10 pr-0">
+                                    <div class="col-lg-10 ">
 
                                         <input class="form-control form-control-sm form_bi" name="middlename" type="text">
 
@@ -292,13 +297,13 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Last Name </label>       
 
                                     </div>
 
-                                    <div class="col-lg-10 pr-0">
+                                    <div class="col-lg-10 ">
 
                                         <input class=" form-control form-control-sm form_bi" name="lastname" type="text">
 
@@ -308,13 +313,13 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Suffix</label> 
                                     
                                     </div>
 
-                                    <div class="col-lg-10 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-10  pl-3">
 
                                         <input class="form-control form-control-sm form_bi" name="suffix" type="text">
 
@@ -324,39 +329,39 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Date of Birth </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-3 pr-0">
+                                    <div class="col-lg-3 ">
 
-                                        <input class="form-control form-control-sm birthdate form_bi" aria-age="txt_applicant_age" name="birthdate" type="date">
+                                        <input class="form-control form-control-sm birthdate form_bi" aria-age="txt_applicant_age" name="date_of_birth" type="date">
 
                                     </div>
 
-                                    <div class="col-lg-1 pr-0 mt-lg-0 mt-4 text-lg-right">
+                                    <div class="col-lg-1  mt-lg-0 mt-4 text-lg-right">
 
                                         <label class="pt-1"> Age </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-1 pr-0">
+                                    <div class="col-lg-1 ">
 
                                         <input class="form-control form-control-sm" name="age" type="text" id="txt_applicant_age" readonly>
 
                                     </div>
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3 mt-lg-0 mt-4 text-lg-right">
+                                    <div class="col-lg-2  pl-3 mt-lg-0 mt-4 text-lg-right">
 
                                         <label class="pt-1"> Place of Birth </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-3  pr-0">
+                                    <div class="col-lg-3  ">
 
-                                        <input class="form-control form-control-sm form_bi" name="birthplace" type="text">
+                                        <input class="form-control form-control-sm form_bi" name="place_of_birth" type="text">
 
                                     </div>
                             
@@ -365,15 +370,15 @@
                                 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Contact Number </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-10 pr-0">
+                                    <div class="col-lg-10 ">
 
-                                        <input class="form-control form-control-sm form_bi" name="mobileno" type="text">
+                                        <input class="form-control form-control-sm form_bi" name="mobile_no" type="text">
 
                                     </div>
                             
@@ -381,13 +386,13 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
                                         
                                         <label class="pt-1"> Gender </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-10 pr-0">
+                                    <div class="col-lg-10 ">
 
                                         <select name="gender" class="form-control form-control-sm form_bi">
                                             <option value="">Male</option>
@@ -400,13 +405,13 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Religion </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-10 pr-0">
+                                    <div class="col-lg-10 ">
                                         
                                         <input class="form-control form-control-sm form_bi" name="religion" type="text">
 
@@ -416,13 +421,13 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Civil Status </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-10 pr-0">
+                                    <div class="col-lg-10 ">
 
                                         <select name="civil_status" id="" class="form-control form-control-sm form_bi">
                                             <option value="SINGLE">Single</option>
@@ -436,13 +441,13 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                    <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Citizenship </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-10 pr-0">
+                                    <div class="col-lg-10 ">
 
                                         <input type="text" name="citizenship" class="form-control form-control-sm form_bi">
 
@@ -452,7 +457,7 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col text-right pr-0 pl-3 pl-lg-3">
+                                    <div class="col text-right  pl-3">
                                         
                                         <button class="btn btn-sm btn-secondary" type="button" id="btn_bi_update">Update</button>
                                     
@@ -464,11 +469,11 @@
 
                             </form>
 
-                        </div>
+                        </div> -->
 
                     <!-- Mailing Address -->
 
-                        <div class="tab-pane fade container tab_container" id="nav-mailingaddress" role="tabpanel">
+                        <!-- <div class="tab-pane fade container tab_container" id="nav-mailingaddress" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
                                 <div class="row py-2">
@@ -503,13 +508,13 @@
 
                             <div class="row mt-1">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
-                                    <label class="pt-1 pr-0"> No./St./Sbdv. </label>      
+                                    <label class="pt-1 "> No./St./Sbdv. </label>      
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="city_no_street_subdivision" type="text">
 
@@ -519,13 +524,13 @@
 
                             <div class="row mt-4">
                                 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
                                     <label class="pt-1"> Barangay </label>   
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
                                     
                                     <input class=" form-control form-control-sm" name="city_barangay" type="text">
 
@@ -535,13 +540,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
                                     <label class="pt-1"> City </label>     
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="city_city" type="text">
 
@@ -551,13 +556,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
                                     <label class="pt-1"> Zip Code </label>       
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="city_zipcode" type="text">
 
@@ -581,13 +586,13 @@
 
                             <div class="row mt-1">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
                                     <label class="pt-1"> Barangay </label>      
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-10  pl-3">
 
                                     <input class=" form-control form-control-sm" name="province_barangay" type="text">
 
@@ -597,13 +602,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
                                     <label class="pt-1"> No./St./Sbdv. </label>        
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-10  pl-3">
 
                                     <input class=" form-control form-control-sm" name="province_no_street_subdivision" type="text">
 
@@ -613,13 +618,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
                                     <label class="pt-1"> City </label>    
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
                                     
                                     <input class=" form-control form-control-sm" name="province_city" type="text">
 
@@ -629,13 +634,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
                                     <label class="pt-1"> Zip Code </label>     
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="province_zipcode" type="text">
 
@@ -643,11 +648,11 @@
 
                             </div>
 
-                        </div>
+                        </div> -->
                     
                     <!-- Family Record -->
 
-                        <div class="tab-pane fade container tab_container" id="nav-familyrecord" role="tabpanel">
+                        <!-- <div class="tab-pane fade container tab_container" id="nav-familyrecord" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
                                 <div class="row py-2">
@@ -664,13 +669,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3 ">
+                                <div class="col-lg-2  pl-3 ">
 
-                                    <label class="pt-1 pr-0"> Father's Full Name </label> 
+                                    <label class="pt-1 "> Father's Full Name </label> 
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="fathers_fullname" type="text">
 
@@ -680,13 +685,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3 ">
+                                <div class="col-lg-2  pl-3 ">
 
-                                    <label class="pt-1 pr-0"> Occupation </label>        
+                                    <label class="pt-1 "> Occupation </label>        
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="fathers_occupation" type="text">
 
@@ -696,13 +701,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
-                                    <label class="pt-1 pr-0"> Mother's Full Name </label>    
+                                    <label class="pt-1 "> Mother's Full Name </label>    
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="mothers_fullname" type="text">
 
@@ -712,13 +717,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3 ">
+                                <div class="col-lg-2  pl-3 ">
 
-                                    <label class="pt-1 pr-0"> Occupation </label> 
+                                    <label class="pt-1 "> Occupation </label> 
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="mothers_occupation" type="text">
 
@@ -728,13 +733,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
-                                    <label class="pt-1 pr-0"> No. of Siblings </label>   
+                                    <label class="pt-1 "> No. of Siblings </label>   
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <input class=" form-control form-control-sm" name="no_of_siblings" type="text">
 
@@ -744,13 +749,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-2 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-2  pl-3">
 
-                                    <label class="pt-1 pr-0"> Monthly Family Income </label>    
+                                    <label class="pt-1 "> Monthly Family Income </label>    
 
                                 </div>
 
-                                <div class="col-lg-10 pr-0">
+                                <div class="col-lg-10 ">
 
                                     <select name="monthly_family_income" id="" class="form-control form-control-sm"></select>
 
@@ -758,10 +763,10 @@
                           
                             </div> 
 
-                        </div> 
+                        </div>  -->
 
                     <!-- Scholastic Record -->
-
+<!-- 
                         <div class="tab-pane fade container tab_container" id="nav-scholasticrecord" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
@@ -779,13 +784,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4 pr-0 ">
+                                <div class="col-lg-4  ">
 
-                                    <label class=" pr-0 pt-0"> Primary School/Addr.,</label>        
+                                    <label class="  pt-0"> Primary School/Addr.,</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 pr-0">
+                                <div class="col-lg-8 ">
 
                                     <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
@@ -795,13 +800,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4 pr-0 ">
+                                <div class="col-lg-4  ">
 
-                                    <label class=" pr-0 pt-0"> Primary Year Attended</label>        
+                                    <label class="  pt-0"> Primary Year Attended</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 pr-0">
+                                <div class="col-lg-8 ">
 
                                     <input class=" form-control form-control-sm" name="primary_year_attended" type="text">
 
@@ -811,14 +816,14 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3 ">
+                                <div class="col-lg-4  pl-3 ">
 
-                                    <label class=" pr-0 pt-0 ">Secondary School/Addr.,</label>     
+                                    <label class="  pt-0 ">Secondary School/Addr.,</label>     
 
                                                             
                                 </div>
 
-                                <div class="col-lg-8 pr-0">
+                                <div class="col-lg-8 ">
 
                                     <input class=" form-control form-control-sm" name="secondary_school_address" type="text">
 
@@ -828,13 +833,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3 ">
+                                <div class="col-lg-4  pl-3 ">
 
-                                    <label class=" pr-0 pt-0"> Secondary School Year Attended</label>    
+                                    <label class="  pt-0"> Secondary School Year Attended</label>    
 
                                 </div>
 
-                                <div class="col-lg-8 pr-0">
+                                <div class="col-lg-8 ">
 
                                     <input class=" form-control form-control-sm" name="secondary_school_year_attended" type="text">
 
@@ -844,13 +849,13 @@
                             
                             <div class="row mt-4">
 
-                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3 ">
+                                <div class="col-lg-4  pl-3 ">
 
-                                    <label class=" pr-0 pt-0 ">Honors Received</label>     
+                                    <label class="  pt-0 ">Honors Received</label>     
 
                                 </div>
 
-                                <div class="col-lg-8 pr-0">
+                                <div class="col-lg-8 ">
                                     
                                     <input class=" form-control form-control-sm" name="honors_received" type="text">
                                     
@@ -862,13 +867,13 @@
 
                             <div class="row mt-3">
 
-                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-4  pl-3">
 
-                                    <label class=" pr-0 pt-0 ">Affiliated Educational Organization(s) and Position(s)</label>    
+                                    <label class="  pt-0 ">Affiliated Educational Organization(s) and Position(s)</label>    
                          
                                 </div>
 
-                                <div class="col-lg-8 pr-0">
+                                <div class="col-lg-8 ">
 
                                     <input class=" form-control form-control-sm" name="affiliated_educational_organizations_and_position" type="text">
 
@@ -880,14 +885,14 @@
 
                             <div class="row mt-3">
 
-                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-4  pl-3">
 
-                                    <label class=" pr-0 pt-0 ">Scholarships/Grants Received</label>     
+                                    <label class="  pt-0 ">Scholarships/Grants Received</label>     
 
                                                             
                                 </div>
 
-                                <div class="col-lg-8 pr-0">
+                                <div class="col-lg-8 ">
 
                                     <input class=" form-control form-control-sm" name="scholarships_grants_received" type="text">
 
@@ -899,14 +904,14 @@
 
                             <div class="row mt-3">
 
-                                <div class="col-lg-4 pr-0 pl-3 pl-lg-3">
+                                <div class="col-lg-4  pl-3">
 
-                                    <label class=" pr-0 pt-0 ">Are you a working student?</label>     
+                                    <label class="  pt-0 ">Are you a working student?</label>     
 
                                                             
                                 </div>
 
-                                <div class="col-lg-8 pr-0">
+                                <div class="col-lg-8 ">
 
                                     <select name="working_student" id="" class="form-control form-control-sm"></select>    
 
@@ -914,17 +919,20 @@
                           
                             </div> 
 
-                        </div>
+                        </div> -->
 
                     <!-- Other Information -->
 
-                        <div class="tab-pane fade container tab_container" id="nav-otherinformation" role="tabpanel">
+                        <!-- <div class="tab-pane fade container tab_container" id="nav-otherinformation" role="tabpanel">
 
                             <div class="border-bottom text-secondary">
 
                                 <div class="row py-2">
+
                                     <div class="col-3">
+
                                         <h6>Other Information</h6>
+
                                     </div>
                                     
                                 </div>
@@ -933,7 +941,7 @@
 
                             <div class="row mt-4 mb-1">
 
-                                <div class="col pr-0 ">
+                                <div class="col">
 
                                     <label style="font-size: 15px !important;" class="font-weight-bold" > Do you have physical disability (e.g. heart condition, visual/hearing impairment, etc.), 
                                         special learning needs (e.g. dyslexia, ADHD, ASD, etc.), or psychological condition that
@@ -950,7 +958,7 @@
 
                             <div class="row">
 
-                                <div class="col pr-0">
+                                <div class="col ">
 
                                 <select name="oi_1" class="form-control">
 
@@ -965,7 +973,7 @@
 
                             <div class="row mt-lg-4 mt-3">
 
-                                <div class="col pr-0 ">
+                                <div class="col  ">
 
                                     <label >How did you hear about MLQU?</label>  
 
@@ -975,7 +983,7 @@
 
                             <div class="row mb-3">
 
-                                <div class="col pr-0">
+                                <div class="col ">
 
                                     <input class=" form-control form-control-sm" name="oi_2" type="text">
 
@@ -995,7 +1003,7 @@
 
                             <div class="row mb-3">
 
-                                <div class="col pr-0">
+                                <div class="col ">
 
                                     <select name="oi_3"  class="form-control"></select>
 
@@ -1015,7 +1023,7 @@
 
                             <div class="row">
 
-                                <div class="col pr-0">
+                                <div class="col ">
 
                                     <select name="oi_4" class="form-control"></select>
 
@@ -1025,7 +1033,7 @@
 
 
                             
-                        </div>
+                        </div> -->
 
                     </div>
 
