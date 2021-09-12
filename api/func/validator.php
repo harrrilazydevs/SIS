@@ -1,6 +1,6 @@
 <?php
 
-function required_fields_validated($REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = array(), $FILEEXTS = array()){
+function required_fields_validated( $REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = array(), $FILEEXTS = array()){
 
     $FEEDBACK = array();
 
@@ -9,7 +9,6 @@ function required_fields_validated($REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = ar
     $POST_DATA_KEYS = array_keys( $_POSTDATA );
 
     $REQUIRED_DATA_KEYS = array_keys( $REQUIRED_FIELDS );
- 
 
     if( !isset_fields( $POST_DATA_KEYS, $REQUIRED_DATA_KEYS ) )
     {
@@ -47,13 +46,6 @@ function required_fields_validated($REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = ar
                     array_push($FEEDBACK, [$key, 'input must be letters.']);
                 }
             }
-            else if ( $v == 'date_legal_age' )
-            {
-                if ( birth_date_valid($_POSTDATA[$key]) === false )
-                {
-                    array_push($FEEDBACK, [$key, 'You must be atleast 18 years old.']);
-                }
-            }
             else if ( $v == 'file' )
             {
                 if ( isset($_FILEDATA) === false)
@@ -81,7 +73,6 @@ function required_fields_validated($REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = ar
     }
     else
     {
-
         if ( count( $FEEDBACK ) > 0 )
         {
             $toReturn = $FEEDBACK;
@@ -90,13 +81,7 @@ function required_fields_validated($REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = ar
         {
             $toReturn = 0;
         }
-
     }
-
-    
-
-    
-
     return $toReturn;
 }
 

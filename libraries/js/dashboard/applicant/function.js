@@ -1,15 +1,20 @@
 $(document).ready(function(){
-    loadData()
+    load_data()
+    prepare_fields()
+    // calculate_progress('pg_profile',0, 0);
 })
 
 
+// REQUIREMENTS
 function append_to_table(data)
 {
     var output = '';
-    var row_count = 1;
+    var row_count = 0;
+    var completion = 0;
 
     $.each(data, function(key,v){
 
+        row_count = row_count+1;
         output += '<tr class="clickable_tr" aria-file-dir="'+v.file_dir+'" aria-requirement-id="'+v.requirement_id+'" aria-record-id="'+v.id+'" aria-requirement="'+v.requirement_name+'" aria-file="'+v.file_name+'" aria-status="'+v.status+'">';
         output += '<td class="text-center">'+row_count+'</td>';
         output += '<td style="color:#007BFF !important">'+v.requirement_name+'</td>';
@@ -25,77 +30,95 @@ function append_to_table(data)
         else if (v.status == 'APPROVED')
         {
             output += '<td class="text-center"> <i class="far fa-check-circle bg-success i-design  rounded-circle"></i> </td>';
+            completion = completion + 1;
         }
         else if (v.status == 'DECLINED')
         {
             output += '<td class="text-center"> <i class="far fa-times-circle bg-danger i-design  rounded-circle"></i> </td>';
         }
         output += '</tr>'
-            
       
-        row_count = row_count+1;
     })
+
+    calculate_progress('pg_requirements',row_count, completion);
 
     $('#tbl_requirement tbody').empty();
     $('#tbl_requirement tbody').append(output);
 
 }
 
-
-function addEvents(){
+function add_events(){
 
     $('form#form_modal_applicant_requirement').on('submit', function (e) {
-
         e.preventDefault();
-    
         $.ajax({
-
             type: 'post',
-
             url: 'api/dashboard/applicant/post_applicant_requirement.php',
-
             data:  new FormData(this),
-            
             dataType: 'json',
             contentType: false,
             cache: false,
             processData: false,
-
-            beforeSend: function() {
-
-            },
-
+            beforeSend: function() {},
             success: function (e) {
-
                 if (e.status == 200)
                 {
                     $('#md_applicant_post_requirement').modal('hide')
                     $('#modal_success .modal-body p').text(e.feedback)
                     $('#modal_success .modal-footer button').text('Close');
                     $('#modal_success').modal('show')
-                  
-                   
                 }
-
+                if (e.status == 403 || e.status == 400 || e.status == 500)
+                {
+                    $('#md_applicant_post_requirement').modal('hide')
+                    $('#modal_fail .modal-body p').text(e.feedback)
+                    $('#modal_fail .modal-footer button').text('Close');
+                    $('#modal_fail').modal('show')
+                }
             },
-
             complete: function() {
-                loadData();
+                load_data();
                 document.getElementById("applicant_post_file").value=null; 
             },
-
             error: function(xhr) { display_error() },
+        });
+    });
 
+    $('form#form_modal_applicant_remove_requirement').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'post',
+            url: 'api/dashboard/applicant/remove_applicant_requirement.php',
+            data:  new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {},
+            success: function (e) {
+                if (e.status == 200)
+                {
+                    $('#md_confirm').modal('hide')
+                    $('#modal_success .modal-body p').text(e.feedback)
+                    $('#modal_success .modal-footer button').text('Close');
+                    $('#modal_success').modal('show')
+                    $('#modal_success').modal('show')
+                }
+                if (e.status == 500)
+                {
+                    window.location.href = '../../../../500.html';
+                    console.log(e.feedback)
+                }
+            },
+            complete: function() {
+                load_data();
+                document.getElementById("applicant_post_file").value=null; 
+            },
+            error: function(xhr) { display_error() },
         });
     
     });
-
-    var user_type = $('.user_info').attr('ur'); 
-
-    if (user_type == 'APPLICANT')
-    {
-        
-    }
+    
         
     $('.clickable_tr').on('click',function(){
 
@@ -111,99 +134,100 @@ function addEvents(){
 
         if (status == 'SUBMITTED' || status == 'DECLINED')
         {
+            // display
             $('#md_applicant_post_requirement .modal-header h6').text('Requirement Information')
             $('#txt_status').text(status)
             $('#txt_requirement').text(requirement)
+            $('.attached-document .file_name').text(file_name)
+            $('#md_applicant_post_requirement #btn_submit').addClass('d-none')
+            $('.attach-document').addClass('d-none')
+            $('.attached-document').removeClass('d-none')
+            $('.controls').removeClass('d-none')
+
+            // functional
             $('#txt_requirement_id').val(requirement_id)
             $('#txt_applicant_id').val(applicant_id)
             $('#txt_record_id').val(record_id)
-            $('.attached-document p').text(file_name)
-            $('.attached-document a').attr('file-dir', file_dir)
-            $('.attach-document').addClass('d-none')
-            $('.attached-document').removeClass('d-none')
+            $('#btn_r_attachment').attr('aria-id',record_id);
+            $('#btn_dl_attachment').attr('file-dir', file_dir)
+            $('#btn_dl_attachment').attr('file-name', file_name)
+
             $('#md_applicant_post_requirement').modal('show')
         }
         else if (status == 'APPROVED')
         {
+            // display
+            $('#md_applicant_post_requirement .modal-header h6').text('Requirement Information')
+            $('#txt_requirement').text(requirement)
+            $('.attached-document .file_name').text(file_name)
+            $('#btn_r_attachment').addClass('d-none');
+            $('.attach-document').addClass('d-none')
+            $('#btn_e_attachment').addClass('d-none');
+            $('#md_applicant_post_requirement #btn_submit').addClass('d-none')
+            $('#btn_dl_attachment').removeClass('d-none');
+            $('.controls ul').removeClass('border');
+            $('.controls li').addClass('no-border');
+            $('.attached-document').removeClass('d-none')
+            $('.controls').removeClass('d-none')
+
+            // functional
+
             $('#md_applicant_post_requirement').modal('show')
         }
-        // if for post
         else
         {
+            // display
+            $('#md_applicant_post_requirement .modal-header h6').text('Submit Requirement')
             $('#txt_requirement').text(requirement)
+            $('.controls').addClass('d-none')
+            $('.attached-document').addClass('d-none');
+            $('.attach-document').removeClass('d-none')
+            $('#md_applicant_post_requirement #btn_submit').removeClass('d-none')
+
+            // functional
             $('#txt_requirement_id').val(requirement_id)
             $('#txt_applicant_id').val(applicant_id)
             $('#txt_record_id').val(record_id)
+
             $('#md_applicant_post_requirement').modal('show')
         }
 
     })
 
-    $('#btn_dl_attachment').on('click', function(e){
+    $('#btn_dl_attachment').on('click', function(e){ DL2('../../../'+$(this).attr('file-dir'),$(this).attr('file-name')) })
 
-        // DownloadFile($(this).attr('file-dir'))
+    $('#btn_e_attachment').on('click',function(){
 
-        DL2($(this).attr('file-dir'))
-
+        // display
+        $('#md_applicant_post_requirement .modal-header h6').text('Edit Requirement')
+        $('#md_applicant_post_requirement #btn_close').addClass('d-none')
+        $('.attached-document').addClass('d-none')
+        $('.controls').addClass('d-none')
+        $('.attach-document').removeClass('d-none')
+        $('#md_applicant_post_requirement #btn_submit').removeClass('d-none')
+        $('#md_applicant_post_requirement #btn_back').removeClass('d-none')
+       
     })
 
-    function DownloadFile(fileName) {
-    
-        $.ajax({
-            url: fileName,
-            cache: false,
-            xhr: function () {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 2) {
-                        if (xhr.status == 200) {
-                            xhr.responseType = "blob";
-                        } else {
-                            xhr.responseType = "text";
-                        }
-                    }
-                };
-                return xhr;
-            },
-            success: function (data) {
-                //Convert the Byte Data to BLOB object.
-                var blob = new Blob([data], { type: "application/octetstream" });
+    $('#btn_back').on('click',function(){
+        $('#md_applicant_post_requirement .modal-header h6').text('Requirement Information')
+        $('.controls').removeClass('d-none')
+        $('.attached-document').removeClass('d-none')
+        $('#md_applicant_post_requirement #btn_submit').removeClass('d-none')
+        $('#md_applicant_post_requirement #btn_close').removeClass('d-none')
+        $('.attach-document').addClass('d-none')
+        $('#md_applicant_post_requirement #btn_back').addClass('d-none')
+    })
 
-                //Check the Browser type and download the File.
-                var isIE = false || !!document.documentMode;
-                if (isIE) {
-                    window.navigator.msSaveBlob(blob, fileName);
-                } else {
-                    var url = window.URL || window.webkitURL;
-                    link = url.createObjectURL(blob);
-                    var a = $("<a />");
-                    a.attr("download", fileName);
-                    a.attr("href", link);
-                    $("body").append(a);
-                    a[0].click();
-                    $("body").remove(a);
-                }
-            }
-        });
-    };
+    $('#btn_r_attachment').on('click', function(e){ 
+        $('#md_applicant_post_requirement').modal('hide')
+        $('#md_confirm .modal-body p').text('Do you want to remove this attachment?')
+        $('#form_modal_applicant_remove_requirement #txt_id').val($(this).attr('aria-id'))
+        $('#md_confirm').modal('show')
+    })
+
     
-    function DL2(e)
-    {   
-        fetch(e)
-        .then(resp => resp.blob())
-        .then(blob => {
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.style.display = 'none';
-          a.href = url;
-          a.download = 'your-requirement.pdf';
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(url);
-        })
-        .catch(() => alert('oh no!'));
-    }
-   
+
 
 }
 
@@ -221,17 +245,11 @@ function load_requirements(){
   
         datatype: 'json',
   
-        beforeSend: function() {
+        beforeSend: function() { },
   
-        },
-  
-        success: function (e) {
-            append_to_table(e)
-        },
+        success: function (e) { append_to_table(e) },
 
-        complete: function () {
-            addEvents()
-        },
+        complete: function () { add_events(); },
   
         error: function(xhr) { display_error() },
   
@@ -239,7 +257,7 @@ function load_requirements(){
 
 }
 
-function loadData(){
+function load_data(){
 
     var user_type = $('.user_info').attr('ur');
 
@@ -253,4 +271,59 @@ function loadData(){
 }
 
 
+// TABS
+function prepare_fields(){
 
+    $('.form_bi').each(function(){
+
+        $(this).attr('readonly','readonly')
+
+    })
+
+}
+
+
+// BASIC INFORMATION
+$('#btn_bi_update').on('click', function(){
+    $('.form_bi').each(function(){ $(this).attr('readonly',false) })
+    $(this).addClass('d-none');
+    $('#btn_bi_save').removeClass('d-none');
+})
+$('#btn_bi_save').on('click', function(){
+
+})
+
+$('form#f_applicant_bi').on('submit', function(e){
+    e.preventDefault();
+    $.ajax({
+        type: 'post',
+        url: 'api/dashboard/applicant/post_applicant_requirement.php',
+        data:  new FormData(this),
+        dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function() {},
+        success: function (e) {
+            if (e.status == 200)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_success .modal-body p').text(e.feedback)
+                $('#modal_success .modal-footer button').text('Close');
+                $('#modal_success').modal('show')
+            }
+            if (e.status == 403 || e.status == 400 || e.status == 500)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_fail .modal-body p').text(e.feedback)
+                $('#modal_fail .modal-footer button').text('Close');
+                $('#modal_fail').modal('show')
+            }
+        },
+        complete: function() {
+            load_data();
+            document.getElementById("applicant_post_file").value=null; 
+        },
+        error: function(xhr) { display_error() },
+    });
+})
