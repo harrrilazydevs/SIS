@@ -1,32 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="libraries/css/fonts/pt-serif.css" >
+        <link rel="stylesheet" href="libraries/bootstrap-4.6.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="libraries/fontawesome-5.15.4/css/all.min.css">
+        <title>500</title>
 
-    <link rel="stylesheet" href="libraries/css/fonts/pt-serif.css" >
-    <!-- <link rel="stylesheet" href="libraries/css/style2.css"> -->
-    <link rel="stylesheet" href="libraries/css/page_style.css">
-    <link rel="stylesheet" href="libraries/bootstrap-4.6.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="libraries/fontawesome-5.15.4/css/all.min.css">
-    <title>Document</title>
-</head>
-<body>
+        <style>
 
+            .wave{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                line-height: 0;
+            }
+            .wave:before{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url(wave.svg) repeat-x;
+                background-size: cover;
+                background-position: -1000px 0;
+                opacity: .2;
+                animation: waveOne 60s linear infinite; 
+            }
+            @keyframes waveOne {
+                50%{
+                    background-position: 0 0;
+                }
+            }
+            .wave:after{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url(wave.svg) repeat-x;
+                background-size: cover;
+                background-position: 2732px 0;
+                opacity: .3;
+                animation: waveOne 120s linear infinite; 
+            }
+
+          
+        </style>
+
+    </head>
+    
+    <body>
 
     
-    
+
+            <div class="content-inside">
+          
+                <div class="container my-5">
+          
+                    <div class="form_container">
 
 
+                        <div class="row">
+                        
+                            <div class="col text-center">
+                
+                                <img src="libraries/img/logo.png" alt="" style="height:200px !important;">
+                        
+                            </div>
+                                
+                        </div>
+
+                        <div class="row">   
+                            
+                            <div class="col text-center" >
+
+                                <h1 style="font-weight: 700; font-size:170px;">404</h1>
+                    
+                                <p style="font-weight: 700;">Page Not Found</p>
+                
+                            </div>
+
+                        </div>
+            
+                    </div>
+              
+                 </div>
+            
+            </div>
+            
+        </div>
+          
+          
+
+        <div class="wave">
+
+            <img src="wave.svg" alt="">
+
+        </div>
 
 
+        <script src="libraries/jquery/jquery-3.4.1.min.js"></script>
+        <script src="libraries/bootstrap-4.6.0/js/bootstrap.min.js"></script>
 
-
-
-
-<script src="libraries/jquery/jquery-3.4.1.min.js"></script>
-<script src="libraries/bootstrap-4.6.0/js/bootstrap.min.js"></script>
-
-</body>
+    </body>
 </html>
