@@ -7,7 +7,6 @@
         session_start(); 
     } 
 
-
     $output = false;
 
     header('Content-Type: application/json');

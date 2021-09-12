@@ -332,7 +332,7 @@
 
                                     <div class="col-lg-3 pr-0">
 
-                                        <input class="form-control form-control-sm birthdate form_bi" aria-age="txt_applicant_age" name="birthdate" type="date">
+                                        <input class="form-control form-control-sm birthdate form_bi" aria-age="txt_applicant_age" name="date_of_birth" type="date">
 
                                     </div>
 
@@ -356,7 +356,7 @@
 
                                     <div class="col-lg-3  pr-0">
 
-                                        <input class="form-control form-control-sm form_bi" name="birthplace" type="text">
+                                        <input class="form-control form-control-sm form_bi" name="place_of_birth" type="text">
 
                                     </div>
                             
@@ -373,7 +373,7 @@
 
                                     <div class="col-lg-10 pr-0">
 
-                                        <input class="form-control form-control-sm form_bi" name="mobileno" type="text">
+                                        <input class="form-control form-control-sm form_bi" name="mobile_no" type="text">
 
                                     </div>
                             

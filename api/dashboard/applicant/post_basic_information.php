@@ -34,10 +34,7 @@
         ]
     ];
 
-    $require_fields = [
-        'firstname'=>'alpha',
-        'mobile_no'=>'numeric'
-    ];
+    $require_fields = [ 'firstname'=>'alpha', 'middlename'=>'alpha', 'lastname'=>'alpha', 'suffix'=>'alpha', 'date_of_birth'=>'alpha', 'age'=>'numeric', 'place_of_birth'=>'alpha', 'gender'=>'alpha', 'religion'=>'alpha', 'civil_status'=>'alpha', 'citizenship'=>'alpha' ];
 
 
     if (isset($_POST) && $_POST['token'] === $_SESSION['TOKEN']){
