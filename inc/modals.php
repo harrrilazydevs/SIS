@@ -188,14 +188,31 @@
 
                     <div class="modal-body container" style="" >
 
+                        <div class="requirement-status d-none">
+                            <label>Requirement Status</label>
+                            <p id="txt_status" class="font-weight-bold pl-1"></p>
+                        </div>
+
                         <label>Requirement</label>
                         <p id="txt_requirement" class="font-weight-bold pl-1"></p>
 
-
-                        <label class="mt-1">Attach Document</label><br>
-                        <div class="border py-2 px-1 rounded">
-                            <input type="file" name="file" id="applicant_post_file" accept=".xls,.xlsx,.pdf,.doc,.docx" >
+                        <div class="attach-document">
+                            <label class="mt-1">Attach Document</label><br>
+                            <div class="border py-2 px-1 rounded">
+                                <input type="file" name="file" id="applicant_post_file" accept=".xls,.xlsx,.pdf,.doc,.docx" >
+                            </div>
                         </div>
+
+                        <div class="attached-document d-none">
+                            <label class="mt-1">Attached Document</label><br>
+                            <div class="px-1">
+                                <p class="font-weight-bold pl-1 mb-0 pb-0"></p>
+                                <a class="pl-1 mb-0 pb-0"  id="btn_dl_attachment"><i class="fas fa-file-download pr-1"></i> Download attachment</a>
+                            </div>
+                        </div>
+
+
+                        
 
                     </div>
 
@@ -212,6 +229,41 @@
             </div>
         </div>
     </div>
+    
+    <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_view_requirement">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="">
+                <div class="modal-header text-center pt-3 pb-0">
+                <h6> Submit Requirement </h6>
+                </div>
+                <form id="form_modal_applicant_requirement" enctype="multipart/form-data">
+
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                    <input type="hidden" name="applicant_id"  id="txt_applicant_id">
+                    <input type="hidden" name="requirement_id"  id="txt_requirement_id">
+                    <input type="hidden" name="record_id"  id="txt_record_id">
+
+                    <div class="modal-body container" style="" >
+                    <embed src="../storage/files/1ff4e739e9613123969a297dc77bfe4a2b258298.pdf" width="600px" height="500px" />
+                    </div>
+
+                    <div class="modal-footer text-center" style="border: none !important">
+                        <div class="row">
+                            <div class="col px-0 btn-full-width">
+                                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
 
 <!-- APPLICANT MODALS -->
 

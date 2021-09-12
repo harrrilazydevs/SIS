@@ -7,6 +7,7 @@
     header('Content-Type: application/json');
 
     $uploads_dir = '../../../storage/files';
+    $file_dl_dir = '../storage/files';
 
     $feedback = [
         [
@@ -36,7 +37,9 @@
 
             $temp = explode('.pdf',strtolower( $_FILES['file']['name'] ));
 
-            $file_name = sha1($temp[0]).'.pdf';
+            $file_name = hash('sha256',$temp[0]).'.pdf';
+
+           
     
             $db = new db();
     
@@ -60,8 +63,8 @@
                         ":applicant_id" => $_POST['applicant_id'],
                         ":requirement_id" => $_POST['requirement_id'],
                         ":id" => $_POST['record_id'],
-                        ":file_name" => $file_name,
-                        ":file_directory" => $uploads_dir,
+                        ":file_name" => $_FILES['file']['name'],
+                        ":file_directory" => $file_dl_dir.'/'.$file_name,
                         ":date_submitted" => date('Y-m-d'),
                         ":requirement_status" =>'SUBMITTED'
             ];

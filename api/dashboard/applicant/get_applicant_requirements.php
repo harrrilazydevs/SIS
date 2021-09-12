@@ -16,8 +16,9 @@
                                         a.requirement_status as `status`,
                                         a.requirement_id,
                                         b.name as `requirement_name`,
-                                        a.file_name as `file_name`
-                                        
+                                        a.file_name as `file_name`,
+                                        a.file_directory as `file_dir`
+                                
                                 FROM 
                                         applicant_requirement_records a
                                 INNER JOIN
