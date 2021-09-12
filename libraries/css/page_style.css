@@ -265,6 +265,15 @@ html, body {
 .input-modal .modal-body label, .modal-body input, .modal-body a{
    font-size:10pt !important;
 }
+.modal-body a:hover{
+   cursor: pointer;
+}
+.input-modal .modal-body p{
+   font-size:11pt !important;
+}
+.input-modal .modal-body i{
+   font-size:10pt !important;
+}
 .input-modal .modal-body label{
   color: #000000 !important;
 }
@@ -273,4 +282,7 @@ html, body {
 }
 .input-modal-file{
    border: 2px dashed #2569C3;
+}
+.no-border{
+   border: none !important;
 }

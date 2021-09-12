@@ -34,6 +34,7 @@
                                         c.id = ?
                         ';
 
+                        
                 $stmt = $db->connect()->prepare($sql);
 
                 $data = [$_POST['id']];

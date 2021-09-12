@@ -169,6 +169,31 @@
 
 </div>
 
+<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_fail">
+            
+    <div class="modal-dialog modal-dialog-centered">
+    
+        <div class="modal-content">
+    
+            <div class="modal-body text-center py-5">
+    
+                <p style="font-size: 15pt;"></p>
+    
+                <i class="far fa-times-circle fa-2x" style="color: red !important;"></i>
+    
+            </div>
+    
+            <div class="modal-footer text-center">
+    
+               <button class="btn btn-secondary" data-dismiss="modal"></button>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+
+</div>
 
 
 <!-- APPLICANT MODALS -->
@@ -182,9 +207,9 @@
                 <form id="form_modal_applicant_requirement" enctype="multipart/form-data">
 
                     <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
-                    <input type="hidden" name="applicant_id"  id="txt_applicant_id">
-                    <input type="hidden" name="requirement_id"  id="txt_requirement_id">
-                    <input type="hidden" name="record_id"  id="txt_record_id">
+                    <input type="hidden" name="applicant_id" id="txt_applicant_id">
+                    <input type="hidden" name="requirement_id" id="txt_requirement_id">
+                    <input type="hidden" name="record_id" id="txt_record_id">
 
                     <div class="modal-body container" style="" >
 
@@ -194,10 +219,10 @@
                         </div>
 
                         <label>Requirement</label>
-                        <p id="txt_requirement" class="font-weight-bold pl-1"></p>
+                        <p id="txt_requirement" class="font-weight-bold pl-1 "></p>
 
                         <div class="attach-document">
-                            <label class="mt-1">Attach Document</label><br>
+                            <label class="">Attach Document</label><br>
                             <div class="border py-2 px-1 rounded">
                                 <input type="file" name="file" id="applicant_post_file" accept=".xls,.xlsx,.pdf,.doc,.docx" >
                             </div>
@@ -206,21 +231,27 @@
                         <div class="attached-document d-none">
                             <label class="mt-1">Attached Document</label><br>
                             <div class="px-1">
-                                <p class="font-weight-bold pl-1 mb-0 pb-0"></p>
-                                <a class="pl-1 mb-0 pb-0"  id="btn_dl_attachment"><i class="fas fa-file-download pr-1"></i> Download attachment</a>
+                                <p class="font-weight-bold pl-1 mb-3 pb-0 file_name"></p>
                             </div>
                         </div>
 
-
-                        
+                        <div class="controls d-none">
+                            <label>Controls</label>
+                            <ul class="list-group list-group-flush border rounded ">
+                                <li class="list-group-item py-1"><a class="pl-1 mb-0 pb-0"  id="btn_dl_attachment"><i class="fa-fw pr-1 fas fa-file-download"></i> Download attachment</a></li>
+                                <li class="list-group-item py-1"><a class="pl-1 mb-0 pb-0"  id="btn_e_attachment"><i class="fa-fw pr-1 fas fa-pencil-alt"></i> Edit attachment</a></li>
+                                <li class="list-group-item py-1"><a class="pl-1 mb-0 pb-0"  id="btn_r_attachment"><i class="fa-fw pr-1 fas fa-trash-alt"></i> Remove attachment</a></li>
+                            </ul>
+                        </div>
 
                     </div>
 
                     <div class="modal-footer text-center" style="border: none !important">
                         <div class="row">
                             <div class="col px-0 btn-full-width">
-                                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                                <button class="btn btn-sm btn-secondary d-none" type="button" id="btn_back">Back</button>
+                                <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button" id="btn_close">Close</button>
+                                <button class="btn btn-sm btn-primary" type="submit" id="btn_submit">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -229,8 +260,36 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_confirm">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="">
+                <div class="modal-header text-center pt-3 pb-0">
+                <h6> Confirm </h6>
+                </div>
+                <form id="form_modal_applicant_remove_requirement" enctype="multipart/form-data">
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                    <input type="hidden" id="txt_id" name='id' value="">
+                    <div class="modal-body" style="" >
+                        <p class="pl-3 my-2"></p>
+                    </div>
+
+                    <div class="modal-footer text-center">
+                        <div class="row">
+                            <div class="col px-0 btn-full-width">
+                                <button class="btn btn-sm btn-secondary" data-dismiss="modal" id="btn_close">Cancel</button>
+                                <button class="btn btn-sm btn-primary" type="submit" id="btn_submit">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     
-    <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_view_requirement">
+    <!-- <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_view_requirement">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="">
                 <div class="modal-header text-center pt-3 pb-0">
@@ -261,7 +320,7 @@
             </div>
         </div>
     </div>
-
+ -->
 
 
 

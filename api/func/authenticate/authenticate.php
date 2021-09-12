@@ -49,10 +49,7 @@
     
         $output = array();
 
-        $REQUIRED_FIELDS = [
-            'email'=>'*',
-            'password'=>'*'
-        ];
+        $REQUIRED_FIELDS = [ 'email'=>'email', 'password'=>'' ];
 
         $validation_result = required_fields_validated($REQUIRED_FIELDS, $_POST['POSTDATA']);
 
@@ -64,9 +61,8 @@
         {
             $_RETURN_DATA = checkif_account_employee($_POST['POSTDATA']);
 
-            if (  !empty($_RETURN_DATA) )
+            if ( $_RETURN_DATA != 403 )
             {
-               
                 $userId = $_RETURN_DATA[0]['user_id'];
 
                 $userFname = $_RETURN_DATA[0]['firstname'];
@@ -88,7 +84,7 @@
                 
                 $_RETURN_DATA = checkif_account_exists($_POST['POSTDATA']);
 
-                if( !empty($_RETURN_DATA) )
+                if( $_RETURN_DATA != 403 )
                 {
                     $userId = $_RETURN_DATA[0]['user_id'];
 
@@ -170,6 +166,8 @@
                     $POST_DATA['email'], 
                     sha1($POST_DATA['password'])
         ];
+
+  
 
         return $db->get_( $sql, $data );
 
