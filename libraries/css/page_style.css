@@ -155,7 +155,7 @@ html, body {
 }
 .form_container{
    border: 0px solid rgb(29, 29, 29) !important;
-   width: max-content;
+   /* width: max-content; */
    background: rgba( 255, 255, 255, 0.25 );
    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
    backdrop-filter: blur( 4px );
@@ -164,6 +164,9 @@ html, body {
 }
 .form_container label, .form_container i{
    color: rgb(4, 3, 28) !important;
+}
+.form_container label{
+   font-size: 10pt !important;
 }
 .form_container input, .form_container select, .input-group-text{
    border: 0 !important;
@@ -285,19 +288,12 @@ html, body {
 .input-modal-file{
    border: 2px dashed #2569C3;
 }
-<<<<<<< HEAD
 
-
-=======
 .no-border{
    border: none !important;
 }
-<<<<<<< HEAD
->>>>>>> f1798b7f985412cf80fc58e39e6d63ac35857650
-=======
 
 
 body{
    overflow-x: hidden !important;
 }
->>>>>>> 81306f2cf7c37e546b6eb39d64702623284ce8b4

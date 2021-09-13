@@ -2,6 +2,7 @@
 
     include_once '../../../database/database.php';
     include_once '../../func/files.php';
+    include_once '../../func/authenticate/generate.php';
 
     $output = false;
 
@@ -63,12 +64,17 @@
             }
         }
 
-        echo json_encode($output);
+     
     }
     else
     {
-        echo json_encode($feedback[1]);
+        $output = $feedback[1];
     }
+
+    regenerate_token();
+
+    echo json_encode($output);
+
 
     function get_applicant_data()
     {

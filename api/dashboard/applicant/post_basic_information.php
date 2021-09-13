@@ -1,6 +1,7 @@
 <?php
 
     include_once '../../../database/database.php';
+    include_once '../../func/validator.php';
 
     if (!isset($_SESSION)) 
     { 
@@ -34,15 +35,17 @@
         ]
     ];
 
-    $require_fields = [ 'firstname'=>'alpha', 'middlename'=>'alpha', 'lastname'=>'alpha', 'suffix'=>'alpha', 'date_of_birth'=>'alpha', 'age'=>'numeric', 'place_of_birth'=>'alpha', 'gender'=>'alpha', 'religion'=>'alpha', 'civil_status'=>'alpha', 'citizenship'=>'alpha' ];
+    $require_fields = [ 'token'=>'','firstname'=>'alpha', 'middlename'=>'', 'lastname'=>'alpha', 'suffix'=>'', 'date_of_birth'=>'date', 'mobile_no'=>'numeric', 'age'=>'numeric', 'place_of_birth'=>'alpha', 'gender'=>'alpha', 'religion'=>'alpha', 'civil_status'=>'alpha', 'citizenship'=>'alpha' ];
 
-    $validation_result = required_fields_validated($REQUIRED_FIELDS, $_POST);
+    $required_keys = array_keys($require_fields);
+    
+    array_shift($required_keys);
 
     if (isset($_POST) && $_POST['token'] === $_SESSION['TOKEN']){
 
-        if( $validation_result == 403 )
+        if( required_fields_validated($require_fields, $_POST) === 0 )
         {
-
+            $sql = ' INSERT INTO applicant_information (applicant_id, program_id, lastname,) VALUES (:user_id, :fname, :lname) ON DUPLICATE KEY UPDATE fname= :fname2, lname= :lname2 ';
         }
         else
         {

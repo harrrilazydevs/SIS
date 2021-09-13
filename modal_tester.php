@@ -12,6 +12,7 @@
 
 ?>
 
+<?php include_once 'modals.php'; ?>
 <div class="content sis_content" >
 
   <div class="content-inside">
@@ -30,53 +31,10 @@
           
         </div>
 
-        <form method="post" id="form_login">
-          
-        <div class="row mt-3">
-          <div class="col text-center ">
-            <h5> Applicant Login</h5>
-          </div>
-        </div>
 
-        <div class="row mt-2">
-
-          <div class="col">
-
-            <input type="hidden" class="form-control" id="txt_token" value="<?php echo $_SESSION['TOKEN'];?>">
-
-            <label class="mt-2"><i class="fas fa-at fa-fw pr-2"></i> Email</label>
-            <input type="email" class="form-control" name="email" id="txt_email" required>
-        
-          </div>
-          
-        </div>
-
-        <div class="row mt-1">
-
-          <div class="col">
-
-            <label class="mt-2"><i class="fas fa-lock fa-fw pr-2"></i> Password</label>
-            <input type="password" name="password" id="txt_password" maxlength="32" class="input-style form-control py-0" aria-label="#lbl_mobileno" style="border-top-left-radius: 0px !important; border-bottom-left-radius: 0px !important;" aria-feedback="fb_mobile_no">
-
-            <div class="text-right">
-            <a href="terms_conditions.html">Forgot Password</a>
-            </div>
-
-          </div>
-          
-        </div>
-
-        <div class="row">
-
-          <div class="col text-center mt-4" style="width: 30vw;">
-
-            <button class="btn">Log In</button>
-                      
-          </div>
-          
-        </div>
-
-        </form>
+        <!-- CHANGE THGE DATA-TARGET = id ng modal  -->
+        <button class="btn" data-target="#m_l_register_success" data-toggle="modal">TEST</button>
+   
 
         <div class="row">
 

@@ -79,6 +79,8 @@
        {
            $FORMATTED_DATA = format_user_input($_POST);
 
+           var_dump($FORMATTED_DATA);
+           
            if( exec_register($FORMATTED_DATA) )
            {
                array_push($output, $feedback[0]);
@@ -90,6 +92,7 @@
        }
     }
 
+    regenerate_token();
     echo json_encode($output);
 
     function email_used( $email ){
@@ -122,63 +125,51 @@
 
     
 
-    // function exec_register( $data ){
+    function exec_register( $data ){
 
-    //     $db = new db();
+        $db = new db();
 
-    //     $status = false;
+        $status = false;
 
-    //     $count = count( $data );
+        $sql = '
+                    INSERT INTO
+                                applicant_accounts
+                                (
+                                    email,
+                                    mobile_no,
+                                    password,
+                                    date_of_application
+                                )
+                    VALUES
+                                (
+                                    :email, 
+                                    :mobile_no, 
+                                    :password,  
+                                    :date_of_application
+                                )';
 
-    //     $counter = 1;
+                                $x= 0   ;
+        $password = generate_password();
 
-    //     $values = array();
+        $message = '<br>To complete your registration click here http://192.168.100.34:8000/complete_registration.php?id='.$x;
 
-    //     $sql = '
-    //                 INSERT INTO
-    //                             applicant_accounts
-    //                             (
-    //                                 email,
-    //                                 mobile_no,
-    //                                 password,
-    //                                 date_of_application
-    //                             )
-    //                 VALUES
-    //                             (
-    //                                 :email, 
-    //                                 :mobile_no, 
-    //                                 :password, 
-    //                                 :date_of_application
-    //                             )';
+        $stmt = $db->connect()->prepare($sql);
 
-    //     $password = generate_password();
+        $v = $stmt->execute( [ ":email" => $data['email'], ":mobile_no" => $data['mobile_no'], ":password" => sha1($password), ":date_of_application" => date("Y/m/d") ] );
 
-    //     $value = [
-    //         ":email" => $data['email'],
-    //         ":mobile_no" => $data['mobile_no'],
-    //         ":password" => sha1($password),
-    //         ":date_of_application" => date("Y/m/d")
-    //     ];
+        var_dump($db->connect()->lastInsertId());
 
-    //     $message = 'Password is : '.$password;
+        if ( $v )
+        {   
+            send_mail($message, 'Your password', $data['email']);
 
-        // $stmt = $db->connect()->prepare($sql);
-
-        // $v = $stmt->execute( $value );
-
-    //     // var_dump($v);
-
-    //     if ( $v )
-    //     {   
-    //         send_mail($message, 'Your password', $data['email']);
-
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
 

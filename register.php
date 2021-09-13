@@ -3,15 +3,17 @@
     include_once 'inc/header.php'; 
 ?>
 
+<?php include_once 'inc/modals.php'; ?>
+
 <div class="content sis_content" >
 
-    <?php include_once 'inc/modals.php'; ?>
+   
 
     <div class="content-inside">
 
-      <div class="container my-5">
+      <div class="container my-5 px-0">
 
-        <div class="form_container mx-auto px-4 py-4">
+        <div class="form_container mx-auto px-4 py-4" style="width: max-content !important;">
 
           <div class="row">
 
@@ -50,7 +52,7 @@
 
             <div class="col">
 
-              <label class="mt-2"><i class="fas fa-mobile-alt fa-fw pr-2"></i> Mobile No</label>
+              <label class=""><i class="fas fa-mobile-alt fa-fw pr-2"></i> Mobile No</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;">0</span>
@@ -68,7 +70,7 @@
 
           <div class="row">
 
-            <div class="col text-center mt-4" style="width: 30vw;">
+            <div class="col text-center mt-4" style="width: 30vw !important;" >
 
              <button class="btn">Sign Up</button>
                        
@@ -80,7 +82,7 @@
 
           <div class="row">
 
-            <div class="col text-center mt-1" style="width: 30vw; ">
+            <div class="col text-center mt-1" >
 
               <small>By clicking Sign Up you agreed to</small>
               <br>

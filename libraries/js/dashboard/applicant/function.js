@@ -79,6 +79,7 @@ function add_events(){
             complete: function() {
                 load_data();
                 document.getElementById("applicant_post_file").value=null; 
+                location.reload();
             },
             error: function(xhr) { display_error() },
         });
@@ -112,7 +113,9 @@ function add_events(){
             },
             complete: function() {
                 load_data();
-                document.getElementById("applicant_post_file").value=null; 
+                document.getElementById("applicant_post_file").value=null;  
+                location.reload();
+
             },
             error: function(xhr) { display_error() },
         });
@@ -257,15 +260,14 @@ function load_requirements(){
 
 }
 
+function load_school_list(){ $.ajax({ type: 'post', url: 'api/general/get_school_list.php', datatype: 'json', success: function (e) { var output =''; $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); $('#sel_school').append(output); }, error: function(xhr) { display_error() }, }); }
+
+function load_programs(school_id){ $.ajax({ type: 'post', url: 'api/general/get_program_list.php', data: {id:school_id}, datatype: 'json', success: function (e) { var output =''; $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); $('#sel_program').empty(); $('#sel_program').append(output);  }, error: function(xhr) { display_error() }, }); }
+
 function load_data(){
 
-    var user_type = $('.user_info').attr('ur');
-
-    if ( user_type == 'APPLICANT' ){
-
-        load_requirements()
-
-    }
+    load_requirements()
+    load_school_list();
 
 
 }
@@ -292,12 +294,11 @@ $('#btn_bi_update').on('click', function(){
 $('#btn_bi_save').on('click', function(){
 
 })
-
 $('form#f_applicant_bi').on('submit', function(e){
     e.preventDefault();
     $.ajax({
         type: 'post',
-        url: 'api/dashboard/applicant/post_applicant_requirement.php',
+        url: 'api/dashboard/applicant/post_basic_information.php',
         data:  new FormData(this),
         dataType: 'json',
         contentType: false,
@@ -327,3 +328,7 @@ $('form#f_applicant_bi').on('submit', function(e){
         error: function(xhr) { display_error() },
     });
 })
+
+
+// DEGREE
+$('#sel_school').on('change', function(){ load_programs($(this).val()); })

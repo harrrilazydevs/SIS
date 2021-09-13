@@ -7,7 +7,7 @@
         </div>
 
         <div class="col-12 col-lg-8 pt-lg-3 pt-4 px-0">
-            <label class="user_info" ur="<?php echo $_SESSION['usr']?>" id="<?php echo $_SESSION['uid']?>">Hi, <b><?php echo $_SESSION['usn']?></b></label>
+            <label class="user_info" ur="<?php echo $_SESSION['usr']?>" id="<?php echo $_SESSION['uid']?>">Hi, <b><?php echo $_SESSION['usfn']?></b></label>
         </div>
         
         <div class="col-12 col-lg-4 pt-lg-2 text-right px-0 d-none d-lg-block" style="font-size: 12pt;"> 
@@ -65,7 +65,7 @@
         </div>
 
         <!-- TAB CONTENT -->
-        <div class="col-lg-7 pt-lg-3 mb-5 container pr-0 pl-0" > 
+        <div class="col-lg-7 pt-lg-3 mb-5 container pr-0 pl-0 pl-lg-3" > 
 
             <div class="row">
 
@@ -83,7 +83,7 @@
                         </div>
                     </nav>
 
-                    <div class="tab-content border rounded tab_border  shadow-sm py-3 " id="nav-tabContent">
+                    <div class="tab-content border rounded tab_border  shadow-sm py-3 px-3 " id="nav-tabContent">
 
                         <!-- Application Status -->
                         <div class="tab-pane fade show active container" id="nav_application_status" role="tabpanel">
@@ -112,20 +112,20 @@
                              
                             </div>
 
-                             <!-- <div class="row mt-2">
-                                
+                            <div class="row mt-2">
+                            
                                 <div class="col">
 
                                     <label class="pt-1"><i class="fas fa-address-card fa-fw"></i> Profile </label>
                                     
-                                       <div class="progress" style="background-color: #E9ECEF;">
+                                        <div class="progress" style="background-color: #E9ECEF;">
 
                                         <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_profile"></div>
-                                     
+                                        
                                     </div>
-                                  
+                                    
                                 </div>
-                             
+                                
                             </div>
 
                             <div class="row mt-2">
@@ -134,17 +134,17 @@
 
                                     <label class="pt-1"><i class="fas fa-user-graduate  fa-fw"></i> Degree </label>
                                     
-                                       <div class="progress" style="background-color: #E9ECEF;">
+                                        <div class="progress" style="background-color: #E9ECEF;">
 
                                         <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_degree"></div>
-                                     
+                                        
                                     </div>
-                                  
+                                    
                                 </div>
-                             
+                                
                             </div>
 
-                           
+                        
 
                             <div class="row mt-2">
                                 
@@ -152,14 +152,14 @@
 
                                     <label class="pt-1"><i class="fas fa-house-user fa-fw"></i> Address </label>
                                     
-                                       <div class="progress" style="background-color: #E9ECEF;">
+                                        <div class="progress" style="background-color: #E9ECEF;">
 
                                         <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_address"></div>
-                                     
+                                        
                                     </div>
-                                  
+                                    
                                 </div>
-                             
+                                
                             </div>
 
                             <div class="row mt-2">
@@ -168,14 +168,14 @@
 
                                     <label class="pt-1"><i class="fas fa-user-friends fa-fw"></i> Family </label>
                                     
-                                       <div class="progress" style="background-color: #E9ECEF;">
+                                        <div class="progress" style="background-color: #E9ECEF;">
 
                                         <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_family"></div>
-                                     
+                                        
                                     </div>
-                                  
+                                    
                                 </div>
-                             
+                                
                             </div>
 
                             <div class="row mt-2">
@@ -184,14 +184,14 @@
 
                                     <label class="pt-1"><i class="fas fa-graduation-cap fa-fw"></i> Scholastic </label>
                                     
-                                       <div class="progress" style="background-color: #E9ECEF;">
+                                        <div class="progress" style="background-color: #E9ECEF;">
 
                                         <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_scholastic"></div>
-                                     
+                                        
                                     </div>
-                                  
+                                    
                                 </div>
-                             
+                                
                             </div>
 
                             <div class="row mt-2 mb-3">
@@ -200,21 +200,20 @@
 
                                     <label class="pt-1"><i class="fas fa-sticky-note fa-fw"></i> Other </label>
                                     
-                                       <div class="progress" style="background-color: #E9ECEF;">
+                                        <div class="progress" style="background-color: #E9ECEF;">
 
                                         <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_other"></div>
-                                     
+                                        
                                     </div>
-                                  
+                                    
                                 </div>
-                             
-                            </div> -->
-
+                                
+                            </div>
 
                         </div>
 
                         <!-- Degree -->
-                        <!-- <div class="tab-pane fade container tab_container" id="nav_application_degree" role="tabpanel">
+                        <div class="tab-pane fade container tab_container" id="nav_application_degree" role="tabpanel">
                          
                             <div class="border-bottom text-secondary pb-2">
 
@@ -224,43 +223,66 @@
                             </div>
 
                             <div class="row mt-4">
-                                <div class="col-lg-2  pl-0">
-                                    <label class="pt-1"> School of </label>
-                                </div>
-                                <div class="col-lg-10 pl-0 text-left"> 
-                                    <select name="" id="" class="form-control form-control-sm"></select>
-                                </div>
-                            </div>
+                                 
+                                 <div class="col-lg-2">
+                                 
+                                     <label class="pt-1"> School of </label>
+                                 
+                                 </div>
+                                 
+                                 <div class="col-lg-10 text-left"> 
+                                 
+                                     <select id="sel_school" aria-selected="<?php echo $_SESSION['ussi']?>" class="form-control form-control-sm"></select>
+                                     
+                                 </div>
+                             </div>
 
-                            <div class="row mt-4">
-                                <div class="col-lg-2  pl-0">
-                                    <label class="pt-1"> Program </label>
-                                </div>
-                                <div class="col-lg-10 pl-0 text-left"> 
-                                    <select name="" id="" class="form-control form-control-sm"></select>
-                                </div>
-                            </div>
+                             <div class="row mt-4">
+                                 
+                                 <div class="col-lg-2">
+                                     
+                                     <label class="pt-1"> Program </label>
+                                 
+                                 </div>
+                                 
+                                 <div class="col-lg-10 text-left"> 
+                                 
+                                     <select name="" id="sel_program" aria-selected="<?php echo $_SESSION['uspi']?>" class="form-control form-control-sm"></select>
+                                 
+                                 </div>
+                                 
+                             </div>
 
-                        </div> -->
+                        </div>
                          
                         <!-- Basic Information -->
-                        <!-- <div class="tab-pane fade container tab_container mb-3" id="nav_profile" role="tabpanel">
+                        <div class="tab-pane fade container tab_container mb-3 " id="nav_profile" role="tabpanel">
 
                             <form id="f_applicant_bi">
+
+                                <input type="hidden" value="<?php echo $_SESSION['TOKEN']?>" name='token'>
+
+
                                 <div class="border-bottom text-secondary">
 
                                     <div class="row py-2">
-                                        <div class="col-lg-3 ">
+                                        <div class="col-lg-4 ">
 
-                                            <h6>Basic Information</h6>
-
-                                        </div>
-                                        <div class="col-9 pl-0 text-left">
+                                            <h6>Applicant Information</h6>
 
                                         </div>
-
+                                        <div class="col-8 pl-0 text-left"> </div>
                                     </div>
-                                
+
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-lg-2">
+                                        <label class="pt-1"> Applicant ID</label>
+                                    </div>
+                                    <div class="col-lg-10 text-left"> 
+                                     <h5><?php echo $_SESSION['uid']?></h5>
+                                    </div>
                                 </div>
 
                                 <div class="row mt-4">
@@ -273,10 +295,10 @@
 
                                     <div class="col-lg-10 ">
 
-                                        <input class="form-control form-control-sm form_bi" name="firstname" type="text">
+                                        <input class="form-control form-control-sm form_bi" name="firstname" type="text" value="<?php echo $_SESSION['usfn']?>">
 
                                     </div>
-                            
+
                                 </div>
 
                                 <div class="row mt-4">
@@ -284,15 +306,15 @@
                                     <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Middle Name </label>
-                                    
+
                                     </div>
 
                                     <div class="col-lg-10 ">
 
-                                        <input class="form-control form-control-sm form_bi" name="middlename" type="text">
+                                        <input class="form-control form-control-sm form_bi" name="middlename" type="text" value="<?php echo $_SESSION['usmn']?>">
 
                                     </div>
-                            
+
                                 </div>
 
                                 <div class="row mt-4">
@@ -305,10 +327,10 @@
 
                                     <div class="col-lg-10 ">
 
-                                        <input class=" form-control form-control-sm form_bi" name="lastname" type="text">
+                                        <input class=" form-control form-control-sm form_bi" name="lastname" type="text" value="<?php echo $_SESSION['usln']?>">
 
                                     </div>
-                            
+
                                 </div> 
 
                                 <div class="row mt-4">
@@ -316,16 +338,53 @@
                                     <div class="col-lg-2  pl-3">
 
                                         <label class="pt-1"> Suffix</label> 
-                                    
+
                                     </div>
 
                                     <div class="col-lg-10  pl-3">
 
-                                        <input class="form-control form-control-sm form_bi" name="suffix" type="text">
+                                        <input class="form-control form-control-sm form_bi" name="suffix" type="text" value="<?php echo $_SESSION['ussn']?>">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-2  pl-3">
+
+                                        <label class="pt-1">Mobile No </label>
+                                    
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class="form-control form-control-sm form_bi" name="mobile_no" type="text" value="<?php echo $_SESSION['usmno']?>">
 
                                     </div>
                             
                                 </div>
+                                
+                               
+
+
+                                <div class="mt-4 border-bottom text-secondary">
+
+                                    <div class="row py-2">
+                                        <div class="col-lg-4 ">
+
+                                            <h6>Personal Information</h6>
+
+                                        </div>
+                                        <div class="col-8 pl-0 text-left">
+
+                                        </div>
+
+                                    </div>
+                                
+                                </div>
+
+
 
                                 <div class="row mt-4">
 
@@ -341,25 +400,25 @@
 
                                     </div>
 
-                                    <div class="col-lg-1  mt-lg-0 mt-4 text-lg-right">
+                                    <div class="col-lg-1 mt-lg-0 mt-4 pr-3 text-lg-right">
 
                                         <label class="pt-1"> Age </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-1 ">
+                                    <div class="col-lg-1 px-0">
 
                                         <input class="form-control form-control-sm" name="age" type="text" id="txt_applicant_age" readonly>
 
                                     </div>
 
-                                    <div class="col-lg-2  pl-3 mt-lg-0 mt-4 text-lg-right">
+                                    <div class="col-lg-2  pl-3 mt-lg-0 mt-4 pr-3 text-lg-right">
 
                                         <label class="pt-1"> Place of Birth </label>
                                     
                                     </div>
 
-                                    <div class="col-lg-3  ">
+                                    <div class="col-lg-3 pl-0 ">
 
                                         <input class="form-control form-control-sm form_bi" name="place_of_birth" type="text">
 
@@ -368,21 +427,7 @@
                                 </div>
                                 
                                 
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
-
-                                        <label class="pt-1"> Contact Number </label>
-                                    
-                                    </div>
-
-                                    <div class="col-lg-10 ">
-
-                                        <input class="form-control form-control-sm form_bi" name="mobile_no" type="text">
-
-                                    </div>
-                            
-                                </div>
+                                
 
                                 <div class="row mt-4">
 
@@ -395,8 +440,8 @@
                                     <div class="col-lg-10 ">
 
                                         <select name="gender" class="form-control form-control-sm form_bi">
-                                            <option value="">Male</option>
-                                            <option value="">Female</option>
+                                            <option value="MALE">Male</option>
+                                            <option value="FEMALE">Female</option>
                                         </select>
 
                                     </div>
@@ -469,7 +514,7 @@
 
                             </form>
 
-                        </div> -->
+                        </div>
 
                     <!-- Mailing Address -->
 

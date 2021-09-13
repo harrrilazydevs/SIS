@@ -1,6 +1,7 @@
 <?php
 
     include_once '../../../database/database.php';
+    include_once '../../func/authenticate/generate.php';
 
     if (!isset($_SESSION)) 
     { 
@@ -56,10 +57,12 @@
         {
             $output = $feedback[2];
         }
-
-        echo json_encode($output);
     }
     else
     {
-        echo json_encode($feedback[1]);
+        $output = $feedback[1];
     }
+
+    regenerate_token();
+
+    echo json_encode($output);

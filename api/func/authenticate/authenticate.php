@@ -39,7 +39,7 @@
             ],
             [
                 //2
-                'status'=>'414',
+                'status'=>'403',
                 'feedback'=>'Username / Password doesn\'t match any records in the database',
             ]
     
@@ -86,13 +86,21 @@
 
                 if( $_RETURN_DATA != 403 )
                 {
-                    $userId = $_RETURN_DATA[0]['user_id'];
+                    $_SESSION['uid'] = $_RETURN_DATA[0]['user_id'];
 
-                    $userFname = $_RETURN_DATA[0]['firstname'];
+                    $_SESSION['usfn'] = $_RETURN_DATA[0]['firstname'];
 
-                    $_SESSION['uid'] = $userId;
+                    $_SESSION['usmn'] = $_RETURN_DATA[0]['middlename'];
 
-                    $_SESSION['usn'] = $userFname;
+                    $_SESSION['usln'] = $_RETURN_DATA[0]['lastname'];
+
+                    $_SESSION['ussn'] = $_RETURN_DATA[0]['suffix'];
+
+                    $_SESSION['usmno'] = $_RETURN_DATA[0]['mobile_no'];
+
+                    $_SESSION['uspi'] = $_RETURN_DATA[0]['program_id'];
+
+                    $_SESSION['ussi'] = $_RETURN_DATA[0]['school_id'];
 
                     $_SESSION['usr'] = 'APPLICANT';
 
@@ -116,28 +124,13 @@
 
         $db = new db();
 
-        $sql = '  
-                    SELECT 
-                            a.id as `user_id`,
-                            b.firstname 
-                    FROM 
-                            applicant_accounts a
-                    INNER JOIN
-                            applicant_information b
-                    ON
-                            a.id = b.applicant_id
-                    WHERE
-                            email = ?
-                    AND     
-                            password = ?
-                ';
+        $result = '';
 
-        $data = [ 
-                    $POST_DATA['email'], 
-                    sha1($POST_DATA['password'])
-        ];
+        $sql = 'SELECT a.id as `user_id`, b.firstname, b.middlename, b.lastname, b.suffix, b.mobile_no, b.program_id, c.school_id FROM applicant_accounts a INNER JOIN applicant_information b ON a.id = b.applicant_id INNER JOIN program_list c ON c.id = b.applicant_id WHERE email = ? AND password = ? ';
 
-        return $db->get_( $sql, $data );
+        ( $db->get_( $sql, [$POST_DATA['email'],sha1($POST_DATA['password'])] ) == 500 ) ?  $output = ['status'=>'500','feedback'=>'Get query fail!'] : $result = $db->get_( $sql, [$POST_DATA['email'],sha1($POST_DATA['password'])] );
+
+        return $result;
        
     }
     
