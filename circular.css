@@ -27,7 +27,7 @@
 .spinner:before{
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to left,#c956479e,#570A00,#f223089a);
+    background-image: linear-gradient(to left,#c75141c1,#570A00,#9b2e1f);
     animation: spin .5s infinite linear;
 }
 
