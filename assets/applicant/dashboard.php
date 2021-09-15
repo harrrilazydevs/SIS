@@ -84,13 +84,13 @@
                     
                     <nav class="tabbable">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist" >
-                            <a class="nav-link active" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_status" role="tab">Status</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav_profile" role="tab">Profile</a>
-                            <a class="nav-link" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_degree" role="tab">Degree</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-mailing_address" role="tab">Address</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-family_record" role="tab">Family</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-scholastic_record" role="tab">Scholastic</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-other_information" role="tab">Other</a>
+                            <a class="nav-link ld_nav_link active" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_status" role="tab">Status</a>
+                            <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav_profile" role="tab">Profile</a>
+                            <a class="nav-link ld_nav_link" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_degree" role="tab">Program</a>
+                            <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-mailing_address" role="tab">Address</a>
+                            <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-family_record" role="tab">Family</a>
+                            <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-scholastic_record" role="tab">Scholastic</a>
+                            <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-other_information" role="tab">Other</a>
                         </div>
                     </nav>
 
@@ -229,31 +229,17 @@
 
                         </div>
 
-                        <!-- Degree -->
+                        <!-- Program -->
                         <div class="tab-pane fade container tab_container" id="nav_application_degree" role="tabpanel">
                          
                             <div class="border-bottom text-secondary pb-2">
 
-                                <h6 class="my-0">Degree</h6>
-                                <small class="text-secondary my-0">Choose the degree program you are applying to.</small>
+                                <h6 class="my-0">Program</h6>
+                                <small class="text-secondary my-0">Choose the program you are applying to.</small>
                                
                             </div>
 
                             <form id="f_applicant_degree">
-                                <div class="row mt-4">
-                                    
-                                    <div class="col-lg-2">
-                                    
-                                        <label class="pt-1"> School of </label>
-                                    
-                                    </div>
-                                    
-                                    <div class="col-lg-10 text-left"> 
-                                    
-                                        <select id="sel_school"  class="form-control form-control-sm"></select>
-                                        
-                                    </div>
-                                </div>
 
                                 <div class="row mt-4">
                                     
@@ -267,6 +253,23 @@
                                     
                                         <select name="program_id" id="sel_program"  class="form-control form-control-sm"></select>
                                     
+                                    </div>
+                                    
+                                </div>
+
+                                
+                                <div class="row mt-4">
+                                    
+                                    <div class="col-lg-2">
+                                    
+                                        <label class="pt-1"> School of </label>
+                                    
+                                    </div>
+                                    
+                                    <div class="col-lg-10 text-left"> 
+                                    
+                                        <select id="sel_school"  class="form-control form-control-sm"></select>
+                                        
                                     </div>
                                     
                                 </div>
@@ -435,7 +438,7 @@
                                         
                                         </div>
 
-                                        <div class="col-lg-1 px-0">
+                                        <div class="col-lg-1 px-lg-0">
 
                                             <input class="form-control form-control-sm" name="age" type="text" id="txt_applicant_age" readonly>
 

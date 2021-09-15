@@ -18,7 +18,7 @@
 
     <div class="container my-5">
 
-      <div class="form_container_girly mx-auto px-4 py-4" style="width: max-content !important;">
+      <div class="form_container mx-auto px-4 py-4" style="width: max-content !important;">
 
         <div class="row">
 

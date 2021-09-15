@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     load_effect();
-    // load_school_list();
+    load_program_list();    
     load_requirements();
     prepare_fields();
     load_profile();
@@ -315,9 +315,9 @@ function load_profile(){
                     $('input[name="age"]').val(val.age);
                     $('input[name="place_of_birth"]').val(val.place_of_birth);
                     $('input[name="mobile_no"]').val(val.mobile_no);
-                    $('input[name="gender"]').val(val.gender);
+                    $('select[name="gender"]').val(val.gender);
                     $('input[name="religion"]').val(val.religion);
-                    $('input[name="civil_status"]').val(val.civil_status);
+                    $('select[name="civil_status"]').val(val.civil_status);
                     $('input[name="citizenship"]').val(val.citizenship);
                     
                     $('#sel_school_id').val(val.school_id).change()
@@ -394,7 +394,6 @@ $('#btn_bi_update').on('click', function(){
     $('#btn_bi_save').removeClass('d-none');
 })
 $('#btn_bi_save').on('click', function(){ })
-
 $('form#f_applicant_bi').on('submit', function(e){
 
     e.preventDefault();
@@ -457,17 +456,13 @@ $('#txt_civil_status').on('change',function(){
 })
 
 
-
-
-
-
-
-
-// DEGREE
+// PROGRAM
 $('#sel_school').on('change', function(){ load_programs($(this).val()); })
 
+
+
 // nav link function
-$('.nav-link').on('click', function(){
+$('.ld_nav_link').on('click', function(){
 
     load_effect();
 

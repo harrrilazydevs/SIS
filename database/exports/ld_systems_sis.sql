@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2021 at 06:22 PM
+-- Generation Time: Sep 15, 2021 at 08:44 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -32,15 +32,18 @@ CREATE TABLE `applicant_accounts` (
   `email` text NOT NULL,
   `mobile_no` text NOT NULL,
   `password` text NOT NULL,
-  `date_of_application` date NOT NULL
+  `date_of_application` date NOT NULL,
+  `pass_type` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `applicant_accounts`
 --
 
-INSERT INTO `applicant_accounts` (`id`, `email`, `mobile_no`, `password`, `date_of_application`) VALUES
-(3, 'kdlanguido@gmail.com', '6487897897', 'aa4ed9b78a4f4b6200fe4134fa7b31089085868f', '2021-09-07');
+INSERT INTO `applicant_accounts` (`id`, `email`, `mobile_no`, `password`, `date_of_application`, `pass_type`) VALUES
+(3, 'kdlanguido@gmail.com', '6487897897', 'aa4ed9b78a4f4b6200fe4134fa7b31089085868f', '2021-09-07', 1),
+(45, 'alyastubigman@gmail.com', '9055297208', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', '2021-09-15', 1),
+(46, '21-00125.kddlanguido@mlqu.edu.ph', '90550505', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', '2021-09-15', 1);
 
 -- --------------------------------------------------------
 
@@ -53,17 +56,31 @@ CREATE TABLE `applicant_information` (
   `applicant_id` int(11) NOT NULL,
   `program_id` int(11) NOT NULL,
   `lastname` text NOT NULL,
-  `firstname` text NOT NULL,
+  `firstname` text NOT NULL DEFAULT 'Applicant',
   `middlename` text NOT NULL,
-  `status` text NOT NULL
+  `status` text NOT NULL,
+  `suffix` text NOT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `age` int(11) NOT NULL,
+  `place_of_birth` text NOT NULL,
+  `mobile_no` int(11) NOT NULL,
+  `gender` text NOT NULL,
+  `religion` text NOT NULL,
+  `civil_status` text NOT NULL,
+  `citizenship` text NOT NULL,
+  `acr_no` text DEFAULT NULL,
+  `passport_no` text DEFAULT NULL,
+  `spouse` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `applicant_information`
 --
 
-INSERT INTO `applicant_information` (`id`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`) VALUES
-(1, 3, 4, 'languido', 'king dranreb', 'd', 'COMPLETE');
+INSERT INTO `applicant_information` (`id`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`, `religion`, `civil_status`, `citizenship`, `acr_no`, `passport_no`, `spouse`) VALUES
+(1, 3, 4, 'Mlqu', 'Harrri', '', 'INCOMPLETE', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Nigerian', '5050', '5050', 'test'),
+(10, 45, 1, 'Mlqu', 'Harrri', '', '', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Nigerian', '5050', '5050', 'test'),
+(11, 46, 1, 'Mlqu', 'Harrri', '', '', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Nigerian', '5050', '5050', 'test');
 
 -- --------------------------------------------------------
 
@@ -105,13 +122,13 @@ CREATE TABLE `applicant_requirement_records` (
 --
 
 INSERT INTO `applicant_requirement_records` (`id`, `applicant_id`, `requirement_id`, `file_name`, `file_directory`, `date_submitted`, `requirement_status`, `approvers_comment`) VALUES
-(3, 3, 1, 'c2f711cf49fd18c1dbb9ddbe56aa3152fa5c728f.pdf', '../../../storage/files', '2021-09-11', 'SUBMITTED', ''),
-(4, 3, 2, 'c2f711cf49fd18c1dbb9ddbe56aa3152fa5c728f.pdf', '../../../storage/files', '2021-09-11', 'SUBMITTED', ''),
-(5, 3, 3, 'c2f711cf49fd18c1dbb9ddbe56aa3152fa5c728f.pdf', '../../../storage/files', '2021-09-11', 'SUBMITTED', ''),
-(6, 3, 4, 'c2f711cf49fd18c1dbb9ddbe56aa3152fa5c728f.pdf', '../../../storage/files', '2021-09-11', 'SUBMITTED', ''),
-(7, 3, 5, 'c2f711cf49fd18c1dbb9ddbe56aa3152fa5c728f.pdf', '../../../storage/files', '2021-09-11', 'SUBMITTED', ''),
-(8, 3, 6, 'c2f711cf49fd18c1dbb9ddbe56aa3152fa5c728f.pdf', '../../../storage/files', '2021-09-11', 'SUBMITTED', ''),
-(9, 3, 7, 'c2f711cf49fd18c1dbb9ddbe56aa3152fa5c728f.pdf', '../../../storage/files', '2021-09-11', 'SUBMITTED', ''),
+(3, 3, 1, '', '', '0000-00-00', 'PENDING', ''),
+(4, 3, 2, '', '', '0000-00-00', 'PENDING', ''),
+(5, 3, 3, 'test.pdf', '../storage/files/9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08.pdf', '2021-09-13', 'APPROVED', ''),
+(6, 3, 4, 'Enrollment-Status (9).pdf', '../storage/files/b6d5ded22a3a178380df3ff3bce2c72a2e16e06a414ba58ca2cb6829412bab25.pdf', '2021-09-13', 'APPROVED', ''),
+(7, 3, 5, '1st-sem-summary.pdf', '../storage/files/0f5f3dc93cd8fcb3667725a3dacff1395b9c9f696941e2868d4b53fa6a98e1ad.pdf', '2021-09-14', 'SUBMITTED', ''),
+(8, 3, 6, '', '', '0000-00-00', 'PENDING', ''),
+(9, 3, 7, 'test.pdf', '../storage/files/9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08.pdf', '2021-09-14', 'SUBMITTED', ''),
 (10, 3, 8, '', '', '0000-00-00', 'PENDING', ''),
 (11, 3, 9, '', '', '0000-00-00', 'PENDING', ''),
 (12, 3, 10, '', '', '0000-00-00', 'PENDING', '');
@@ -361,13 +378,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `applicant_accounts`
 --
 ALTER TABLE `applicant_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `applicant_information`
 --
 ALTER TABLE `applicant_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `applicant_mailing_address_information`
