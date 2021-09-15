@@ -1,13 +1,10 @@
 <?php
 
-    if (!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
+    !isset($_SESSION) ? session_start() : '';
 
     if (isset($_POST['action']))
     {
-        if( $_POST['token'] === $_SESSION['TOKEN'] )
+        if( $_POST['POSTDATA']['token'] === $_SESSION['TOKEN'] )
         {
             if ($_POST['action'] == "login") {
                 login();
@@ -23,6 +20,7 @@
 
         include_once '../../../database/database.php';
         include_once '../validator.php';
+       
     
         $feedback = [
             [
@@ -49,7 +47,7 @@
     
         $output = array();
 
-        $REQUIRED_FIELDS = [ 'email'=>'email', 'password'=>'' ];
+        $REQUIRED_FIELDS = [ 'token'=>'', 'email'=>'email', 'password'=>'' ];
 
         $validation_result = required_fields_validated($REQUIRED_FIELDS, $_POST['POSTDATA']);
 
@@ -63,7 +61,7 @@
 
             if ( $_RETURN_DATA != 403 )
             {
-                $userId = $_RETURN_DATA[0]['user_id'];
+                $userId = $_RETURN_DATA[0]['id'];
 
                 $userFname = $_RETURN_DATA[0]['firstname'];
 
@@ -71,7 +69,7 @@
 
                 $_SESSION['uid'] = $userId;
 
-                $_SESSION['usn'] = $userFname;
+                $_SESSION['usfn'] = $userFname;
 
                 $_SESSION['usr'] = $userRole;
 
@@ -90,23 +88,17 @@
 
                     $_SESSION['usfn'] = $_RETURN_DATA[0]['firstname'];
 
-                    $_SESSION['usmn'] = $_RETURN_DATA[0]['middlename'];
+                    $_SESSION['upt'] = $_RETURN_DATA[0]['pass_type'];
 
-                    $_SESSION['usln'] = $_RETURN_DATA[0]['lastname'];
-
-                    $_SESSION['ussn'] = $_RETURN_DATA[0]['suffix'];
-
-                    $_SESSION['usmno'] = $_RETURN_DATA[0]['mobile_no'];
-
-                    $_SESSION['uspi'] = $_RETURN_DATA[0]['program_id'];
-
-                    $_SESSION['ussi'] = $_RETURN_DATA[0]['school_id'];
+                    $_SESSION['uem'] = $_RETURN_DATA[0]['email'];
 
                     $_SESSION['usr'] = 'APPLICANT';
 
                     $_SESSION['authenticated'] = true;
 
                     array_push( $output, $feedback[0]);
+                    
+
                 }   
                 else
                 {
@@ -126,9 +118,9 @@
 
         $result = '';
 
-        $sql = 'SELECT a.id as `user_id`, b.firstname, b.middlename, b.lastname, b.suffix, b.mobile_no, b.program_id, c.school_id FROM applicant_accounts a INNER JOIN applicant_information b ON a.id = b.applicant_id INNER JOIN program_list c ON c.id = b.applicant_id WHERE email = ? AND password = ? ';
-
-        ( $db->get_( $sql, [$POST_DATA['email'],sha1($POST_DATA['password'])] ) == 500 ) ?  $output = ['status'=>'500','feedback'=>'Get query fail!'] : $result = $db->get_( $sql, [$POST_DATA['email'],sha1($POST_DATA['password'])] );
+        $sql = 'SELECT email,a.id as `user_id`, a.pass_type, b.firstname, b.program_id, c.school_id FROM applicant_accounts a INNER JOIN applicant_information b ON a.id = b.applicant_id INNER JOIN program_list c ON c.id = b.program_id WHERE email = ? AND password = ? ';
+        
+        $db->get_( $sql, [$POST_DATA['email'],sha1($POST_DATA['password'])] ) === 500 ?  $output = ['status'=>'500','feedback'=>'Get query fail!'] : $result = $db->get_( $sql, [$POST_DATA['email'],sha1($POST_DATA['password'])]);
 
         return $result;
        

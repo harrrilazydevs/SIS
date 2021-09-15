@@ -18,8 +18,8 @@ function send_mail($message, $subject, $sendTo)
 
     $status = '';
 
-    $username = "kdl.071219@gmail.com";
-    $password = "K1ng1n@m0";
+    $username = "ldph.emailer@gmail.com";
+    $password = "k1ng1n@m0";
 
     $mail = new PHPMailer();
     //Set mailer to use smtp

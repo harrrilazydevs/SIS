@@ -5,15 +5,11 @@
     include_once '../func/password_generator.php';
     include_once '../func/emailer.php';
 
-    exec_register('test');
- 
+    !isset($_SESSION) ? session_start() : '';
 
     header('Content-Type: application/json');
 
-    $REQUIRED_FIELDS = [
-        'email'=>'email',
-        'mobile_no'=>'numeric'
-    ];
+    $REQUIRED_FIELDS = [ 'token'=>'', 'email'=>'email', 'mobile_no'=>'numeric' ];
 
     $feedback = [
         [
@@ -41,15 +37,16 @@
 
     ];
 
-    $output = array();
+    $output = [];
 
     $validation_result = required_fields_validated($REQUIRED_FIELDS, $_POST);
 
+    
     if ( $validation_result == 403 )
     {
         $output = array_push( $output, $feedback[1]);
     }
-    else if ( is_array($validation_result) )
+    else if ( !empty($validation_result) )
     {
         foreach ($validation_result as $key => $val) {
 
@@ -69,18 +66,17 @@
     }
     else
     {
+
        if( email_used( $_POST['email'] ) )
        {
            $feedback[1]['name'] = 'email';
            array_push($output, $feedback[1]);
        }
 
-       if( count( $output ) == 0 )
+       if( empty($output) )
        {
            $FORMATTED_DATA = format_user_input($_POST);
 
-           var_dump($FORMATTED_DATA);
-           
            if( exec_register($FORMATTED_DATA) )
            {
                array_push($output, $feedback[0]);
@@ -92,8 +88,9 @@
        }
     }
 
-    regenerate_token();
     echo json_encode($output);
+
+
 
     function email_used( $email ){
 
@@ -123,8 +120,6 @@
 
     }
 
-    
-
     function exec_register( $data ){
 
         $db = new db();
@@ -148,27 +143,50 @@
                                     :date_of_application
                                 )';
 
-                                $x= 0   ;
         $password = generate_password();
 
-        $message = '<br>To complete your registration click here http://192.168.100.34:8000/complete_registration.php?id='.$x;
+        $hash_pass =  sha1($password);
 
-        $stmt = $db->connect()->prepare($sql);
+        $ob = $db->connect();
 
-        $v = $stmt->execute( [ ":email" => $data['email'], ":mobile_no" => $data['mobile_no'], ":password" => sha1($password), ":date_of_application" => date("Y/m/d") ] );
+        $stmt = $ob->prepare($sql);
 
-        var_dump($db->connect()->lastInsertId());
+        $v = $stmt->execute( [ ":email" => $data['email'], ":mobile_no" => $data['mobile_no'], ":password" => $hash_pass, ":date_of_application" => date("Y/m/d") ] );
+
+        $x = $ob->lastInsertId();
+
+        $sql = '
+                INSERT INTO
+                            applicant_information
+                            (
+                                applicant_id,
+                                program_id
+                            )
+                VALUES
+                            (
+                                '.$x.', 
+                                "1"
+                            )';
+
+        $stmt = $ob->prepare($sql);
+
+        $v = $stmt->execute();
 
         if ( $v )
         {   
-            send_mail($message, 'Your password', $data['email']);
+            $message = '<br>To complete your registration click here http://192.168.100.34:8000/login.php';
+            $message .= '<br>Your temporary password is : '.$password;
+            send_mail($message, 'Welcome to MLQU Applicant!', $data['email']);
+            regenerate_token();
 
-            return true;
+            $status = true;
         }
         else
         {
-            return false;
+            $status = false;
         }
+
+        return $status;
     }
 
 

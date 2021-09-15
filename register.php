@@ -1,6 +1,16 @@
 <?php
     $page_title = 'Applicant Register';
     include_once 'inc/header.php'; 
+    include_once 'api/func/authenticate/generate.php'; 
+
+    
+
+    if (!isset($_SESSION)) 
+    { 
+      session_start(); 
+      regenerate_token();
+    }
+
 ?>
 
 <?php include_once 'inc/modals.php'; ?>
@@ -37,7 +47,10 @@
 
             <div class="col">
 
+            <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+
               <label class="mt-2"><i class="fas fa-at fa-fw pr-2"></i> Email</label>
+
               <input type="email" class="form-control" name="email" id="txt_email" required>
 
               <div class="text-right">

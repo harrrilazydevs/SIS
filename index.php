@@ -1,89 +1,83 @@
 <?php
-
   $page_title = 'Dashboard';
 
   include_once 'inc/header.php';
   include_once 'api/func/authenticate/authenticate.php';
 
+  !isset($_SESSION) ? session_start() : '';
   $USER_TYPE = $_SESSION['usr'];
-  // $USER_TYPE = 'REGISTRAR';
 
-  if(!$_SESSION['authenticated']){
-    header('location:login.php');
-  }
+  // check if session started
+
+
+
+
+  // check if nag log in
+  !$_SESSION['authenticated'] ? header('location:login.php') : $_SESSION['upt'] === 0 ? header('location: ../../change_password.php') : '';
+
 
 ?>
 
-
 <div class="content" >
 
-    <?php include_once 'inc/navbar.php'; ?>
+  <?php include_once 'inc/navbar.php'; ?>
 
-    <?php include_once 'inc/modals.php'; ?>
+  <?php include_once 'inc/modals.php'; ?>
 
-    <div class="content-inside">
+  <div class="content-inside">
 
-      <div class="page" id="page_dashboard">
+    <div class="page" id="page_dashboard">
 
-        <?php 
+      <?php 
 
-          if ($USER_TYPE == 'APPLICANT')
-          {
-            include_once 'assets/applicant/dashboard.php'; 
-          }
+        if ($USER_TYPE == 'APPLICANT')
+        {
+          include_once 'assets/applicant/dashboard.php'; 
+        }
 
-          if ($USER_TYPE == 'REGISTRAR')
-          {
-            include_once 'assets/registrar/admission.php'; 
-          }
+        if ($USER_TYPE == 'REGISTRAR')
+        {
+          include_once 'assets/registrar/admission.php'; 
+        }
 
-          if ($USER_TYPE == 'DEVELOPER')
-          {
-            include_once 'assets/administrator/dashboard.php'; 
-          }
-            
-        ?>
-
-      </div>
-
-    
-
-      <!-- REGISTRAR -->
-      <div class="d-none page" id="page_admission">
-
-        <?php 
-
-          if ($USER_TYPE == 'REGISTRAR')
-          {
-            include_once 'assets/registrar/admission.php'; 
-          }
-
-         
-        ?>
-
-      </div>
-
-      <!-- ADMINISTRATOR -->
-      <div class="d-none page" id="page_admission">
-
-        <?php 
-
-          if ($USER_TYPE == 'ADMINISTRATOR')
-          {
-            include_once 'assets/administrator/enrollee_list.php'; 
-          }
-
-         
-        ?>
-
-      </div>
-
-
-
-
-
+        if ($USER_TYPE == 'DEVELOPER')
+        {
+          include_once 'assets/administrator/dashboard.php'; 
+        }
+          
+      ?>
 
     </div>
+
+    <!-- REGISTRAR -->
+    <div class="d-none page" id="page_admission">
+
+      <?php 
+
+        if ($USER_TYPE == 'REGISTRAR')
+        {
+          include_once 'assets/registrar/admission.php'; 
+        }
+        
+      ?>
+
+    </div>
+
+    <!-- ADMINISTRATOR -->
+    <div class="d-none page" id="page_admission">
+
+      <?php 
+
+        if ($USER_TYPE == 'ADMINISTRATOR')
+        {
+          include_once 'assets/administrator/enrollee_list.php'; 
+        }
+        
+      ?>
+
+    </div>
+
+  </div>
   
 </div>
 
