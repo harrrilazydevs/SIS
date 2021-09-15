@@ -1,15 +1,19 @@
 $(document).ready(function(){
 
-    load_effect();
-    load_program_list();    
-    load_requirements();
     prepare_fields();
+    load_effect();
+
+    /* LOADS */
+
+    // $('#md_applicant_first_login').modal('show');
+
+    load_list_school();
+    load_requirements();
     load_profile();
 
+    
 
-$('#md_applicant_first_login').modal('show');
     var page = getCookie('page');
-
     if (page)
     {
         $('.tab-pane').each(function(){
@@ -33,7 +37,6 @@ $('#md_applicant_first_login').modal('show');
             }
         })
     }
-
 })
 
 
@@ -282,7 +285,11 @@ function load_requirements(){
   
         beforeSend: function() { },
   
-        success: function (e) { append_to_table(e) },
+        success: function (e) { 
+            
+            (e !== 403 ? append_to_table(e) : $('#md_applicant_sel_program').modal('show'))
+        
+        },
 
         complete: function () { add_events(); },
   
@@ -367,7 +374,28 @@ function load_profile(){
     }
 }
 
-function load_programs(school_id){ $.ajax({ type: 'post', url: 'api/general/get_program_list.php', data: {id:school_id}, datatype: 'json', success: function (e) { var output =''; $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); $('#sel_program').empty(); $('#sel_program').append(output);  }, error: function(xhr) { display_error() }, }); }
+function load_list_school(){
+    $.ajax({ 
+    type: 'post', 
+    url: 'api/general/get_school_list.php', 
+    datatype: 'json', 
+    success: function (e){ 
+        var output =''; 
+        $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); 
+        $('#sel_school').empty(); $('#sel_school').append(output);  
+    }, 
+    error: function(xhr) { 
+        display_error() }, 
+    }); 
+}
+
+
+function load_programs(school_id){ 
+    $.ajax({ type: 'post', 
+    url: 'api/general/get_program_list.php', 
+    data: {id:school_id}, 
+    datatype: 'json', success: function (e) 
+    { var output =''; $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); $('#sel_program').empty(); $('#sel_program').append(output);  }, error: function(xhr) { display_error() }, }); }
 
 
 
@@ -387,17 +415,53 @@ function prepare_fields(){
 }
 
 
+// SET PROGRAM
+$('form#form_applicant_set_program').on('submit', function(e){
+    e.preventDefault();
+    data = $('#form_applicant_set_program').serializeArray();
+    data.push({name: 'action', value:'post'})
+    $.ajax({
+        type: 'post',
+        url: 'api/dashboard/applicant/profile.php',
+        data:  data,
+        dataType: 'json',
+        beforeSend: function() {},
+        success: function (e) {
+
+            if (e == 200)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_success .modal-body p').text('Profile updated successfully.')
+                $('#modal_success .modal-footer button').text('Close');
+                $('#modal_success .modal-footer button').addClass('click_reload');
+                $('#modal_success').modal('show')
+            }
+            if (e.status == 403 || e.status == 400 || e.status == 500)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_fail .modal-body p').text(e.feedback)
+                $('#modal_fail .modal-footer button').text('Close');
+                $('#modal_fail').modal('show')
+            }
+        },
+        complete: function() {
+
+          
+        },
+        error: function(xhr) { display_error() },
+    });
+})
+
+
 // PROFILE
 $('#btn_bi_update').on('click', function(){
     $('.form_bi').each(function(){ $(this).attr('readonly',false) })
     $(this).addClass('d-none');
     $('#btn_bi_save').removeClass('d-none');
 })
-$('#btn_bi_save').on('click', function(){ })
 $('form#f_applicant_bi').on('submit', function(e){
 
     e.preventDefault();
-
     data = $('#f_applicant_bi').serializeArray();
     data.push({name: 'action', value:'post'})
     $.ajax({
@@ -443,6 +507,8 @@ $('#txt_citizenship').on('change',function(){
     {
         $('#div_acr').addClass('d-none')
         $('#div_passport').addClass('d-none')
+        $('#div_acr').val('')
+        $('#div_passport').val('')
     }
 })
 $('#txt_civil_status').on('change',function(){
