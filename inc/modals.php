@@ -377,6 +377,43 @@
         </div>
     </div>
 
+     <!-- SELECT PROGRAM MODAL -->
+     <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_sel_program">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="">
+                <div class="modal-header text-center pt-3 pb-0">
+                    <h6> Choose your Program </h6>
+                </div>
+
+                <form id="form_applicant_set_program">
+
+                    <div class="modal-body">
+
+                        <label class="pt-1"> School of </label>
+                        <select id="sel_school"  class="form-control form-control-sm"></select>
+
+                        <label class="pt-1 mt-3"> Program </label>
+                        <select name="program_id" id="sel_program"  class="form-control form-control-sm"></select>
+                    
+                    </div>
+
+                    <div class="modal-footer text-center">
+                        <div class="row">
+                            <div class="col px-0 btn-full-width">
+                                <button class="btn btn-sm btn-primary" type="button" id="btn_submit" data-dismiss="modal">Update</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
     
     <!-- <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_view_requirement">

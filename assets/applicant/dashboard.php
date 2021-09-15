@@ -21,7 +21,7 @@
     <div class="row border-top">
 
         <!--REQUIREMENTS CONTENT -->
-        <div class="col-lg-5 pt-lg-4 pt-3 px-0 mb-4  " style="font-size: 12pt;"> 
+        <div class="col-lg-5 pt-lg-4 pt-3 px-0 mb-5  " style="font-size: 12pt;"> 
 
             <h6>Requirements List</h6>
 
@@ -38,20 +38,15 @@
                             <h4 class="text-success pb-0 mb-1"><i class="far fa-calendar-alt pr-2 text-body"></i>3 Days</h4>
                             <p style="font-size: 10pt !important;" class="py-0"> <small>To Complete Application</small></p>
                         </div>
-
-                      
                         <p class="font-italic mb-2">  <small>Guidelines:</small></p>
                             <p style="font-size: 10pt !important;" class="py-0 pl-2 mb-1"> Please upload scanned documents in PDF format.</p>
                             <p style="font-size: 10pt !important;" class="py-0 pl-2 mt-1"> For photo, please upload a clear copy.</p>
-
-                            
-                            
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="table-responsive mt-3  border-right border-left border-bottom rounded">
+            <div class="table-responsive mt-2 border-right border-left border-bottom rounded">
                 <table class="table table-sm" id="tbl_requirement">
                     <thead style="font-size: 10pt;" class="border-bottom">
                     <tr>
@@ -63,6 +58,7 @@
                     <tbody  style="font-size: 10pt;"></tbody>
                 </table>
             </div>
+         
 
             <div class="border-right border-left border-bottom shadow-sm rounded text-right pr-2 mt-2 pb-0">
                 <label class="pl-lg-4 pl-2" style="font-size: 9pt !important;">SUBMITTED:</label>
@@ -242,6 +238,22 @@
                             <form id="f_applicant_degree">
 
                                 <div class="row mt-4">
+                                        
+                                    <div class="col-lg-2">
+                                    
+                                        <label class="pt-1"> School </label>
+                                    
+                                    </div>
+                                    
+                                    <div class="col-lg-10 text-left"> 
+                                    
+                                        <select id="sel_school"  class="form-control form-control-sm"></select>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row mt-4">
                                     
                                     <div class="col-lg-2">
                                         
@@ -257,31 +269,18 @@
                                     
                                 </div>
 
-                                
                                 <div class="row mt-4">
-                                    
-                                    <div class="col-lg-2">
-                                    
-                                        <label class="pt-1"> School of </label>
-                                    
-                                    </div>
-                                    
-                                    <div class="col-lg-10 text-left"> 
-                                    
-                                        <select id="sel_school"  class="form-control form-control-sm"></select>
-                                        
-                                    </div>
-                                    
-                                </div>
 
-                                <div class="row mt-4">
                                     <div class="col text-right">
-                                        <button class="btn btn-secondary btn-sm">Update</button>
-                                    </div>
-                                </div>
 
+                                        <button class="btn btn-secondary btn-sm">Update</button>
+
+                                    </div>
+                                    
+                                </div>
 
                             </form>
+
                         </div>
                          
                         <!-- Basic Information -->

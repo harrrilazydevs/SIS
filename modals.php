@@ -82,3 +82,32 @@
     </div>
 
 </div>
+
+
+
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_big_modal">
+            
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+    
+        <div class="modal-content">
+    
+            <div class="modal-body text-center py-5">
+    
+                <p style="font-size: 15pt;"></p>
+    
+                <i class="far fa-times-circle fa-2x" style="color: red !important;"></i>
+    
+            </div>
+    
+            <div class="modal-footer text-center">
+    
+               <button class="btn btn-secondary" data-dismiss="modal"></button>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+
+</div>
