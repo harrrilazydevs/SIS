@@ -1,23 +1,25 @@
 <?php
 
+include_once 'authenticate/generate.php';
+
 function required_fields_validated( $REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = array(), $FILEEXTS = array()){
 
-    $FEEDBACK = array();
-
     $STATUS = 0;
-
+    $FEEDBACK = [];
     $POST_DATA_KEYS = array_keys( $_POSTDATA );
-
     $REQUIRED_DATA_KEYS = array_keys( $REQUIRED_FIELDS );
 
-    if( !isset_fields( $POST_DATA_KEYS, $REQUIRED_DATA_KEYS ) )
-    {
-        $STATUS = 403;
-    }
-    else
-    {
-        foreach ($REQUIRED_FIELDS as $key => $v) {
+    // check if token matches
+    $_SESSION['TOKEN'] !== $_POSTDATA['token'] ? $STATUS = 400 : regenerate_token();
 
+    // check if fields are satisfied
+    !isset_fields( $POST_DATA_KEYS, $REQUIRED_DATA_KEYS ) ? $STATUS = 403 : '';
+
+    // if status=0 status conditions are satisfied
+    if ($STATUS === 0){
+
+        // validate all fields
+        foreach ($REQUIRED_FIELDS as $key => $v) {
             if ( $v == 'alphanum' )
             {
                 if( ctype_alnum( $_POSTDATA[$key] ) === false || is_numeric( $_POSTDATA[$key] ))
@@ -41,7 +43,7 @@ function required_fields_validated( $REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = a
             }
             else if ( $v == 'alpha' )
             {
-                if ( ctype_alpha($_POSTDATA[$key]) === false )
+                if ( ctype_alpha(str_replace(' ','',$_POSTDATA[$key])) === false )
                 {
                     array_push($FEEDBACK, [$key, 'input must be letters.']);
                 }
@@ -65,24 +67,12 @@ function required_fields_validated( $REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = a
                 }
             }
         }
+
+        // check if no feedback from validation
+        isset($FEEDBACK) ? $STATUS = $FEEDBACK : '';
     }
 
-    if( $STATUS == 403 )
-    {
-        $toReturn = 403;
-    }
-    else
-    {
-        if ( count( $FEEDBACK ) > 0 )
-        {
-            $toReturn = $FEEDBACK;
-        }
-        else
-        {
-            $toReturn = 0;
-        }
-    }
-    return $toReturn;
+    return $STATUS;
 }
 
 function isset_fields($b, $a) {

@@ -1,8 +1,44 @@
 $(document).ready(function(){
-    load_data()
-    prepare_fields()
-    // calculate_progress('pg_profile',0, 0);
+
+    load_effect();
+    // load_school_list();
+    load_requirements();
+    prepare_fields();
+    load_profile();
+
+
+$('#md_applicant_first_login').modal('show');
+    var page = getCookie('page');
+
+    if (page)
+    {
+        $('.tab-pane').each(function(){
+            if ($(this).attr('id') === page){
+                $(this).addClass('show')
+                $(this).addClass('active')
+            }
+            else{
+                $(this).removeClass('show')
+                $(this).removeClass('active')
+            }
+        })
+        $('.nav-link').each(function(){
+            if ($(this).attr('href') === '#'+page){
+                $(this).addClass('show')
+                $(this).addClass('active')
+            }
+            else{
+                $(this).removeClass('show')
+                $(this).removeClass('active')
+            }
+        })
+    }
+
 })
+
+
+// variables
+var profile_tab = false;
 
 
 // REQUIREMENTS
@@ -77,7 +113,7 @@ function add_events(){
                 }
             },
             complete: function() {
-                load_data();
+                load_requirements();
                 document.getElementById("applicant_post_file").value=null; 
                 location.reload();
             },
@@ -112,7 +148,7 @@ function add_events(){
                 }
             },
             complete: function() {
-                load_data();
+                load_requirements();
                 document.getElementById("applicant_post_file").value=null;  
                 location.reload();
 
@@ -228,10 +264,6 @@ function add_events(){
         $('#form_modal_applicant_remove_requirement #txt_id').val($(this).attr('aria-id'))
         $('#md_confirm').modal('show')
     })
-
-    
-
-
 }
 
 function load_requirements(){
@@ -260,57 +292,129 @@ function load_requirements(){
 
 }
 
-function load_school_list(){ $.ajax({ type: 'post', url: 'api/general/get_school_list.php', datatype: 'json', success: function (e) { var output =''; $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); $('#sel_school').append(output); }, error: function(xhr) { display_error() }, }); }
+function load_profile(){
+
+    if($('input[name="firstname"]').val() === ""){
+
+        let data = [];
+        data.push({name: 'action', value:'get'},{name:'id', value:$('.user_info').attr('id')})
+        $.ajax({
+            type: 'post',
+            url: 'api/dashboard/applicant/profile.php',
+            data:  data,
+            dataType: 'json',
+            beforeSend: function() {},
+            success: function (e) {
+                
+                $.each(e, function(key, val){
+                    $('input[name="firstname"]').val(val.firstname);
+                    $('input[name="middlename"]').val(val.middlename);
+                    $('input[name="lastname"]').val(val.lastname);
+                    $('input[name="suffix"]').val(val.suffix);
+                    $('input[name="date_of_birth"]').val(val.date_of_birth);
+                    $('input[name="age"]').val(val.age);
+                    $('input[name="place_of_birth"]').val(val.place_of_birth);
+                    $('input[name="mobile_no"]').val(val.mobile_no);
+                    $('input[name="gender"]').val(val.gender);
+                    $('input[name="religion"]').val(val.religion);
+                    $('input[name="civil_status"]').val(val.civil_status);
+                    $('input[name="citizenship"]').val(val.citizenship);
+                    
+                    $('#sel_school_id').val(val.school_id).change()
+                    $('#sel_program').val(val.program_id).change()
+
+                    // foreign or filipino
+                    if (val.citizenship.toLowerCase() !== 'filipino'){
+                        $('#div_acr').removeClass('d-none')
+                        $('#div_passport').removeClass('d-none')
+
+                        $('input[name="acr_no"]').val(val.acr_no);
+                        $('input[name="passport_no"]').val(val.passport_no);
+                    }
+                    else
+                    {
+                        $('#div_acr').addClass('d-none')
+                        $('#div_passport').addClass('d-none')
+                    }
+
+                    // single or married
+                    if (val.civil_status.toLowerCase() !== 'single'){
+                        $('#div_spouse').removeClass('d-none')
+                        $('input[name="spouse"]').val(val.spouse);
+                    }
+                    else{
+                        $('#div_spouse').addClass('d-none')
+                    }
+
+                })
+
+                if (e.status == 403 || e.status == 400 || e.status == 500)
+                {
+                    $('#md_applicant_post_requirement').modal('hide')
+                    $('#modal_fail .modal-body p').text(e.feedback)
+                    $('#modal_fail .modal-footer button').text('Close');
+                    $('#modal_fail').modal('show')
+                }
+                else
+                {
+                    
+                }
+            },
+            complete: function() {},
+            error: function(xhr) { display_error() },
+        });
+
+    }
+}
 
 function load_programs(school_id){ $.ajax({ type: 'post', url: 'api/general/get_program_list.php', data: {id:school_id}, datatype: 'json', success: function (e) { var output =''; $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); $('#sel_program').empty(); $('#sel_program').append(output);  }, error: function(xhr) { display_error() }, }); }
 
-function load_data(){
-
-    load_requirements()
-    load_school_list();
 
 
-}
+// function load_tab_content(page){
+//     load_school_list();
+//     load_profile();
+// }
+
 
 
 // TABS
 function prepare_fields(){
 
-    $('.form_bi').each(function(){
-
-        $(this).attr('readonly','readonly')
-
-    })
+    // set read-only pag kaload
+    $('.form_bi').each(function(){ $(this).attr('readonly','readonly') })
 
 }
 
 
-// BASIC INFORMATION
+// PROFILE
 $('#btn_bi_update').on('click', function(){
     $('.form_bi').each(function(){ $(this).attr('readonly',false) })
     $(this).addClass('d-none');
     $('#btn_bi_save').removeClass('d-none');
 })
-$('#btn_bi_save').on('click', function(){
+$('#btn_bi_save').on('click', function(){ })
 
-})
 $('form#f_applicant_bi').on('submit', function(e){
+
     e.preventDefault();
+
+    data = $('#f_applicant_bi').serializeArray();
+    data.push({name: 'action', value:'post'})
     $.ajax({
         type: 'post',
-        url: 'api/dashboard/applicant/post_basic_information.php',
-        data:  new FormData(this),
+        url: 'api/dashboard/applicant/profile.php',
+        data:  data,
         dataType: 'json',
-        contentType: false,
-        cache: false,
-        processData: false,
         beforeSend: function() {},
         success: function (e) {
-            if (e.status == 200)
+
+            if (e == 200)
             {
                 $('#md_applicant_post_requirement').modal('hide')
-                $('#modal_success .modal-body p').text(e.feedback)
+                $('#modal_success .modal-body p').text('Profile updated successfully.')
                 $('#modal_success .modal-footer button').text('Close');
+                $('#modal_success .modal-footer button').addClass('click_reload');
                 $('#modal_success').modal('show')
             }
             if (e.status == 403 || e.status == 400 || e.status == 500)
@@ -322,13 +426,69 @@ $('form#f_applicant_bi').on('submit', function(e){
             }
         },
         complete: function() {
-            load_data();
-            document.getElementById("applicant_post_file").value=null; 
+
+            document.cookie = "page=nav_profile";
+          
         },
         error: function(xhr) { display_error() },
     });
 })
+$('#txt_citizenship').on('change',function(){
+    if($(this).val().toLowerCase() !== 'filipino')
+    {
+        $('#md_not_filipino').modal('show')
+        $('#div_acr').removeClass('d-none')
+        $('#div_passport').removeClass('d-none')
+    }
+    else
+    {
+        $('#div_acr').addClass('d-none')
+        $('#div_passport').addClass('d-none')
+    }
+})
+$('#txt_civil_status').on('change',function(){
+    if($(this).val().toLowerCase() === 'married')
+    {
+        $('#div_spouse').removeClass('d-none')
+    }
+    else{
+        $('#div_spouse').addClass('d-none')
+    }
+})
+
+
+
+
+
+
 
 
 // DEGREE
 $('#sel_school').on('change', function(){ load_programs($(this).val()); })
+
+// nav link function
+$('.nav-link').on('click', function(){
+
+    load_effect();
+
+    // set cookie for page 
+    document.cookie = "page="+$(this).attr('href').substring(1);
+
+    if( $(this).attr('href').substring(1) === 'nav_profile'){
+        load_profile()
+    }
+
+
+})
+
+function load_effect(){
+
+    $('.tab_loading').removeClass('d-none');
+    $('.tab_content').addClass('d-none');
+
+    setTimeout(function(){
+        $('.tab_loading').addClass('d-none');
+        $('.tab_content').removeClass('d-none');
+    },700)
+
+}

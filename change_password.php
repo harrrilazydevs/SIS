@@ -6,9 +6,9 @@
 
     regenerate_token();
 
-    if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']){
-      header('location:index.php');
-    }
+    // if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']){
+    //   header('location:index.php');
+    // }
 
 ?>
 
@@ -18,7 +18,7 @@
 
     <div class="container my-5">
 
-      <div class="form_container_girly mx-auto px-4 py-4" style="width: max-content !important;">
+      <div class="form_container mx-auto px-4 py-4" style="width: max-content !important;">
 
         <div class="row">
 
@@ -30,11 +30,11 @@
           
         </div>
 
-        <form method="post" id="form_login">
+        <form method="post" id="form_change_password">
           
         <div class="row mt-3">
           <div class="col text-center ">
-            <h5> Applicant Login</h5>
+            <h5> Change Password</h5>
           </div>
         </div>
 
@@ -44,8 +44,11 @@
 
             <input type="hidden" class="form-control" id="txt_token" value="<?php echo $_SESSION['TOKEN'];?>">
 
-            <label class="mt-2"><i class="fas fa-at fa-fw pr-2"></i> Email</label>
-            <input type="email" class="form-control" name="email" id="txt_email" required>
+            <input type="hidden" name="id" id="txt_id" class="form-control" value="<?php echo $_SESSION['uid'];?>">
+
+            <label class="mt-2"></i> Password</label> 
+            <input type="text" name="password" id="txt_password" maxlength="32" class="input-style form-control py-0" aria-label="#lbl_mobileno" style="border-top-left-radius: 0px !important; border-bottom-left-radius: 0px !important;" aria-feedback="fb_mobile_no">
+
         
           </div>
           
@@ -55,12 +58,8 @@
 
           <div class="col">
 
-            <label class="mt-2"><i class="fas fa-lock fa-fw pr-2"></i> Password</label>
-            <input type="password" name="password" id="txt_password" maxlength="32" class="input-style form-control py-0" aria-label="#lbl_mobileno" style="border-top-left-radius: 0px !important; border-bottom-left-radius: 0px !important;" aria-feedback="fb_mobile_no">
-
-            <div class="text-right">
-            <a href="terms_conditions.html">Forgot Password</a>
-            </div>
+            <label class="mt-2">Confirm Password</label>
+            <input type="text" id="txt_password2" maxlength="32" class="input-style form-control py-0" aria-label="#lbl_mobileno" style="border-top-left-radius: 0px !important; border-bottom-left-radius: 0px !important;" aria-feedback="fb_mobile_no">
 
           </div>
           
@@ -70,25 +69,13 @@
 
           <div class="col text-center mt-4" style="width: 30vw;">
 
-            <button class="btn">Log In</button>
+            <button class="btn" type="submit">Proceed</button>
                       
           </div>
           
         </div>
 
         </form>
-
-        <div class="row">
-
-          <div class="col text-center mt-1" style="width: 30vw; ">
-
-            <a for="">Not yet Registered?</a>
-            <a href="register.php" style="color:#E6E6E6 !important;"><u> Click here </u></a>
-                    
-          </div>
-
-        </div>
-
 
       </div>
     
@@ -103,6 +90,7 @@
 
 <?php include_once 'inc/footer.php'; ?>
 
+<script src="libraries/js/dashboard/applicant/change_password_function.js"></script>
 
 <footer class="footer bg-main-color text-light text-center py-2" style="font-size: 10pt !Important;">
     <p>

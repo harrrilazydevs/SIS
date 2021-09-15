@@ -2,12 +2,6 @@ $('.ld-nav-item').on('click', function(){
     showPage($(this).attr('aria-page'))
 })
 
-
-// window.onbeforeunload = function(e) {
-//     return 'Dialog text here.';
-// };
-
-
 $(document).ready(function(){
 
     // prepareUserPage();
@@ -39,7 +33,6 @@ $('#btn_logout').on('click',function(){
       });
 })
 
-
 function showPage(pagename){
 
     $('.page').each(function(){
@@ -56,7 +49,3 @@ function showPage(pagename){
     })
 
 }
-
-// function prepareUserPage(test){
-//     console.log(test)
-// }

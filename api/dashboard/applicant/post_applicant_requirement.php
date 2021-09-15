@@ -63,6 +63,6 @@
         $output = $feedback[1];
     }
 
-    regenerate_token();
+    
 
     echo json_encode($output);

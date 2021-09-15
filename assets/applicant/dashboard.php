@@ -1,3 +1,4 @@
+
 <div class="container-fluid px-lg-4" id="page-dashboard">
 
     <div class="row mb-1">
@@ -28,12 +29,22 @@
                 <div class="card-body pb-0">
                     <div class="row px-0 py-0">
                         <div class="col-lg-1 col-2  text-primary pb-2 pt-0">  <i class="fas fa-exclamation-circle"></i></div>
-                        <div class="col-lg-11 col-10 pl-0 pl-lg-0 pt-1" ><h6 style="font-size: 10pt !Important;">Note</h6></div>
+                        <div class="col-lg-11 col-10 pl-0 pl-lg-0 pt-1" ><h6 style="font-size: 10pt !Important;">Reminders</h6></div>
                     </div>
                     <div class=" row ">
                         <div class="col border-top pt-3 pb-0" >
 
-                            <p style="font-size: 10pt !important;" class="py-0"> You can only upload documents in PDF format .</p>
+                        <div class="text-right">
+                            <h4 class="text-success pb-0 mb-1"><i class="far fa-calendar-alt pr-2 text-body"></i>3 Days</h4>
+                            <p style="font-size: 10pt !important;" class="py-0"> <small>To Complete Application</small></p>
+                        </div>
+
+                      
+                        <p class="font-italic mb-2">  <small>Guidelines:</small></p>
+                            <p style="font-size: 10pt !important;" class="py-0 pl-2 mb-1"> Please upload scanned documents in PDF format.</p>
+                            <p style="font-size: 10pt !important;" class="py-0 pl-2 mt-1"> For photo, please upload a clear copy.</p>
+
+                            
                             
                         </div>
                     </div>
@@ -76,10 +87,10 @@
                             <a class="nav-link active" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_status" role="tab">Status</a>
                             <a class="nav-link" data-toggle="tab" href="#nav_profile" role="tab">Profile</a>
                             <a class="nav-link" style="font-size: 9pt; !important" data-toggle="tab" href="#nav_application_degree" role="tab">Degree</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-mailingaddress" role="tab">Address</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-familyrecord" role="tab">Family</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-scholasticrecord" role="tab">Scholastic</a>
-                            <a class="nav-link" data-toggle="tab" href="#nav-otherinformation" role="tab">Other</a>
+                            <a class="nav-link" data-toggle="tab" href="#nav-mailing_address" role="tab">Address</a>
+                            <a class="nav-link" data-toggle="tab" href="#nav-family_record" role="tab">Family</a>
+                            <a class="nav-link" data-toggle="tab" href="#nav-scholastic_record" role="tab">Scholastic</a>
+                            <a class="nav-link" data-toggle="tab" href="#nav-other_information" role="tab">Other</a>
                         </div>
                     </nav>
 
@@ -88,126 +99,132 @@
                         <!-- Application Status -->
                         <div class="tab-pane fade show active container" id="nav_application_status" role="tabpanel">
 
-                            <div class="row">
-                                <div class="col border-bottom text-secondary pb-2">
-                                    <h6 class=" my-0">Application Status</h6>
-                                    <small class="text-secondary my-0">Summary of your application progress</small>
-                                </div>
-                            </div>
-                                
-
-                            <div class="row mt-4">
-                                
-                                <div class="col">
-
-                                    <label class="pt-1"><i class="fas fa-tasks fa-fw"></i> Requirements </label>
-                          
-                                        <div class="progress" style="background-color: #E9ECEF; " >
-
-                                            <div class=" py-2 " style="height: 1rem;" id="pg_requirements"></div>
-                                        
-                                        </div>
-                                  
-                                </div>
-                             
+                            <div class="tab_loading text-center text-secondary mt-2">
+                                Loading ...
                             </div>
 
-                            <div class="row mt-2">
+                            <div class="tab_content d-none">
+
+                                <div class="row">
+                                    <div class="col border-bottom text-secondary pb-2">
+                                        <h6 class=" my-0">Application Status</h6>
+                                        <small class="text-secondary my-0">Summary of your application progress</small>
+                                    </div>
+                                </div>
+                                    
+
+                                <div class="row mt-4">
+                                    
+                                    <div class="col">
+
+                                        <label class="pt-1"><i class="fas fa-tasks fa-fw"></i> Requirements </label>
                             
-                                <div class="col">
+                                            <div class="progress" style="background-color: #E9ECEF; " >
 
-                                    <label class="pt-1"><i class="fas fa-address-card fa-fw"></i> Profile </label>
+                                                <div class=" py-2 " style="height: 1rem;" id="pg_requirements"></div>
+                                            
+                                            </div>
                                     
-                                        <div class="progress" style="background-color: #E9ECEF;">
+                                    </div>
+                                
+                                </div>
 
-                                        <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_profile"></div>
+                                <div class="row mt-2">
+                                
+                                    <div class="col">
+
+                                        <label class="pt-1"><i class="fas fa-address-card fa-fw"></i> Profile </label>
+                                        
+                                            <div class="progress" style="background-color: #E9ECEF;">
+
+                                            <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_profile"></div>
+                                            
+                                        </div>
                                         
                                     </div>
                                     
                                 </div>
-                                
-                            </div>
 
-                            <div class="row mt-2">
-                                
-                                <div class="col">
-
-                                    <label class="pt-1"><i class="fas fa-user-graduate  fa-fw"></i> Degree </label>
+                                <div class="row mt-2">
                                     
-                                        <div class="progress" style="background-color: #E9ECEF;">
+                                    <div class="col">
 
-                                        <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_degree"></div>
+                                        <label class="pt-1"><i class="fas fa-user-graduate  fa-fw"></i> Degree </label>
+                                        
+                                            <div class="progress" style="background-color: #E9ECEF;">
+
+                                            <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_degree"></div>
+                                            
+                                        </div>
                                         
                                     </div>
                                     
                                 </div>
-                                
-                            </div>
 
-                        
-
-                            <div class="row mt-2">
-                                
-                                <div class="col">
-
-                                    <label class="pt-1"><i class="fas fa-house-user fa-fw"></i> Address </label>
+                                <div class="row mt-2">
                                     
-                                        <div class="progress" style="background-color: #E9ECEF;">
+                                    <div class="col">
 
-                                        <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_address"></div>
+                                        <label class="pt-1"><i class="fas fa-house-user fa-fw"></i> Address </label>
+                                        
+                                            <div class="progress" style="background-color: #E9ECEF;">
+
+                                            <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_address"></div>
+                                            
+                                        </div>
                                         
                                     </div>
                                     
                                 </div>
-                                
-                            </div>
 
-                            <div class="row mt-2">
-                                
-                                <div class="col">
-
-                                    <label class="pt-1"><i class="fas fa-user-friends fa-fw"></i> Family </label>
+                                <div class="row mt-2">
                                     
-                                        <div class="progress" style="background-color: #E9ECEF;">
+                                    <div class="col">
 
-                                        <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_family"></div>
+                                        <label class="pt-1"><i class="fas fa-user-friends fa-fw"></i> Family </label>
+                                        
+                                            <div class="progress" style="background-color: #E9ECEF;">
+
+                                            <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_family"></div>
+                                            
+                                        </div>
                                         
                                     </div>
                                     
                                 </div>
-                                
-                            </div>
 
-                            <div class="row mt-2">
-                                
-                                <div class="col">
-
-                                    <label class="pt-1"><i class="fas fa-graduation-cap fa-fw"></i> Scholastic </label>
+                                <div class="row mt-2">
                                     
-                                        <div class="progress" style="background-color: #E9ECEF;">
+                                    <div class="col">
 
-                                        <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_scholastic"></div>
+                                        <label class="pt-1"><i class="fas fa-graduation-cap fa-fw"></i> Scholastic </label>
+                                        
+                                            <div class="progress" style="background-color: #E9ECEF;">
+
+                                            <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_scholastic"></div>
+                                            
+                                        </div>
                                         
                                     </div>
                                     
                                 </div>
-                                
-                            </div>
 
-                            <div class="row mt-2 mb-3">
-                                
-                                <div class="col">
-
-                                    <label class="pt-1"><i class="fas fa-sticky-note fa-fw"></i> Other </label>
+                                <div class="row mt-2 mb-3">
                                     
-                                        <div class="progress" style="background-color: #E9ECEF;">
+                                    <div class="col">
 
-                                        <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_other"></div>
+                                        <label class="pt-1"><i class="fas fa-sticky-note fa-fw"></i> Other </label>
+                                        
+                                            <div class="progress" style="background-color: #E9ECEF;">
+
+                                            <div class="progress py-2 text-white" style="background-color: #007BFF; height: 1rem;" id="pg_other"></div>
+                                            
+                                        </div>
                                         
                                     </div>
                                     
                                 </div>
-                                
+
                             </div>
 
                         </div>
@@ -222,303 +239,363 @@
                                
                             </div>
 
-                            <div class="row mt-4">
-                                 
-                                 <div class="col-lg-2">
-                                 
-                                     <label class="pt-1"> School of </label>
-                                 
-                                 </div>
-                                 
-                                 <div class="col-lg-10 text-left"> 
-                                 
-                                     <select id="sel_school" aria-selected="<?php echo $_SESSION['ussi']?>" class="form-control form-control-sm"></select>
-                                     
-                                 </div>
-                             </div>
+                            <form id="f_applicant_degree">
+                                <div class="row mt-4">
+                                    
+                                    <div class="col-lg-2">
+                                    
+                                        <label class="pt-1"> School of </label>
+                                    
+                                    </div>
+                                    
+                                    <div class="col-lg-10 text-left"> 
+                                    
+                                        <select id="sel_school"  class="form-control form-control-sm"></select>
+                                        
+                                    </div>
+                                </div>
 
-                             <div class="row mt-4">
-                                 
-                                 <div class="col-lg-2">
-                                     
-                                     <label class="pt-1"> Program </label>
-                                 
-                                 </div>
-                                 
-                                 <div class="col-lg-10 text-left"> 
-                                 
-                                     <select name="" id="sel_program" aria-selected="<?php echo $_SESSION['uspi']?>" class="form-control form-control-sm"></select>
-                                 
-                                 </div>
-                                 
-                             </div>
+                                <div class="row mt-4">
+                                    
+                                    <div class="col-lg-2">
+                                        
+                                        <label class="pt-1"> Program </label>
+                                    
+                                    </div>
+                                    
+                                    <div class="col-lg-10 text-left"> 
+                                    
+                                        <select name="program_id" id="sel_program"  class="form-control form-control-sm"></select>
+                                    
+                                    </div>
+                                    
+                                </div>
 
+                                <div class="row mt-4">
+                                    <div class="col text-right">
+                                        <button class="btn btn-secondary btn-sm">Update</button>
+                                    </div>
+                                </div>
+
+
+                            </form>
                         </div>
                          
                         <!-- Basic Information -->
                         <div class="tab-pane fade container tab_container mb-3 " id="nav_profile" role="tabpanel">
 
-                            <form id="f_applicant_bi">
+                            <div class="tab_loading text-center text-secondary mt-2">
+                                Loading ...
+                            </div>
 
-                                <input type="hidden" value="<?php echo $_SESSION['TOKEN']?>" name='token'>
+                            <div class="tab_content d-none">
+                                <form id="f_applicant_bi">
+
+                                    <input type="hidden" value="<?php echo $_SESSION['TOKEN']?>" name='token'>
 
 
-                                <div class="border-bottom text-secondary">
+                                    <div class="border-bottom text-secondary">
 
-                                    <div class="row py-2">
-                                        <div class="col-lg-4 ">
+                                        <div class="row py-2">
+                                            <div class="col-lg-4 ">
 
-                                            <h6>Applicant Information</h6>
+                                                <h6>Applicant Information</h6>
+
+                                            </div>
+                                            <div class="col-8 pl-0 text-left"> </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row mt-4">
+                                        <div class="col-lg-2">
+                                            <label class="pt-1"> Application No</label>
+                                        </div>
+                                        <div class="col-lg-10 text-left"> 
+                                        <h5 id="txt_applicant_id"><?php echo $_SESSION['uid']?></h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-4">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> First Name</label> <label class="text-danger font-weight-bold">*</label>
 
                                         </div>
-                                        <div class="col-8 pl-0 text-left"> </div>
-                                    </div>
 
-                                </div>
+                                        <div class="col-lg-10 ">
 
-                                <div class="row mt-4">
-                                    <div class="col-lg-2">
-                                        <label class="pt-1"> Applicant ID</label>
-                                    </div>
-                                    <div class="col-lg-10 text-left"> 
-                                     <h5><?php echo $_SESSION['uid']?></h5>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
-
-                                        <label class="pt-1"> First Name </label>
-
-                                    </div>
-
-                                    <div class="col-lg-10 ">
-
-                                        <input class="form-control form-control-sm form_bi" name="firstname" type="text" value="<?php echo $_SESSION['usfn']?>">
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
-
-                                        <label class="pt-1"> Middle Name </label>
-
-                                    </div>
-
-                                    <div class="col-lg-10 ">
-
-                                        <input class="form-control form-control-sm form_bi" name="middlename" type="text" value="<?php echo $_SESSION['usmn']?>">
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
-
-                                        <label class="pt-1"> Last Name </label>       
-
-                                    </div>
-
-                                    <div class="col-lg-10 ">
-
-                                        <input class=" form-control form-control-sm form_bi" name="lastname" type="text" value="<?php echo $_SESSION['usln']?>">
-
-                                    </div>
-
-                                </div> 
-
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
-
-                                        <label class="pt-1"> Suffix</label> 
-
-                                    </div>
-
-                                    <div class="col-lg-10  pl-3">
-
-                                        <input class="form-control form-control-sm form_bi" name="suffix" type="text" value="<?php echo $_SESSION['ussn']?>">
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
-
-                                        <label class="pt-1">Mobile No </label>
-                                    
-                                    </div>
-
-                                    <div class="col-lg-10 ">
-
-                                        <input class="form-control form-control-sm form_bi" name="mobile_no" type="text" value="<?php echo $_SESSION['usmno']?>">
-
-                                    </div>
-                            
-                                </div>
-                                
-                               
-
-
-                                <div class="mt-4 border-bottom text-secondary">
-
-                                    <div class="row py-2">
-                                        <div class="col-lg-4 ">
-
-                                            <h6>Personal Information</h6>
-
-                                        </div>
-                                        <div class="col-8 pl-0 text-left">
+                                            <input class="form-control form-control-sm form_bi" name="firstname" type="text" >
 
                                         </div>
 
                                     </div>
-                                
-                                </div>
 
+                                    <div class="row mt-4">
 
+                                        <div class="col-lg-2  pl-3">
 
-                                <div class="row mt-4">
+                                            <label class="pt-1"> Middle Name </label>
 
-                                    <div class="col-lg-2  pl-3">
+                                        </div>
 
-                                        <label class="pt-1"> Date of Birth </label>
-                                    
-                                    </div>
+                                        <div class="col-lg-10 ">
 
-                                    <div class="col-lg-3 ">
+                                            <input class="form-control form-control-sm form_bi" name="middlename" type="text" >
 
-                                        <input class="form-control form-control-sm birthdate form_bi" aria-age="txt_applicant_age" name="date_of_birth" type="date">
+                                        </div>
 
                                     </div>
 
-                                    <div class="col-lg-1 mt-lg-0 mt-4 pr-3 text-lg-right">
+                                    <div class="row mt-4">
 
-                                        <label class="pt-1"> Age </label>
-                                    
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Last Name </label>        <label class="text-danger font-weight-bold">*</label>
+
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input class=" form-control form-control-sm form_bi" name="lastname" type="text">
+
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="row mt-4">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Suffix</label> 
+
+                                        </div>
+
+                                        <div class="col-lg-10  pl-3">
+
+                                            <input class="form-control form-control-sm form_bi" name="suffix" type="text">
+
+                                        </div>
+
                                     </div>
 
-                                    <div class="col-lg-1 px-0">
+                                    <div class="row mt-4">
 
-                                        <input class="form-control form-control-sm" name="age" type="text" id="txt_applicant_age" readonly>
+                                        <div class="col-lg-2  pl-3">
 
-                                    </div>
-
-                                    <div class="col-lg-2  pl-3 mt-lg-0 mt-4 pr-3 text-lg-right">
-
-                                        <label class="pt-1"> Place of Birth </label>
-                                    
-                                    </div>
-
-                                    <div class="col-lg-3 pl-0 ">
-
-                                        <input class="form-control form-control-sm form_bi" name="place_of_birth" type="text">
-
-                                    </div>
-                            
-                                </div>
-                                
-                                
-                                
-
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
+                                            <label class="pt-1">Mobile No </label><label class="text-danger font-weight-bold">*</label>
                                         
-                                        <label class="pt-1"> Gender </label>
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input class="form-control form-control-sm form_bi" name="mobile_no" type="text" >
+                                            <div class="text-right">
+                                                <small class="text-muted"> ( 9055000000 ) </small>
+                                            </div>
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="mt-4 border-bottom text-secondary">
+
+                                        <div class="row py-2">
+                                            <div class="col-lg-4 ">
+
+                                                <h6>Personal Information</h6>
+
+                                            </div>
+                                            <div class="col-8 pl-0 text-left">
+
+                                            </div>
+
+                                        </div>
                                     
                                     </div>
 
-                                    <div class="col-lg-10 ">
+                                    <div class="row mt-4">
 
-                                        <select name="gender" class="form-control form-control-sm form_bi">
-                                            <option value="MALE">Male</option>
-                                            <option value="FEMALE">Female</option>
-                                        </select>
+                                        <div class="col-lg-2  pl-3">
 
-                                    </div>
-                            
-                                </div>
-
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
-
-                                        <label class="pt-1"> Religion </label>
-                                    
-                                    </div>
-
-                                    <div class="col-lg-10 ">
+                                            <label class="pt-1"> Date of Birth </label>
                                         
-                                        <input class="form-control form-control-sm form_bi" name="religion" type="text">
+                                        </div>
 
-                                    </div>
-                            
-                                </div>
+                                        <div class="col-lg-3 ">
 
-                                <div class="row mt-4">
+                                            <input class="form-control form-control-sm birthdate form_bi" aria-age="txt_applicant_age" name="date_of_birth" type="date">
 
-                                    <div class="col-lg-2  pl-3">
+                                        </div>
 
-                                        <label class="pt-1"> Civil Status </label>
-                                    
-                                    </div>
+                                        <div class="col-lg-1 mt-lg-0 mt-4 pr-3 text-lg-right">
 
-                                    <div class="col-lg-10 ">
-
-                                        <select name="civil_status" id="" class="form-control form-control-sm form_bi">
-                                            <option value="SINGLE">Single</option>
-                                            <option value="MARRIED">Married</option>
-                                            <option value="WINDOWED">Widowed</option>
-                                        </select>
-
-                                    </div>
-                            
-                                </div>
-
-                                <div class="row mt-4">
-
-                                    <div class="col-lg-2  pl-3">
-
-                                        <label class="pt-1"> Citizenship </label>
-                                    
-                                    </div>
-
-                                    <div class="col-lg-10 ">
-
-                                        <input type="text" name="citizenship" class="form-control form-control-sm form_bi">
-
-                                    </div>
-                            
-                                </div>
-
-                                <div class="row mt-4">
-
-                                    <div class="col text-right  pl-3">
+                                            <label class="pt-1"> Age </label>
                                         
-                                        <button class="btn btn-sm btn-secondary" type="button" id="btn_bi_update">Update</button>
-                                    
-                                        <button class="btn btn-primary d-none btn-sm" type="submit" id="btn_bi_save">Save Changes</button>
-                                    
-                                    </div>
-                            
-                                </div>
+                                        </div>
 
-                            </form>
+                                        <div class="col-lg-1 px-0">
+
+                                            <input class="form-control form-control-sm" name="age" type="text" id="txt_applicant_age" readonly>
+
+                                        </div>
+
+                                        <div class="col-lg-2  pl-3 mt-lg-0 mt-4 pr-3 text-lg-right">
+
+                                            <label class="pt-1"> Place of Birth </label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-3 pl-0 ">
+
+                                            <input class="form-control form-control-sm form_bi" name="place_of_birth" type="text">
+
+                                        </div>
+                                
+                                    </div>
+                                    
+                                    <div class="row mt-4">
+
+                                        <div class="col-lg-2  pl-3">
+                                            
+                                            <label class="pt-1"> Gender </label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <select name="gender" class="form-control form-control-sm form_bi">
+                                                <option value="MALE">Male</option>
+                                                <option value="FEMALE">Female</option>
+                                            </select>
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Religion </label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+                                            
+                                            <input class="form-control form-control-sm form_bi" name="religion" type="text">
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Citizenship </label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input type="text" name="citizenship" id="txt_citizenship" class="form-control form-control-sm form_bi">
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4 d-none" id="div_acr">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> A.C.R. No </label><label class="text-danger font-weight-bold">*</label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input type="text" name="acr_no" id="txt_acr" class="form-control form-control-sm form_bi">
+
+                                        </div>
+                                
+                                    </div>
+                                    
+                                    <div class="row mt-4 d-none" id="div_passport">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Passport No </label><label class="text-danger font-weight-bold">*</label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input type="text" name="passport_no" id="txt_passport" class="form-control form-control-sm form_bi">
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Civil Status </label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <select name="civil_status" id="txt_civil_status" class="form-control form-control-sm form_bi">
+                                                <option value="SINGLE">Single</option>
+                                                <option value="MARRIED">Married</option>
+                                                <option value="WINDOWED">Widowed</option>
+                                            </select>
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4 d-none" id="div_spouse">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Spouse </label><label class="text-danger font-weight-bold"> *</label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input type="text" name="spouse" id="txt_citizenship" class="form-control form-control-sm form_bi">
+
+                                        </div>
+                                
+                                    </div>
+
+                                    
+
+                                    <div class="row mt-4">
+
+                                        <div class="col text-right  pl-3">
+                                            
+                                            <button class="btn btn-sm btn-secondary" type="button" id="btn_bi_update">Update</button>
+                                        
+                                            <button class="btn btn-primary d-none btn-sm" type="submit" id="btn_bi_save">Save Changes</button>
+                                        
+                                        </div>
+                                
+                                    </div>
+
+                                </form>
+                            </div>
 
                         </div>
 
                     <!-- Mailing Address -->
 
-                        <!-- <div class="tab-pane fade container tab_container" id="nav-mailingaddress" role="tabpanel">
+                        <div class="tab-pane fade container tab_container" id="nav-mailing_address" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
                                 <div class="row py-2">
@@ -693,11 +770,11 @@
 
                             </div>
 
-                        </div> -->
+                        </div>
                     
                     <!-- Family Record -->
 
-                        <!-- <div class="tab-pane fade container tab_container" id="nav-familyrecord" role="tabpanel">
+                        <div class="tab-pane fade container tab_container" id="nav-family_record" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
                                 <div class="row py-2">
@@ -808,11 +885,11 @@
                           
                             </div> 
 
-                        </div>  -->
+                        </div> 
 
                     <!-- Scholastic Record -->
-<!-- 
-                        <div class="tab-pane fade container tab_container" id="nav-scholasticrecord" role="tabpanel">
+
+                        <div class="tab-pane fade container tab_container" id="nav-scholastic_record" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
                                 <div class="row py-2">
@@ -964,11 +1041,11 @@
                           
                             </div> 
 
-                        </div> -->
+                        </div>
 
                     <!-- Other Information -->
 
-                        <!-- <div class="tab-pane fade container tab_container" id="nav-otherinformation" role="tabpanel">
+                        <div class="tab-pane fade container tab_container" id="nav-other_information" role="tabpanel">
 
                             <div class="border-bottom text-secondary">
 
@@ -1078,7 +1155,7 @@
 
 
                             
-                        </div> -->
+                        </div>
 
                     </div>
 

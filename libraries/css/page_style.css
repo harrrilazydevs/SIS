@@ -201,6 +201,9 @@ html, body {
    margin-right: auto !important;
 }
 
+
+
+
 .function_icon i{
    color:rgb(13, 82, 139) !important;
    font-size: 12pt !important;
@@ -296,4 +299,15 @@ html, body {
 
 body{
    overflow-x: hidden !important;
+}
+
+
+
+.nav_bar_design{
+   background:#570A00 !important;
+}
+
+
+.nav_bar_design a{
+   color:#FAF0FB !important;
 }

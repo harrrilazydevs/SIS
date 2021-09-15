@@ -9,9 +9,9 @@ $('#form_login').on('submit', function (e) {
       url: 'api/func/authenticate/authenticate.php',
 
       data:  {
-                token:$('#txt_token').val(),
                 action: 'login',
                 POSTDATA:{
+                  token:$('#txt_token').val(),
                   email: $('#txt_email').val(),
                   password: $('#txt_password').val()
                 }
@@ -44,16 +44,16 @@ $('#form_login').on('submit', function (e) {
 
 
 
-  
-  function validated_success(data)
-    {
-        $('#modal_login').modal('show');
 
-        $('.modal-body p').append(data.feedback);
+function validated_success(data)
+{
+    $('#modal_login').modal('show');
 
-        $('.modal-body i').addClass('far fa-check-circle fa-2x');
+    $('.modal-body p').append(data.feedback);
 
-        $('.modal-body i').css('color','green');
+    $('.modal-body i').addClass('far fa-check-circle fa-2x');
 
-        $('#btn_modal').text('Go to Login');
-    }
+    $('.modal-body i').css('color','green');
+
+    $('#btn_modal').text('Go to Login');
+}

@@ -78,14 +78,7 @@
 
     function get_applicant_data()
     {
-        $sql = '
-                    SELECT
-                            file_directory
-                    FROM  
-                            applicant_requirement_records
-                    WHERE
-                            id = :id
-                ';
+        $sql = ' SELECT file_directory FROM applicant_requirement_records WHERE id = :id ';
 
         return $GLOBALS['db']->get_( $sql,  [$_POST['id']] );
     }

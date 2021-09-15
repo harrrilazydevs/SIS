@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-md vw-100 bg-light shadow sticky-top" style="z-index:1050; ">
+<nav class="navbar navbar-expand-md vw-100 shadow sticky-top nav_bar_design" style="z-index:1050; ">
 
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         
@@ -21,7 +21,7 @@
 
             <li class="nav-item">
 
-                <a class="nav-link navbar-brand font-weight-bold text-dark pl-0 pt-1 ml-0" style="font-family: 'Roboto', sans-serif;" >Lazy Devs PH</a>
+                <a class="nav-link navbar-brand font-weight-bold text-dark pl-0 pt-1 ml-0" style="font-family: 'Roboto', sans-serif;" >Manuel L. Quezon University</a>
 
             </li>
             
@@ -81,7 +81,7 @@
 
                                 <div class="col-7 pl-0">
 
-                                    <h6 class="dropdown-header font-weight-bold pt-2 pl-2" id="nav_user_username"><?php echo $_SESSION['usn']?></h6>
+                                    <h6 class="dropdown-header font-weight-bold pt-2 pl-2" id="nav_user_username"><?php echo $_SESSION['usfn']?></h6>
                                     
                                     <h6 class="dropdown-header py-0 pl-2" id="nav_user_role"><?php echo $_SESSION['usr']?></h6>
 
@@ -91,17 +91,9 @@
 
                         </div>
 
-                        <div class="px-auto">
+                        <div class="px-auto text-dark">
 
-                            <a class="dropdown-item py-1" href="/dashboard/profile" > 
-
-                                <i class="far fa-user-circle pr-2 pl-0 ml-0" style="font-size: 12pt;"></i> 
-
-                                Profile 
-
-                            </a>
-
-                            <a class="dropdown-item py-1" type="button" href="../api/func/authenticate/logout.php" >
+                            <a class="dropdown-item  text-dark " type="button" href="../api/func/authenticate/logout.php" >
 
                                 <i class="fas fa-sign-out-alt pr-2 pl-0 ml-0" style="font-size: 12pt;"></i>
 

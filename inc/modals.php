@@ -25,7 +25,6 @@
 </div>
 
 
-
 <!-- <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_user">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -159,7 +158,7 @@
     
             <div class="modal-footer text-center">
     
-               <button class="btn btn-secondary" data-dismiss="modal"></button>
+               <button class="btn btn-secondary click_reload" data-dismiss="modal" id="btn_modal"></button>
     
             </div>
     
@@ -283,6 +282,97 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHANGE PASSWORD -->
+    <div class="modal fade shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_change_password">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content " style="">
+                <div class=" text-center pt-4 pb-0">
+                    <h5>WELCOME TO MLQU!</h5>
+                </div>
+
+                <div class="modal-body">
+
+                    <p>Warm greetings applicant! Aenean tempus id nulla eu sollicitudin. Aliquam gravida lacus a nisl ullamcorper, vitae iaculis leo fermentum. In et sodales eros, hendrerit egestas justo. Integer magna eros, laoreet at dictum in, viverra eget turpis. Aliquam euismod enim id nisi viverra, rhoncus suscipit nibh ultricies. Sed condimentum et ante vitae bibendum. Fusce tempus eros vel leo hendrerit gravida. Suspendisse est nunc</p> <br>
+
+                    <p>Get started by changing your password.</p>
+
+                </div>
+               
+
+
+                <div class="modal-footer text-center" style="border: none !important">
+                    <div class="row">
+                        <div class="col px-0 btn-full-width">
+                            <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button" id="btn_close">Okay</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FIRST LOGIN -->
+    <div class="modal fade shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_first_login">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content " style="">
+                <div class=" text-center pt-4 pb-0">
+                    <h5>WELCOME TO MLQU!</h5>
+                </div>
+
+
+
+                <div class="modal-body">
+
+        <hr>        
+
+                    <p>Warm greetings applicant! Aenean tempus id nulla eu sollicitudin. Aliquam gravida lacus a nisl ullamcorper, vitae iaculis leo fermentum. In et sodales eros, hendrerit egestas justo. Integer magna eros, laoreet at dictum in, viverra eget turpis. Aliquam euismod enim id nisi viverra, rhoncus suscipit nibh ultricies. Sed condimentum et ante vitae bibendum. Fusce tempus eros vel leo hendrerit gravida. Suspendisse est nunc</p> <br>
+
+
+                    <p>You have 3 days to complete your application.</p>
+
+                </div>
+               
+
+
+                <div class="modal-footer text-center" style="border: none !important">
+                    <div class="row">
+                        <div class="col px-0 btn-full-width">
+                            <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button" id="btn_close">Okay</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- NOT FILIPINO MODAL -->
+    <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_not_filipino">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="">
+                <div class="modal-header text-center pt-3 pb-0">
+                <h6> Information </h6>
+                </div>
+
+                <div class="modal-body">
+                Foreign students needs to enter their ACR and PASSPORT Number.
+                </div>
+
+                  
+              
+
+                    <div class="modal-footer text-center">
+                        <div class="row">
+                            <div class="col px-0 btn-full-width">
+                                <button class="btn btn-sm btn-secondary" type="button" id="btn_submit" data-dismiss="modal">Okay</button>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
