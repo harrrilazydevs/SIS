@@ -27,7 +27,7 @@
 .spinner:before{
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to left,#3d378f,#4d42e8,#16133c);
+    background-image: linear-gradient(to left,#c956479e,#570A00,#f223089a);
     animation: spin .5s infinite linear;
 }
 
@@ -41,3 +41,8 @@
     transform: translate(-50%, -50%);
 }
 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
