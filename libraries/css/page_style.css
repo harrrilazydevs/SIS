@@ -201,9 +201,6 @@ html, body {
    margin-right: auto !important;
 }
 
-
-
-
 .function_icon i{
    color:rgb(13, 82, 139) !important;
    font-size: 12pt !important;
@@ -215,6 +212,16 @@ html, body {
 
 
 /* FORM CONTAINER */
+
+
+/*FORM DESIGN*/
+.form_design label{
+
+   font-size: 10pt;
+
+}
+
+/*FORM DESIGN*/
 
 
 
@@ -310,4 +317,12 @@ body{
 
 .nav_bar_design a{
    color:#FAF0FB !important;
+}
+
+
+
+/* SYSTEM DESIGNS */
+.clickable:hover{
+   transform: scale(1.2);
+   cursor: pointer;
 }

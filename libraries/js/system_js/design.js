@@ -64,6 +64,7 @@ $('.click_reload').on('click', function(){
 })
 
 
+
 function getCookie(cname) {
    let name = cname + "=";
    let decodedCookie = decodeURIComponent(document.cookie);

@@ -4,7 +4,23 @@ $('.ld-nav-item').on('click', function(){
 
 $(document).ready(function(){
 
-    // prepareUserPage();
+    if( getCookie('active_page') ){
+
+        $('.page').each(function(){
+
+            if(  getCookie('active_page') == $(this).attr('id') )
+            {
+                $(this).removeClass('d-none')
+            }
+            else
+            {
+                $(this).addClass('d-none')
+            }
+    
+        })
+      
+    }
+
 })
 
 $('#btn_logout').on('click',function(){
@@ -40,6 +56,7 @@ function showPage(pagename){
         if( pagename == $(this).attr('id') )
         {
             $(this).removeClass('d-none')
+            document.cookie ='active_page='+ $(this).attr('id');
         }
         else
         {

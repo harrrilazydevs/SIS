@@ -61,7 +61,7 @@
 
             if ( $_RETURN_DATA != 403 )
             {
-                $userId = $_RETURN_DATA[0]['id'];
+                $userId = $_RETURN_DATA[0]['user_id'];
 
                 $userFname = $_RETURN_DATA[0]['firstname'];
 
@@ -76,6 +76,7 @@
                 $_SESSION['authenticated'] = true;
 
                 array_push( $output, $feedback[0]);
+
             }
             else
             {
@@ -97,7 +98,6 @@
                     $_SESSION['authenticated'] = true;
 
                     array_push( $output, $feedback[0]);
-                    
 
                 }   
                 else

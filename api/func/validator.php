@@ -9,6 +9,9 @@ function required_fields_validated( $REQUIRED_FIELDS, $_POSTDATA, $_FILEDATA = a
     $POST_DATA_KEYS = array_keys( $_POSTDATA );
     $REQUIRED_DATA_KEYS = array_keys( $REQUIRED_FIELDS );
 
+    // var_dump($POST_DATA_KEYS);
+    // var_dump($REQUIRED_DATA_KEYS);
+
     // check if token matches
     $_SESSION['TOKEN'] !== $_POSTDATA['token'] ? $STATUS = 400 : regenerate_token();
 

@@ -18,7 +18,7 @@
     echo json_encode($output);  
 
     function get_(){
-        $sql = ' SELECT `spouse`,`passport_no`, `acr_no`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`,`religion`,`civil_status`,`citizenship`,`school_id` FROM applicant_information a INNER JOIN program_list b ON a.program_id = b.id INNER JOIN school_list c ON b.school_id = c.id  WHERE applicant_id = :id ';
+        $sql = ' SELECT `applicant_type`,`spouse`,`passport_no`, `acr_no`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`,`religion`,`civil_status`,`citizenship`,`school_id` FROM applicant_information a INNER JOIN program_list b ON a.program_id = b.id INNER JOIN school_list c ON b.school_id = c.id  WHERE applicant_id = :id ';
         return $GLOBALS['db']->get_( $sql,  [$_POST['id']] );
     }
 

@@ -5,15 +5,14 @@
   include_once 'api/func/authenticate/authenticate.php';
 
   !isset($_SESSION) ? session_start() : '';
+
   $USER_TYPE = $_SESSION['usr'];
 
-  // check if session started
-
-
+  $USER_TYPE === 'APPLICANT' ? ( !$_SESSION['authenticated'] ? header('location:login.php') : $_SESSION['upt'] === 0 ? header('location: ../../change_password.php') : '') :  !$_SESSION['authenticated'] ? header('location:login.php') :'';
 
 
   // check if nag log in
-  !$_SESSION['authenticated'] ? header('location:login.php') : $_SESSION['upt'] === 0 ? header('location: ../../change_password.php') : '';
+  ;
 
 
 ?>
@@ -77,6 +76,43 @@
 
     </div>
 
+    <div class="d-none page" id="page_requirements">
+
+      <?php 
+
+        if ($USER_TYPE == 'ADMINISTRATOR' || $USER_TYPE == 'DEVELOPER')
+        {
+          include_once 'assets/administrator/requirements.php'; 
+        }
+        
+      ?>
+
+    </div>
+
+    <div class="d-none page" id="page_building_requirements">
+
+      <?php 
+
+        if ($USER_TYPE == 'ADMINISTRATOR' || $USER_TYPE == 'DEVELOPER')
+        {
+          include_once 'assets/administrator/building_maintenance.php'; 
+        }
+        
+      ?>
+      
+    </div>
+
+
+
+    
+
+  
+
+
+    
+
+    
+
   </div>
   
 </div>
@@ -110,6 +146,11 @@ include_once 'inc/footer.php';
 if ($USER_TYPE == 'APPLICANT')
 {
   echo '<script src="libraries/js/dashboard/applicant/function.js"></script>';  
+}
+
+if ($USER_TYPE == 'DEVELOPER')
+{
+  echo '<script src="libraries/js/dashboard/administrator/function.js"></script>';  
 }
 
 ?>

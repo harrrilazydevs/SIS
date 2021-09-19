@@ -1,4 +1,4 @@
-<div class="container-fluid px-lg-4" id="page-dashboard">
+<div class="container-fluid px-lg-4 " id="page-dashboard">
 
     <div class="row mb-1">
 
@@ -7,7 +7,7 @@
         </div>
 
         <div class="col-12 col-lg-8 pt-lg-3 pt-4 px-0">
-            <label class="">Hi, <b><?php echo $_SESSION['usn'] ?>!</b></label>
+            <label class="">Hi, <b><?php echo $_SESSION['usfn'] ?>!</b></label>
         </div>
         
         <div class="col-12 col-lg-4 pt-lg-2 text-right px-0 d-none d-lg-block" style="font-size: 12pt;"> 
@@ -164,3 +164,5 @@
     </div>
   
 </div>
+
+

@@ -1,3 +1,6 @@
+<?php
+!isset($_SESSION) ? session_start() : '';
+?>
 <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_login">
             
     <div class="modal-dialog modal-dialog-centered">
@@ -196,7 +199,6 @@
 
 
 <!-- APPLICANT MODALS -->
-
     <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_post_requirement">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="">
@@ -249,8 +251,8 @@
                         <div class="row">
                             <div class="col px-0 btn-full-width">
                                 <button class="btn btn-sm btn-secondary d-none" type="button" id="btn_back">Back</button>
-                                <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button" id="btn_close">Close</button>
-                                <button class="btn btn-sm btn-primary" type="submit" id="btn_submit">Submit</button>
+                                <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button">Close</button>
+                                <button class="btn btn-sm btn-primary" type="submit" >Submit</button>
                             </div>
                         </div>
                     </div>
@@ -276,8 +278,8 @@
                     <div class="modal-footer text-center">
                         <div class="row">
                             <div class="col px-0 btn-full-width">
-                                <button class="btn btn-sm btn-secondary" data-dismiss="modal" id="btn_close">Cancel</button>
-                                <button class="btn btn-sm btn-primary" type="submit" id="btn_submit">Confirm</button>
+                                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-sm btn-primary" type="submit" >Confirm</button>
                             </div>
                         </div>
                     </div>
@@ -307,7 +309,7 @@
                 <div class="modal-footer text-center" style="border: none !important">
                     <div class="row">
                         <div class="col px-0 btn-full-width">
-                            <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button" id="btn_close">Okay</button>
+                            <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button">Okay</button>
                         </div>
                     </div>
                 </div>
@@ -342,7 +344,7 @@
                 <div class="modal-footer text-center" style="border: none !important">
                     <div class="row">
                         <div class="col px-0 btn-full-width">
-                            <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button" id="btn_close">Okay</button>
+                            <button class="btn btn-sm btn-secondary" data-dismiss="modal"  type="button">Okay</button>
                         </div>
                     </div>
                 </div>
@@ -369,7 +371,7 @@
                     <div class="modal-footer text-center">
                         <div class="row">
                             <div class="col px-0 btn-full-width">
-                                <button class="btn btn-sm btn-secondary" type="button" id="btn_submit" data-dismiss="modal">Okay</button>
+                                <button class="btn btn-sm btn-secondary" type="button"  data-dismiss="modal">Okay</button>
                             </div>
                         </div>
                     </div>
@@ -379,20 +381,29 @@
 
      <!-- SELECT PROGRAM MODAL -->
      <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_sel_program">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="">
                 <div class="modal-header text-center pt-3 pb-0">
-                    <h6> Choose your Program </h6>
+                    <h6> Set Applicant Type </h6>
                 </div>
 
                 <form id="form_applicant_set_program">
 
                     <div class="modal-body">
 
-                        <label class="pt-1"> School of </label>
+                        <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                        <input type="hidden" name="applicant_id" value="<?php echo $_SESSION['uid']?>">
+
+                        <label class="pt-1 "> Applicant Type </label>
+                        <select name="applicant_type"  class="form-control form-control-sm mb-3">
+                            <option value="FROSH">Frosh</option>
+                            <option value="TRANSFEREE">Transferee</option>
+                        </select>
+
+                        <label class="pt-1"> School </label>
                         <select id="sel_school"  class="form-control form-control-sm"></select>
 
-                        <label class="pt-1 mt-3"> Program </label>
+                        <label class="pt-1 mt-2"> Program </label>
                         <select name="program_id" id="sel_program"  class="form-control form-control-sm"></select>
                     
                     </div>
@@ -400,7 +411,7 @@
                     <div class="modal-footer text-center">
                         <div class="row">
                             <div class="col px-0 btn-full-width">
-                                <button class="btn btn-sm btn-primary" type="button" id="btn_submit" data-dismiss="modal">Update</button>
+                                <button class="btn btn-sm btn-primary" type="submit">Update</button>
                             </div>
                         </div>
                     </div>
@@ -409,48 +420,201 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-    
-    <!-- <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_applicant_view_requirement">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="">
-                <div class="modal-header text-center pt-3 pb-0">
-                <h6> Submit Requirement </h6>
-                </div>
-                <form id="form_modal_applicant_requirement" enctype="multipart/form-data">
-
-                    <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
-                    <input type="hidden" name="applicant_id"  id="txt_applicant_id">
-                    <input type="hidden" name="requirement_id"  id="txt_requirement_id">
-                    <input type="hidden" name="record_id"  id="txt_record_id">
-
-                    <div class="modal-body container" style="" >
-                    <embed src="../storage/files/1ff4e739e9613123969a297dc77bfe4a2b258298.pdf" width="600px" height="500px" />
-                    </div>
-
-                    <div class="modal-footer text-center" style="border: none !important">
-                        <div class="row">
-                            <div class="col px-0 btn-full-width">
-                                <button class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
-                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
- -->
-
-
-
 <!-- APPLICANT MODALS -->
+
+
+
+<!-- ADMINISTRATOR MODALS -->
+
+    <!-- REQUIREMENTS -->
+        <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_admin_add_requirement">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header text-center pt-3 pb-0">
+                    <h6>Add Requirement</h6>
+                    </div>
+                    <form id="f_admin_add_requirement" enctype="multipart/form-data" class="form_design">
+                        <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN'];?>">
+                        <div class="modal-body">
+
+                            <label for="">Requirement</label>
+                            <input type="text" name="name" class="form-control form-control-sm">
+
+                            <label for="">Document Type</label>
+                            <select name="document_type" class="form-control form-control-sm">
+                                <option value="PDF">PDF</option>
+                                <option value="PHOTO">Photo</option>
+                            </select>
+
+                        </div>
+                        <div class="modal-footer text-center">
+                            <div class="row">
+                                <div class="col px-0 ">
+                                    <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" data-backdrop="static" data-keyboard="false" aria-id="" tabindex="-1" id="md_admin_delete_requirement">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header text-center pt-3 pb-0">
+                    <h6> Confirm </h6>
+                    </div>
+                    <form id="f_admin_delete_requirement" enctype="multipart/form-data">
+                        <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                        <div class="modal-body" style="" >
+                            <p class="pl-3 my-2">Do you want to delete this requirement?</p>
+                        </div>
+
+                        <div class="modal-footer text-center">
+                            <div class="row">
+                                <div class="col px-0 btn-full-width">
+                                    <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-sm btn-primary" type="submit" >Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" data-backdrop="static" data-keyboard="false" aria-id="" tabindex="-1" id="md_admin_edit_requirement">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header text-center pt-3 pb-0">
+                    <h6>Edit Requirement</h6>
+                    </div>
+                    <form id="f_admin_edit_requirement" enctype="multipart/form-data" class="form_design">
+                        <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN'];?>">
+                        <div class="modal-body">
+
+                            <label for="">Requirement</label>
+                            <input type="text" name="name" id="txt_name" class="form-control form-control-sm">
+
+                            <label for="">Document Type</label>
+                            <select name="document_type" id="sel_type" class="form-control form-control-sm">
+                                <option value="PDF">PDF</option>
+                                <option value="PHOTO">Photo</option>
+                            </select>
+
+                        </div>
+                        <div class="modal-footer text-center">
+                            <div class="row">
+                                <div class="col px-0 ">
+                                    <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- REQUIREMENTS -->
+
+    <!-- BUILDING MAINTENANCE -->
+        <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_admin_add_building">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header text-center pt-3 pb-0">
+                        <h6>Add Building</h6>
+                        </div>
+                        <form id="f_admin_add_building" enctype="multipart/form-data" class="form_design">
+                            <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN'];?>">
+                            <div class="modal-body">
+
+                                <label for="">Building Number</label>
+                                <input type="text" name="building_number" class="form-control form-control-sm">
+
+                                <label for="">Name</label>
+                                <input type="text" name="name" class="form-control form-control-sm">
+
+                                <label for="">Description</label>
+                                <input type="text" name="description" class="form-control form-control-sm">
+
+                            </div>
+                            <div class="modal-footer text-center">
+                                <div class="row">
+                                    <div class="col px-0 ">
+                                        <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                                        <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" data-backdrop="static" data-keyboard="false" aria-id="" tabindex="-1" id="md_admin_delete_building">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header text-center pt-3 pb-0">
+                        <h6> Confirm </h6>
+                        </div>
+                        <form id="f_admin_delete_building" enctype="multipart/form-data">
+                            <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                            <div class="modal-body" style="" >
+                                <p class="pl-3 my-2">Do you want to delete this building?</p>
+                            </div>
+
+                            <div class="modal-footer text-center">
+                                <div class="row">
+                                    <div class="col px-0 btn-full-width">
+                                        <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button class="btn btn-sm btn-primary" type="submit" >Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" data-backdrop="static" data-keyboard="false" aria-id="" tabindex="-1" id="md_admin_edit_building">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header text-center pt-3 pb-0">
+                        <h6>Edit Building</h6>
+                        </div>
+                        <form id="f_admin_edit_building" enctype="multipart/form-data" class="form_design">
+                            <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN'];?>">
+                            <div class="modal-body">
+
+                                <label for="">Building Number</label>
+                                <input type="text" name="building_number" id="txt_building_number" class="form-control form-control-sm">
+
+                                <label for="">Name</label>
+                                <input type="text" name="name" id="txt_building_name" class="form-control form-control-sm">
+
+                                <label for="">Description</label>
+                                <input type="text" name="description" id="txt_building_description" class="form-control form-control-sm">
+
+                            </div>
+                            <div class="modal-footer text-center">
+                                <div class="row">
+                                    <div class="col px-0 ">
+                                        <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                                        <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    <!-- BUILDING MAINTENANCE -->
+
+
+
+<!-- ADMINISTRATOR MODALS -->
+
 
 
