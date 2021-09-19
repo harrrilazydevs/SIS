@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2021 at 08:44 PM
+-- Generation Time: Sep 19, 2021 at 07:03 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -70,17 +70,18 @@ CREATE TABLE `applicant_information` (
   `citizenship` text NOT NULL,
   `acr_no` text DEFAULT NULL,
   `passport_no` text DEFAULT NULL,
-  `spouse` text DEFAULT NULL
+  `spouse` text DEFAULT NULL,
+  `applicant_type` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `applicant_information`
 --
 
-INSERT INTO `applicant_information` (`id`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`, `religion`, `civil_status`, `citizenship`, `acr_no`, `passport_no`, `spouse`) VALUES
-(1, 3, 4, 'Mlqu', 'Harrri', '', 'INCOMPLETE', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Nigerian', '5050', '5050', 'test'),
-(10, 45, 1, 'Mlqu', 'Harrri', '', '', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Nigerian', '5050', '5050', 'test'),
-(11, 46, 1, 'Mlqu', 'Harrri', '', '', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Nigerian', '5050', '5050', 'test');
+INSERT INTO `applicant_information` (`id`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`, `religion`, `civil_status`, `citizenship`, `acr_no`, `passport_no`, `spouse`, `applicant_type`) VALUES
+(1, 3, 1, 'Mlqu', 'Harrri', '', 'INCOMPLETE', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Filipino', '5050', '5050', 'Test wife', 'FROSH'),
+(10, 45, 4, 'Mlqu', 'Harrri', '', '', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Filipino', '5050', '5050', 'Test wife', 'FROSH'),
+(11, 46, 1, 'Mlqu', 'Harrri', '', '', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Filipino', '5050', '5050', 'Test wife', 'FROSH');
 
 -- --------------------------------------------------------
 
@@ -99,6 +100,43 @@ CREATE TABLE `applicant_mailing_address_information` (
   `province_city` text NOT NULL,
   `province_zipcode` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applicant_requirement_list`
+--
+
+CREATE TABLE `applicant_requirement_list` (
+  `id` int(11) NOT NULL,
+  `requirement_id` int(11) NOT NULL,
+  `applicant_type` text NOT NULL,
+  `conditions` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `applicant_requirement_list`
+--
+
+INSERT INTO `applicant_requirement_list` (`id`, `requirement_id`, `applicant_type`, `conditions`) VALUES
+(9, 11, 'FROSH', NULL),
+(10, 12, 'FROSH', NULL),
+(11, 14, 'FROSH', NULL),
+(12, 15, 'FROSH', NULL),
+(13, 16, 'FROSH', NULL),
+(14, 13, 'FROSH', NULL),
+(15, 21, 'FROSH', NULL),
+(16, 20, 'TRANSFEREE', NULL),
+(17, 17, 'TRANSFEREE', NULL),
+(18, 14, 'TRANSFEREE', NULL),
+(19, 15, 'TRANSFEREE', NULL),
+(20, 16, 'TRANSFEREE', NULL),
+(21, 13, 'TRANSFEREE', NULL),
+(22, 21, 'TRANSFEREE', NULL),
+(23, 18, 'FROSH', 'citizenship!=\'filipino\''),
+(24, 19, 'FROSH', 'citizenship!=\'filipino\''),
+(25, 18, 'TRANSFEREE', 'citizenship!=\'filipino\''),
+(26, 19, 'TRANSFEREE', 'citizenship!=\'filipino\'');
 
 -- --------------------------------------------------------
 
@@ -122,16 +160,35 @@ CREATE TABLE `applicant_requirement_records` (
 --
 
 INSERT INTO `applicant_requirement_records` (`id`, `applicant_id`, `requirement_id`, `file_name`, `file_directory`, `date_submitted`, `requirement_status`, `approvers_comment`) VALUES
-(3, 3, 1, '', '', '0000-00-00', 'PENDING', ''),
-(4, 3, 2, '', '', '0000-00-00', 'PENDING', ''),
-(5, 3, 3, 'test.pdf', '../storage/files/9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08.pdf', '2021-09-13', 'APPROVED', ''),
-(6, 3, 4, 'Enrollment-Status (9).pdf', '../storage/files/b6d5ded22a3a178380df3ff3bce2c72a2e16e06a414ba58ca2cb6829412bab25.pdf', '2021-09-13', 'APPROVED', ''),
-(7, 3, 5, '1st-sem-summary.pdf', '../storage/files/0f5f3dc93cd8fcb3667725a3dacff1395b9c9f696941e2868d4b53fa6a98e1ad.pdf', '2021-09-14', 'SUBMITTED', ''),
-(8, 3, 6, '', '', '0000-00-00', 'PENDING', ''),
-(9, 3, 7, 'test.pdf', '../storage/files/9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08.pdf', '2021-09-14', 'SUBMITTED', ''),
-(10, 3, 8, '', '', '0000-00-00', 'PENDING', ''),
-(11, 3, 9, '', '', '0000-00-00', 'PENDING', ''),
-(12, 3, 10, '', '', '0000-00-00', 'PENDING', '');
+(40, 45, 11, '', '', '0000-00-00', 'PENDING', ''),
+(41, 45, 12, '', '', '0000-00-00', 'PENDING', ''),
+(42, 45, 14, '', '', '0000-00-00', 'PENDING', ''),
+(43, 45, 15, '', '', '0000-00-00', 'PENDING', ''),
+(44, 45, 16, '', '', '0000-00-00', 'PENDING', ''),
+(45, 45, 13, '', '', '0000-00-00', 'PENDING', ''),
+(46, 45, 21, '', '', '0000-00-00', 'PENDING', ''),
+(47, 45, 18, '', '', '0000-00-00', 'PENDING', ''),
+(48, 45, 19, '', '', '0000-00-00', 'PENDING', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `building_list`
+--
+
+CREATE TABLE `building_list` (
+  `id` int(11) NOT NULL,
+  `building_number` text NOT NULL,
+  `name` text NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `building_list`
+--
+
+INSERT INTO `building_list` (`id`, `building_number`, `name`, `description`) VALUES
+(1, '1', 'SAMPLE BUILDING', 'TEST');
 
 -- --------------------------------------------------------
 
@@ -235,24 +292,49 @@ INSERT INTO `program_list` (`id`, `school_id`, `name`) VALUES
 
 CREATE TABLE `requirement_list` (
   `id` int(11) NOT NULL,
-  `name` text NOT NULL
+  `name` text NOT NULL,
+  `document_type` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `requirement_list`
 --
 
-INSERT INTO `requirement_list` (`id`, `name`) VALUES
-(1, 'FORM-137'),
-(2, 'TRANSCRIPT OF RECORDS WITH SEAL'),
-(3, 'HIGHSCHOOL DIPLOMA'),
-(4, 'GOOD MORAL CERTIFICATE'),
-(5, 'NSO BIRTH CERTIFICATE'),
-(6, 'PROOF OF RESIDENCY'),
-(7, 'NBI CLEARANCE'),
-(8, '2x2 ID PICTURE'),
-(9, 'MARRIAGE CERTIFICATE'),
-(10, 'MEDICAL CERTIFICATE');
+INSERT INTO `requirement_list` (`id`, `name`, `document_type`) VALUES
+(11, 'SHS Permanent Record', 'PDF'),
+(12, 'Form-138- SHS CARD ', 'PDF'),
+(13, '2x2 ID Picture White BG ', 'PHOTO'),
+(14, 'Marriage Certificate \r\n', 'PDF'),
+(15, 'Medical Certificate ', 'PDF'),
+(16, 'Birth Certificate', 'PDF'),
+(17, 'Transcript of Record', 'PDF'),
+(18, 'ACR ', 'PHOTO'),
+(19, 'Passport ', 'PHOTO'),
+(20, 'Copy of Grades', 'PDF'),
+(21, 'Certicate of Good Moral', 'PDF'),
+(26, 'TEST', 'PDF');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_list`
+--
+
+CREATE TABLE `room_list` (
+  `id` int(11) NOT NULL,
+  `room_number` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `room_list`
+--
+
+INSERT INTO `room_list` (`id`, `room_number`, `name`, `description`) VALUES
+(1, 200, 'Physics Room', 'Vacant minsan'),
+(2, 69, 'For lesbians/ Bi', 'test'),
+(3, 50, 'Porn Room', 'araw araw ka nandito lloyd');
 
 -- --------------------------------------------------------
 
@@ -318,12 +400,25 @@ ALTER TABLE `applicant_mailing_address_information`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `applicant_requirement_list`
+--
+ALTER TABLE `applicant_requirement_list`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `requirement_id` (`requirement_id`);
+
+--
 -- Indexes for table `applicant_requirement_records`
 --
 ALTER TABLE `applicant_requirement_records`
   ADD PRIMARY KEY (`id`),
   ADD KEY `applicant_id` (`applicant_id`),
   ADD KEY `requirement_id` (`requirement_id`);
+
+--
+-- Indexes for table `building_list`
+--
+ALTER TABLE `building_list`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `employee_information`
@@ -356,6 +451,12 @@ ALTER TABLE `program_list`
 -- Indexes for table `requirement_list`
 --
 ALTER TABLE `requirement_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `room_list`
+--
+ALTER TABLE `room_list`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -393,10 +494,22 @@ ALTER TABLE `applicant_mailing_address_information`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `applicant_requirement_list`
+--
+ALTER TABLE `applicant_requirement_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
 -- AUTO_INCREMENT for table `applicant_requirement_records`
 --
 ALTER TABLE `applicant_requirement_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `building_list`
+--
+ALTER TABLE `building_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `employee_information`
@@ -426,7 +539,13 @@ ALTER TABLE `program_list`
 -- AUTO_INCREMENT for table `requirement_list`
 --
 ALTER TABLE `requirement_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `room_list`
+--
+ALTER TABLE `room_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `school_list`
@@ -450,6 +569,12 @@ ALTER TABLE `users`
 ALTER TABLE `applicant_information`
   ADD CONSTRAINT `applicant_information_ibfk_1` FOREIGN KEY (`applicant_id`) REFERENCES `applicant_accounts` (`id`),
   ADD CONSTRAINT `applicant_information_ibfk_2` FOREIGN KEY (`program_id`) REFERENCES `program_list` (`id`);
+
+--
+-- Constraints for table `applicant_requirement_list`
+--
+ALTER TABLE `applicant_requirement_list`
+  ADD CONSTRAINT `applicant_requirement_list_ibfk_2` FOREIGN KEY (`requirement_id`) REFERENCES `requirement_list` (`id`);
 
 --
 -- Constraints for table `applicant_requirement_records`
