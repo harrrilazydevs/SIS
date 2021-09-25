@@ -27,6 +27,32 @@
 
 </div>
 
+<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_applicant_register">
+            
+    <div class="modal-dialog modal-dialog-centered">
+    
+        <div class="modal-content ">
+    
+            <div class="modal-body text-center py-5">
+    
+                <p class="mb-2 pb-0" style="font-size: 15pt;">Registration Successful!</p>
+                <small>Kindly check your email for further instructions.</small>
+                <br>
+                <i class="far fa-check-circle fa-2x mt-3" style="color: green !important;"></i>
+    
+            </div>
+    
+            <div class="modal-footer text-center">
+    
+                <a  class="btn btn-primary" href="index.php" >Go to Dashboard</a>
+
+            </div>
+    
+        </div>
+    
+    </div>
+
+</div>
 
 <!-- <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_user">
     <div class="modal-dialog modal-dialog-centered">
@@ -330,7 +356,7 @@
 
                 <div class="modal-body">
 
-        <hr>        
+                <hr>        
 
                     <p>Warm greetings applicant! Aenean tempus id nulla eu sollicitudin. Aliquam gravida lacus a nisl ullamcorper, vitae iaculis leo fermentum. In et sodales eros, hendrerit egestas justo. Integer magna eros, laoreet at dictum in, viverra eget turpis. Aliquam euismod enim id nisi viverra, rhoncus suscipit nibh ultricies. Sed condimentum et ante vitae bibendum. Fusce tempus eros vel leo hendrerit gravida. Suspendisse est nunc</p> <br>
 
@@ -362,19 +388,30 @@
                 </div>
 
                 <div class="modal-body">
-                Foreign students needs to enter their ACR and PASSPORT Number.
+                    Foreign applicants will need to submit additional requirements.
+
+
+                    <br>
+                    <br >
+
+                    <small >
+                       <b>Note:</b><br>    
+                    If you primarily selected Filipino as <u>Applicant Type</u>, please update your <u>Applicant Type</u> to update your Requirement List.
+                    
+                    <br>
+                   </small>
                 </div>
 
-                  
-              
-
-                    <div class="modal-footer text-center">
-                        <div class="row">
-                            <div class="col px-0 btn-full-width">
-                                <button class="btn btn-sm btn-secondary" type="button"  data-dismiss="modal">Okay</button>
-                            </div>
+                <div class="modal-footer text-center">
+                    <div class="row">
+                           
+                        <div class="col px-0 btn-full-width">
+                            <button class="btn btn-sm btn-secondary" id="md_btn_not_filipino_cancel" type="button"  data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-sm btn-primary"  id="md_btn_not_filipino_update" type="button">Update Applicant Type</button>
                         </div>
                     </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -395,10 +432,7 @@
                         <input type="hidden" name="applicant_id" value="<?php echo $_SESSION['uid']?>">
 
                         <label class="pt-1 "> Applicant Type </label>
-                        <select name="applicant_type"  class="form-control form-control-sm mb-3">
-                            <option value="FROSH">Frosh</option>
-                            <option value="TRANSFEREE">Transferee</option>
-                        </select>
+                        <select name="applicant_type"  class="form-control form-control-sm mb-3"></select>
 
                         <label class="pt-1"> School </label>
                         <select id="sel_school"  class="form-control form-control-sm"></select>

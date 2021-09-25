@@ -2,8 +2,21 @@
 // tbl_requirement?
 $(document).ready(function(){
     
-    load_requirements();
-    load_buildings();
+    if ( getCookie('active_page') == 'page_requirements_setup')
+    {
+        load_applicant_type_list();
+    }
+    else
+    {
+        load_requirements();
+        load_buildings();
+
+    }
+
+
+    
+    
+
 })
 
 
@@ -184,7 +197,67 @@ $(document).ready(function(){
             error: function(xhr) {  },
         });
     })
-// REQUIREMENTS
+
+// REQUIREMENT SETUP
+
+    function load_requirements_setup(){
+
+        data = [];
+        data.push({name: 'action', value:'get'})
+        
+        $.ajax({
+
+            type: 'post',
+
+            url: 'api/dashboard/administrator/requirements_setup.php',
+
+            data: data,
+
+            datatype: 'json',
+
+            beforeSend: function() { },
+
+            success: function (e) { 
+
+                var toAppend;
+                var count = 1;
+
+                $.each(e, function(key,val){
+                    toAppend += '<tr>';
+                    toAppend += '<td class="text-center">'+count+'</td>';
+                    toAppend += '<td>'+val.name+'</td>';
+                    toAppend += '<td class="text-center">'+val.document_type+'</td>';
+                    toAppend += '<td><i aria-name="'+val.name+'" aria-id="'+val.id+'" aria-document-type="'+val.document_type+'" class="md_edit far fa-edit fa-fw clickable text-primary"></i><i aria-id="'+val.id+'" class="md_delete far fa-trash-alt fa-fw clickable  text-primary"></i></td>';
+                    toAppend += '</tr>';
+                    count = count+1;
+                })
+
+                $('#tbl_requirement tbody').empty();
+                $('#tbl_requirement tbody').append(toAppend);
+            },
+
+            complete: function () { 
+
+                $('.md_delete').on('click', function(){
+                    $('#md_admin_delete_requirement').attr('aria-id',$(this).attr('aria-id'))
+                    $('#md_admin_delete_requirement').modal('show')
+                });
+
+                $('.md_edit').on('click', function(){
+                    $('#md_admin_edit_requirement').attr('aria-id',$(this).attr('aria-id'))
+                    $('#txt_name').val($(this).attr('aria-name'))
+                    $('#sel_type').val($(this).attr('aria-document-type'))
+                    $('#md_admin_edit_requirement').modal('show')
+                });
+
+            },
+
+            error: function(xhr) { },
+
+        });
+
+    }
+
 
 
 // BUILDINGS
@@ -244,6 +317,72 @@ $(document).ready(function(){
             error: function(xhr) { },
 
         });
+
+    }
+
+    function req_setup_load_requirements(val = ''){
+
+        data = [];
+        data.push({name: 'action', value:'get'},{name: 'applicant_type', value:val},)
+        
+        $.ajax({
+
+            type: 'post',
+
+            url: 'api/dashboard/administrator/requirements_setup.php',
+
+            data: data,
+
+            datatype: 'json',
+
+            beforeSend: function() { },
+
+            success: function (e) { 
+
+                var toAppend;
+                var count = 1;
+
+                $.each(e, function(key,val){
+                    toAppend += '<tr>';
+                    toAppend += '<td class="text-center">'+count+'</td>';
+                    toAppend += '<td>'+val.requirement+'</td>';
+                    toAppend += '<td class="text-center">'+val.document_type+'</td>';
+
+                    if(val.is_required == '1') toAppend += '<td class="text-center">Required</td>';
+                    else toAppend += '<td class="text-center">If Applicable</td>';
+                   
+                    toAppend += '<td><i aria-name="'+val.requirement+'" aria-id="'+val.id+'" aria-document-type="'+val.document_type+'" class="md_edit far fa-edit fa-fw clickable text-primary"></i><i aria-id="'+val.id+'" class="md_delete far fa-trash-alt fa-fw clickable  text-primary"></i></td>';
+                    toAppend += '</tr>';
+                    count = count+1;
+                })
+
+                $('#tbl_requirement_setup_list tbody').empty();
+                $('#tbl_requirement_setup_list tbody').append(toAppend);
+             
+            },
+
+            complete: function () { 
+
+
+                // $('.md_delete').on('click', function(){
+                //     $('#md_admin_delete_requirement').attr('aria-id',$(this).attr('aria-id'))
+                //     $('#md_admin_delete_requirement').modal('show')
+                // });
+
+                // $('.md_edit').on('click', function(){
+                //     $('#md_admin_edit_requirement').attr('aria-id',$(this).attr('aria-id'))
+                //     $('#txt_name').val($(this).attr('aria-name'))
+                //     $('#sel_type').val($(this).attr('aria-document-type'))
+                //     $('#md_admin_edit_requirement').modal('show')
+                // });
+
+            },
+
+            error: function(xhr) { },
+
+        });
+
+
 
     }
 
@@ -359,7 +498,68 @@ $(document).ready(function(){
         });
     })
 
-// BUILDINGS
+// RE-USABLE
+
+    function load_applicant_type_list(){
+
+        data = [];
+        data.push({name: 'action', value:'get'})
+        
+        $.ajax({
+
+            type: 'post',
+
+            url: 'api/dashboard/administrator/applicant_type.php',
+
+            data: data,
+
+            datatype: 'json',
+
+            beforeSend: function() { },
+
+            success: function (e) { 
+
+                var toAppend;
+                var count = 1;
+
+                $.each(e, function(key,val){
+                    
+                    toAppend += '<option value="'+val.id+'">'+val.name+'</option>';
+                })
+
+                $('#sel_applicant_type').empty();
+                $('#sel_applicant_type').append(toAppend);
+            },
+
+            complete: function () { 
+
+                $('#sel_applicant_type').on('change', function(){
+
+                    data = $(this).val();
+
+                    req_setup_load_requirements(data)
+                })
+
+                // $('.md_delete').on('click', function(){
+                //     $('#md_admin_delete_requirement').attr('aria-id',$(this).attr('aria-id'))
+                //     $('#md_admin_delete_requirement').modal('show')
+                // });
+
+                // $('.md_edit').on('click', function(){
+                //     $('#md_admin_edit_requirement').attr('aria-id',$(this).attr('aria-id'))
+                //     $('#txt_name').val($(this).attr('aria-name'))
+                //     $('#sel_type').val($(this).attr('aria-document-type'))
+                //     $('#md_admin_edit_requirement').modal('show')
+                // });
+
+            },
+
+            error: function(xhr) { },
+
+        });
+    }
+
+
 
 
 

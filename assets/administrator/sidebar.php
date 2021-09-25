@@ -37,16 +37,58 @@
             
             </div>
 
-            <ul class="nav flex-column pl-1 py-1">
-                <li class="nav-item">
-                    
-                    <a class="nav-link ld-nav-item text-dark py-1 "  style="font-size: 10pt;" aria-page="page_requirements">
-                        
-                        <i class="far fa-sticky-note fa-fw mr-2" style="font-size: 13pt;"></i>
 
-                        Requirements
-                    </a>
-                </li>
+          
+
+            <ul class="nav flex-column pl-1 py-1">
+
+                <div class="accordion" id="accordionExample">
+                    <div class="">
+                    
+                    <li class="nav-item">
+                    
+                        <a class="nav-link ld-nav-item text-dark py-1 "  style="font-size: 10pt;"  type="button" data-toggle="collapse" data-target="#collapseOne">
+                            
+                            <i class="far fa-sticky-note fa-fw mr-2" style="font-size: 13pt;"></i>
+
+                            Requirements
+                        </a>
+
+                    </li>
+
+                    <div id="collapseOne" class="collapse menu-collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        
+                        <li class="nav-item">
+                        
+                            <a class="nav-link ld-nav-item py-1 text-dark pl-4 "  style="font-size: 9pt !important;" aria-page="page_requirements" type="button" data-toggle="collapse" data-target="#collapseOne">
+                                
+                                <i class="far fa-sticky-note fa-fw mr-2" style="font-size: 13pt !important;"></i>
+
+                                Requirements List
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+                        
+                            <a class="nav-link ld-nav-item py-1 text-dark pl-4 "  style="font-size: 9pt !important;" aria-page="page_requirements_setup" type="button" data-toggle="collapse" data-target="#collapseOne">
+                                
+                                <i class="far fa-sticky-note fa-fw mr-2" style="font-size: 13pt !important;"></i>
+
+                                Requirements Setup
+                            </a>
+
+                        </li>
+                        
+                    </div>
+                
+                </div>
+
+
+
+
+              
+
                 <li class="nav-item">
                     
                     <a class="nav-link ld-nav-item text-dark py-1 "  style="font-size: 10pt;" aria-page="page_building_requirements">
@@ -60,7 +102,7 @@
 
                 <li class="nav-item">
                     
-                    <a class="nav-link ld-nav-item text-dark py-1 "  style="font-size: 10pt;" aria-page="page_dashboard">
+                    <a class="nav-link ld-nav-item text-dark py-1 "  style="font-size: 10pt;" aria-page="page_monitoring">
                         
                         <i class="far fa-sticky-note fa-fw mr-2" style="font-size: 13pt;"></i>
 

@@ -21,7 +21,14 @@ $('#form_register').on('submit', function (e) {
         $.each(e, function(key, val){
           if (val.status == 200)
           {
-              validated_success(val)
+            $('#modal_applicant_register').modal('show');
+
+            // $('.modal-body p').append(val.feedback);
+  
+            $('.modal-body i').addClass('far fa-check-circle fa-2x');
+  
+            $('.modal-body i').css('color','green');
+  
           }
         })
       },

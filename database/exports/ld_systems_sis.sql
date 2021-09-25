@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2021 at 07:03 PM
+-- Generation Time: Sep 25, 2021 at 08:09 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -41,9 +41,7 @@ CREATE TABLE `applicant_accounts` (
 --
 
 INSERT INTO `applicant_accounts` (`id`, `email`, `mobile_no`, `password`, `date_of_application`, `pass_type`) VALUES
-(3, 'kdlanguido@gmail.com', '6487897897', 'aa4ed9b78a4f4b6200fe4134fa7b31089085868f', '2021-09-07', 1),
-(45, 'alyastubigman@gmail.com', '9055297208', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', '2021-09-15', 1),
-(46, '21-00125.kddlanguido@mlqu.edu.ph', '90550505', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', '2021-09-15', 1);
+(52, 'alyastubigman@gmail.com', '8987987465', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', '2021-09-25', 1);
 
 -- --------------------------------------------------------
 
@@ -71,7 +69,7 @@ CREATE TABLE `applicant_information` (
   `acr_no` text DEFAULT NULL,
   `passport_no` text DEFAULT NULL,
   `spouse` text DEFAULT NULL,
-  `applicant_type` text DEFAULT NULL
+  `applicant_type` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -79,9 +77,7 @@ CREATE TABLE `applicant_information` (
 --
 
 INSERT INTO `applicant_information` (`id`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`, `religion`, `civil_status`, `citizenship`, `acr_no`, `passport_no`, `spouse`, `applicant_type`) VALUES
-(1, 3, 1, 'Mlqu', 'Harrri', '', 'INCOMPLETE', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Filipino', '5050', '5050', 'Test wife', 'FROSH'),
-(10, 45, 4, 'Mlqu', 'Harrri', '', '', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Filipino', '5050', '5050', 'Test wife', 'FROSH'),
-(11, 46, 1, 'Mlqu', 'Harrri', '', '', '', '1987-09-08', 34, 'Taguig', 905054579, 'MALE', 'Jehovah\'s Witness', 'MARRIED', 'Filipino', '5050', '5050', 'Test wife', 'FROSH');
+(17, 52, 1, '', 'Applicant', '', '', '', '0000-00-00', 0, '', 0, 'MALE', '', '', 'Filipino', '', '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -100,43 +96,6 @@ CREATE TABLE `applicant_mailing_address_information` (
   `province_city` text NOT NULL,
   `province_zipcode` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `applicant_requirement_list`
---
-
-CREATE TABLE `applicant_requirement_list` (
-  `id` int(11) NOT NULL,
-  `requirement_id` int(11) NOT NULL,
-  `applicant_type` text NOT NULL,
-  `conditions` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `applicant_requirement_list`
---
-
-INSERT INTO `applicant_requirement_list` (`id`, `requirement_id`, `applicant_type`, `conditions`) VALUES
-(9, 11, 'FROSH', NULL),
-(10, 12, 'FROSH', NULL),
-(11, 14, 'FROSH', NULL),
-(12, 15, 'FROSH', NULL),
-(13, 16, 'FROSH', NULL),
-(14, 13, 'FROSH', NULL),
-(15, 21, 'FROSH', NULL),
-(16, 20, 'TRANSFEREE', NULL),
-(17, 17, 'TRANSFEREE', NULL),
-(18, 14, 'TRANSFEREE', NULL),
-(19, 15, 'TRANSFEREE', NULL),
-(20, 16, 'TRANSFEREE', NULL),
-(21, 13, 'TRANSFEREE', NULL),
-(22, 21, 'TRANSFEREE', NULL),
-(23, 18, 'FROSH', 'citizenship!=\'filipino\''),
-(24, 19, 'FROSH', 'citizenship!=\'filipino\''),
-(25, 18, 'TRANSFEREE', 'citizenship!=\'filipino\''),
-(26, 19, 'TRANSFEREE', 'citizenship!=\'filipino\'');
 
 -- --------------------------------------------------------
 
@@ -160,15 +119,37 @@ CREATE TABLE `applicant_requirement_records` (
 --
 
 INSERT INTO `applicant_requirement_records` (`id`, `applicant_id`, `requirement_id`, `file_name`, `file_directory`, `date_submitted`, `requirement_status`, `approvers_comment`) VALUES
-(40, 45, 11, '', '', '0000-00-00', 'PENDING', ''),
-(41, 45, 12, '', '', '0000-00-00', 'PENDING', ''),
-(42, 45, 14, '', '', '0000-00-00', 'PENDING', ''),
-(43, 45, 15, '', '', '0000-00-00', 'PENDING', ''),
-(44, 45, 16, '', '', '0000-00-00', 'PENDING', ''),
-(45, 45, 13, '', '', '0000-00-00', 'PENDING', ''),
-(46, 45, 21, '', '', '0000-00-00', 'PENDING', ''),
-(47, 45, 18, '', '', '0000-00-00', 'PENDING', ''),
-(48, 45, 19, '', '', '0000-00-00', 'PENDING', '');
+(250, 52, 13, '', '', '0000-00-00', 'PENDING', ''),
+(251, 52, 16, '', '', '0000-00-00', 'PENDING', ''),
+(252, 52, 21, '', '', '0000-00-00', 'PENDING', ''),
+(253, 52, 12, '', '', '0000-00-00', 'PENDING', ''),
+(254, 52, 11, '', '', '0000-00-00', 'PENDING', ''),
+(255, 52, 15, '', '', '0000-00-00', 'PENDING', ''),
+(256, 52, 14, '', '', '0000-00-00', 'PENDING', ''),
+(257, 52, 18, '', '', '0000-00-00', 'PENDING', ''),
+(258, 52, 19, '', '', '0000-00-00', 'PENDING', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applicant_type_list`
+--
+
+CREATE TABLE `applicant_type_list` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `citizenship` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `applicant_type_list`
+--
+
+INSERT INTO `applicant_type_list` (`id`, `name`, `citizenship`) VALUES
+(1, 'Frosh - Filipino', 'Filipino'),
+(2, 'Frosh - Foreign', 'Foreign'),
+(3, 'Transferee - Foreign', 'Foreign'),
+(4, 'Transferee - Filipino', ' Filipino');
 
 -- --------------------------------------------------------
 
@@ -317,6 +298,41 @@ INSERT INTO `requirement_list` (`id`, `name`, `document_type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `requirement_setup_applicant_list`
+--
+
+CREATE TABLE `requirement_setup_applicant_list` (
+  `id` int(11) NOT NULL,
+  `requirement_id` int(11) NOT NULL,
+  `applicant_type_id` int(11) NOT NULL,
+  `is_required` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `requirement_setup_applicant_list`
+--
+
+INSERT INTO `requirement_setup_applicant_list` (`id`, `requirement_id`, `applicant_type_id`, `is_required`) VALUES
+(1, 13, 1, 1),
+(2, 16, 1, 1),
+(3, 21, 1, 1),
+(4, 12, 1, 1),
+(5, 11, 1, 1),
+(6, 15, 1, 0),
+(7, 14, 1, 0),
+(8, 13, 2, 1),
+(9, 16, 2, 1),
+(10, 21, 2, 1),
+(11, 12, 2, 1),
+(12, 11, 2, 1),
+(13, 15, 2, 0),
+(14, 14, 2, 0),
+(15, 18, 2, 1),
+(16, 19, 2, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `room_list`
 --
 
@@ -391,7 +407,8 @@ ALTER TABLE `applicant_accounts`
 ALTER TABLE `applicant_information`
   ADD PRIMARY KEY (`id`),
   ADD KEY `applicant_id` (`applicant_id`),
-  ADD KEY `program_id` (`program_id`);
+  ADD KEY `program_id` (`program_id`),
+  ADD KEY `applicant_type` (`applicant_type`);
 
 --
 -- Indexes for table `applicant_mailing_address_information`
@@ -400,19 +417,18 @@ ALTER TABLE `applicant_mailing_address_information`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `applicant_requirement_list`
---
-ALTER TABLE `applicant_requirement_list`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `requirement_id` (`requirement_id`);
-
---
 -- Indexes for table `applicant_requirement_records`
 --
 ALTER TABLE `applicant_requirement_records`
   ADD PRIMARY KEY (`id`),
   ADD KEY `applicant_id` (`applicant_id`),
   ADD KEY `requirement_id` (`requirement_id`);
+
+--
+-- Indexes for table `applicant_type_list`
+--
+ALTER TABLE `applicant_type_list`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `building_list`
@@ -454,6 +470,14 @@ ALTER TABLE `requirement_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `requirement_setup_applicant_list`
+--
+ALTER TABLE `requirement_setup_applicant_list`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `applicant_type_id` (`applicant_type_id`),
+  ADD KEY `requirement_id` (`requirement_id`);
+
+--
 -- Indexes for table `room_list`
 --
 ALTER TABLE `room_list`
@@ -479,13 +503,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `applicant_accounts`
 --
 ALTER TABLE `applicant_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `applicant_information`
 --
 ALTER TABLE `applicant_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `applicant_mailing_address_information`
@@ -494,16 +518,16 @@ ALTER TABLE `applicant_mailing_address_information`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `applicant_requirement_list`
---
-ALTER TABLE `applicant_requirement_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
 -- AUTO_INCREMENT for table `applicant_requirement_records`
 --
 ALTER TABLE `applicant_requirement_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+
+--
+-- AUTO_INCREMENT for table `applicant_type_list`
+--
+ALTER TABLE `applicant_type_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `building_list`
@@ -542,6 +566,12 @@ ALTER TABLE `requirement_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
+-- AUTO_INCREMENT for table `requirement_setup_applicant_list`
+--
+ALTER TABLE `requirement_setup_applicant_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `room_list`
 --
 ALTER TABLE `room_list`
@@ -568,13 +598,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `applicant_information`
   ADD CONSTRAINT `applicant_information_ibfk_1` FOREIGN KEY (`applicant_id`) REFERENCES `applicant_accounts` (`id`),
-  ADD CONSTRAINT `applicant_information_ibfk_2` FOREIGN KEY (`program_id`) REFERENCES `program_list` (`id`);
-
---
--- Constraints for table `applicant_requirement_list`
---
-ALTER TABLE `applicant_requirement_list`
-  ADD CONSTRAINT `applicant_requirement_list_ibfk_2` FOREIGN KEY (`requirement_id`) REFERENCES `requirement_list` (`id`);
+  ADD CONSTRAINT `applicant_information_ibfk_2` FOREIGN KEY (`program_id`) REFERENCES `program_list` (`id`),
+  ADD CONSTRAINT `applicant_information_ibfk_3` FOREIGN KEY (`applicant_type`) REFERENCES `applicant_type_list` (`id`);
 
 --
 -- Constraints for table `applicant_requirement_records`
@@ -600,6 +625,13 @@ ALTER TABLE `monitoring_course_table`
 --
 ALTER TABLE `program_list`
   ADD CONSTRAINT `program_list_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `school_list` (`id`);
+
+--
+-- Constraints for table `requirement_setup_applicant_list`
+--
+ALTER TABLE `requirement_setup_applicant_list`
+  ADD CONSTRAINT `requirement_setup_applicant_list_ibfk_1` FOREIGN KEY (`applicant_type_id`) REFERENCES `applicant_type_list` (`id`),
+  ADD CONSTRAINT `requirement_setup_applicant_list_ibfk_2` FOREIGN KEY (`requirement_id`) REFERENCES `requirement_list` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

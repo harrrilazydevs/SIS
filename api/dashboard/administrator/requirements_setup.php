@@ -11,8 +11,6 @@
 
     $feedback = [ [ 'status'=>'400', 'feedback'=>'Bad Request!' ], [ 'status'=>'403', 'feedback'=>'Attachment not found!' ], [ 'status'=>'503', 'feedback'=>'Function not found!' ] ];
 
-    $db = new db();
-
     isset($_POST) || isset($_GET) ? ( isset($_POST['action']) || isset($_GET['action']) ? ( $_GET['action'] === 'get' ? $output = get_() : ( isset($_POST['token']) && $_POST['token'] === $_SESSION['TOKEN'] ? ( $_POST['action'] === 'post' ? $output = post_() : ($_POST['action'] === 'delete' ? $output = delete_() : $output = 503))  : $output = 400 ) ) : $output = 400 ) : $output = 400;
 
     echo json_encode($output);
@@ -23,17 +21,34 @@
 
         $result = '';
 
-        $sql = 'SELECT id, room_number, name, description FROM room_list';
+        $sql = '    SELECT 
+                            a.id, 
+                            c.name as "requirement",
+                            c.document_type,
+                            -- b.name as "applicant_type",
+                            a.is_required
+                    FROM 
+                            requirement_setup_applicant_list as a
+                    INNER JOIN 
+                            applicant_type_list as b
+                    ON
+                            a.applicant_type_id = b.id
+                    INNER JOIN 
+                            requirement_list as c
+                    ON
+                            a.requirement_id = c.id       
+                    WHERE 
+                            b.id = '. $_POST['applicant_type'];
         
         $db->get_( $sql, [] ) === 500 ?  $output = ['status'=>'500','feedback'=>'Get query fail!'] : $result = $db->get_( $sql, []);
-        
+
         return $result;
         
     }
 
     function post_(){
 
-        $require_fields = ['token'=>'',  'room_number'=>'numeric', 'name'=>'alpha', 'description'=>'alpha'];
+        $require_fields = ['token'=>'', 'name'=>'alpha', 'document_type'=>'alpha'];
 
         // validate entries
         $output =  required_fields_validated($require_fields, $_POST);
@@ -52,24 +67,22 @@
     
             $sql = '
                         INSERT INTO
-                                    room_list
+                                    requirement_list
                                     (
-                                        room_number,
                                         name,
-                                        description
+                                        document_type
                                     )
                         VALUES
                                     (
-                                        :room_number, 
                                         :name, 
-                                        :description
+                                        :document_type
                                     )';
     
             $ob = $db->connect();
     
             $stmt = $ob->prepare($sql);
     
-            $stmt->execute( [':room_number'=>$_POST['room_number'], ':name'=>$_POST['name'], ':description'=>$_POST['description']] ) ? $output = 200 : $output = 500;
+            $stmt->execute( [':name'=>$_POST['name'], ':document_type'=>$_POST['document_type']] ) ? $output = 200 : $output = 500;
             
         }
         else{
@@ -101,7 +114,7 @@
     
             $sql = '
                         DELETE FROM
-                                    room_list
+                                    requirement_list
                         WHERE
                                     id = :id';
     

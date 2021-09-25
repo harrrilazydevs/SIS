@@ -13,7 +13,7 @@
 
     $db = new db();
 
-    isset($_POST) ? ( isset($_POST['action']) ? ( $_POST['action'] === 'get' ? $output = get_() : ( isset($_POST['token']) && $_POST['token'] === $_SESSION['TOKEN'] ? ( $_POST['action'] === 'post' ? $output = post_() : ($_POST['action'] === 'delete' ? $output = delete_() : $output = 503))  : $output = 400 ) ) : $output = 400 ) : $output = 400;
+    isset($_POST) || isset($_GET) ? ( isset($_POST['action']) || isset($_GET['action']) ? ( $_GET['action'] === 'get' ? $output = get_() : ( isset($_POST['token']) && $_POST['token'] === $_SESSION['TOKEN'] ? ( $_POST['action'] === 'post' ? $output = post_() : ($_POST['action'] === 'delete' ? $output = delete_() : $output = 503))  : $output = 400 ) ) : $output = 400 ) : $output = 400;
 
     echo json_encode($output);
 
@@ -46,7 +46,7 @@
                 
         $stmt = $GLOBALS['db']->connect()->prepare($sql);
 
-        $output = $GLOBALS['db']->get_( $sql, [$_POST['id']] );
+        $output = $GLOBALS['db']->get_( $sql, [$_GET['id']] );
 
         if ( empty( $output ) )
         {

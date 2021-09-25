@@ -48,6 +48,10 @@ a.ld-nav-item {
    transform: scale(1.1);
  }
 
+ .menu-collapse{
+    background: #8f8f8f !important;
+ }
+
 
 /* SIDEBAR CSS */
 
@@ -242,6 +246,7 @@ html, body {
 
 
 /* TABS SCROLLABLE */
+
 .tabbable .nav-tabs {
    overflow-x: auto;
    overflow-y:hidden;
@@ -272,6 +277,17 @@ html, body {
    font-size: 9pt !important;
    
 }
+
+
+/* NAV PILLS */
+.ld-nav-pills{
+   color: black;
+   font-size: 10pt !important;
+}
+.ld-nav-pills.active{
+   background: #6a0f03 !important;
+}
+
 
 
 
@@ -325,4 +341,10 @@ body{
 .clickable:hover{
    transform: scale(1.2);
    cursor: pointer;
+}
+
+/* TABLE DESIGN */
+
+.table-design tbody tr td i{
+   color: #6A0F03 !important;
 }

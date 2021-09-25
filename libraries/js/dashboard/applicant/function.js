@@ -274,12 +274,11 @@ function load_requirements(){
     var user_id = $('.user_info').attr('id');
 
     data = $('#form_applicant_set_program').serializeArray();
-    data.push({name: 'action', value:'get'})
-    data.push({name: 'id', value:user_id})
-    
+    data.push({name: 'action', value:'get'},{name: 'id', value:user_id})
+
     $.ajax({
 
-        type: 'post',
+        type: 'get',
   
         url: 'api/dashboard/applicant/requirements.php',
   
@@ -312,61 +311,13 @@ function load_profile(){
         let data = [];
         data.push({name: 'action', value:'get'},{name:'id', value:$('.user_info').attr('id')})
         $.ajax({
-            type: 'post',
+            type: 'get',
             url: 'api/dashboard/applicant/profile.php',
             data:  data,
             dataType: 'json',
             beforeSend: function() {},
             success: function (e) {
                 
-                $.each(e, function(key, val){
-
-                    $('input[name="firstname"]').val(val.firstname);
-                    $('input[name="middlename"]').val(val.middlename);
-                    $('input[name="lastname"]').val(val.lastname);
-                    $('input[name="suffix"]').val(val.suffix);
-                    $('input[name="date_of_birth"]').val(val.date_of_birth);
-                    $('input[name="age"]').val(val.age);
-                    $('input[name="place_of_birth"]').val(val.place_of_birth);
-                    $('input[name="mobile_no"]').val(val.mobile_no);
-                    $('select[name="gender"]').val(val.gender);
-                    $('input[name="religion"]').val(val.religion);
-                    $('select[name="civil_status"]').val(val.civil_status);
-                    $('input[name="citizenship"]').val(val.citizenship);
-                    
-                    $('#sel_school_id').val(val.school_id).change()
-                    $('#sel_program').val(val.program_id).change()
-
-                    // foreign or filipino
-                    if (val.citizenship.toLowerCase() !== 'filipino'){
-                        $('#div_acr').removeClass('d-none')
-                        $('#div_passport').removeClass('d-none')
-
-                        $('input[name="acr_no"]').val(val.acr_no);
-                        $('input[name="passport_no"]').val(val.passport_no);
-                    }
-                    else
-                    {
-                        $('#div_acr').addClass('d-none')
-                        $('#div_passport').addClass('d-none')
-                    }
-
-                    // single or married
-                    if (val.civil_status.toLowerCase() !== 'single'){
-                        $('#div_spouse').removeClass('d-none')
-                        $('input[name="spouse"]').val(val.spouse);
-                    }
-                    else{
-                        $('#div_spouse').addClass('d-none')
-                    }
-
-                    // display set applicant type if null
-                    if (typeof val.applicant_type === "undefined" || !val.applicant_type) {
-                        $('#md_applicant_sel_program').modal('show')
-                    }
-
-                })
-
                 if (e.status == 403 || e.status == 400 || e.status == 500)
                 {
                     $('#md_applicant_post_requirement').modal('hide')
@@ -376,6 +327,60 @@ function load_profile(){
                 }
                 else
                 {
+
+                    $.each(e, function(key, val){
+
+                        $('input[name="firstname"]').val(val.firstname);
+                        $('input[name="middlename"]').val(val.middlename);
+                        $('input[name="lastname"]').val(val.lastname);
+                        $('input[name="suffix"]').val(val.suffix);
+                        $('input[name="date_of_birth"]').val(val.date_of_birth);
+                        
+                        if(val.age >= 18){
+                            $('input[name="age"]').val(val.age);
+                        }
+
+                        $('input[name="place_of_birth"]').val(val.place_of_birth);
+                        $('input[name="mobile_no"]').val(val.mobile_no);
+                        $('select[name="gender"]').val(val.gender);
+                        $('input[name="religion"]').val(val.religion);
+                        $('select[name="civil_status"]').val(val.civil_status);
+                        $('input[name="citizenship"]').val(val.citizenship);
+                        
+                        $('#sel_school_id').val(val.school_id).change()
+                        $('#sel_program').val(val.program_id).change()
+    
+                        // foreign or filipino
+                        if (val.citizenship.toLowerCase() !== 'filipino' && val.citizenship){
+                            $('#div_acr').removeClass('d-none')
+                            $('#div_passport').removeClass('d-none')
+    
+                            $('input[name="acr_no"]').val(val.acr_no);
+                            $('input[name="passport_no"]').val(val.passport_no);
+                        }
+                        else
+                        {
+                            $('#div_acr').addClass('d-none')
+                            $('#div_passport').addClass('d-none')
+                        }
+    
+                        // single or married
+                        if (val.civil_status.toLowerCase() !== 'single' && val.civil_status){
+                            $('#div_spouse').removeClass('d-none')
+                            $('input[name="spouse"]').val(val.spouse);
+                        }
+                        else{
+                            $('#div_spouse').addClass('d-none')
+                        }
+    
+                        // display set applicant type if null
+                        if (typeof val.applicant_type === "undefined" || !val.applicant_type) {
+                            
+                            get_applicant_type()
+                            
+                        }
+    
+                    })
                     
                 }
             },
@@ -386,11 +391,53 @@ function load_profile(){
     }
 }
 
+function get_applicant_type(){
+
+    data = [];
+    data.push({name: 'action', value:'get'})
+    
+    $.ajax({
+
+        type: 'get',
+
+        url: 'api/dashboard/administrator/applicant_type.php',
+
+        data: data,
+
+        datatype: 'json',
+
+        beforeSend: function() { },
+
+        success: function (e) { 
+
+            var toAppend;
+            var count = 1;
+
+            $.each(e, function(key,val){
+                
+                toAppend += '<option value="'+val.id+'">'+val.name+'</option>';
+            })
+
+            $('select[name="applicant_type"]').empty();
+            $('select[name="applicant_type"]').append(toAppend);
+        },
+
+        complete: function () { 
+
+            $('#md_applicant_sel_program').modal('show')
+
+        },
+
+        error: function(xhr) { },
+
+    });
+}
+
 
 
 function load_list_school(){
     $.ajax({ 
-    type: 'post', 
+    type: 'get', 
     url: 'api/general/get_school_list.php', 
     datatype: 'json', 
     success: function (e){ 
@@ -405,9 +452,12 @@ function load_list_school(){
 }
 
 function load_programs(school_id){ 
-    $.ajax({ type: 'post', 
-    url: 'api/general/get_program_list.php', 
-    data: {id:school_id}, 
+
+    data = [];
+    data.push({name: 'action', value:'get'}, {name: 'id', value:school_id})
+    $.ajax({ type: 'get', 
+    url: 'api/general/program.php', 
+    data:data, 
     datatype: 'json', success: function (e) 
     { var output =''; $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); $('#sel_program').empty(); $('#sel_program').append(output);  }, error: function(xhr) { display_error() }, }); 
 }
@@ -456,7 +506,7 @@ $('form#form_applicant_set_program').on('submit', function(e){
         },
         complete: function() {
 
-            location.reload();
+            // location.reload();
           
         },
         error: function(xhr) { display_error() },
@@ -470,6 +520,7 @@ $('#btn_bi_update').on('click', function(){
     $(this).addClass('d-none');
     $('#btn_bi_save').removeClass('d-none');
 })
+
 $('form#f_applicant_bi').on('submit', function(e){
 
     e.preventDefault();
@@ -507,21 +558,50 @@ $('form#f_applicant_bi').on('submit', function(e){
         error: function(xhr) { display_error() },
     });
 })
-$('#txt_citizenship').on('change',function(){
-    if($(this).val().toLowerCase() !== 'filipino')
-    {
-        $('#md_not_filipino').modal('show')
-        $('#div_acr').removeClass('d-none')
-        $('#div_passport').removeClass('d-none')
-    }
-    else
-    {
-        $('#div_acr').addClass('d-none')
-        $('#div_passport').addClass('d-none')
-        $('#div_acr').val('')
-        $('#div_passport').val('')
-    }
+
+var applicant_citizenship = '';
+
+
+$('#txt_citizenship').on('click',function(){
+    applicant_citizenship = $(this).val().toLowerCase();
 })
+
+$('#txt_citizenship').on('change',function(){
+
+    if ( applicant_citizenship != $(this).val().toLowerCase() )
+    {
+        if($(this).val().toLowerCase() !== 'filipino' && applicant_citizenship == 'filipino')
+        {
+            $('#md_not_filipino').modal('show')
+            $('#div_acr').removeClass('d-none')
+            $('#div_passport').removeClass('d-none')
+        }
+        else
+        {
+            $('#div_acr').addClass('d-none')
+            $('#div_passport').addClass('d-none')
+            $('#div_acr').val('')
+            $('#div_passport').val('')
+        }   
+    }
+
+    
+})
+
+$('#md_btn_not_filipino_cancel').on('click', function(){
+    $('#txt_citizenship').val('Filipino');
+    $('#div_acr').addClass('d-none')
+    $('#div_passport').addClass('d-none')
+    $('#div_acr').val('')
+    $('#div_passport').val('')
+})
+
+$('#md_btn_not_filipino_update').on('click', function(){
+    $('#md_not_filipino').modal('hide')
+    get_applicant_type();
+    $('#md_applicant_sel_program').modal('show')
+})
+
 $('#txt_civil_status').on('change',function(){
     if($(this).val().toLowerCase() === 'married')
     {

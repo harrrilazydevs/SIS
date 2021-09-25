@@ -76,6 +76,7 @@
 
     </div>
 
+    <!-- REQUIREMENTS -->
     <div class="d-none page" id="page_requirements">
 
       <?php 
@@ -83,6 +84,34 @@
         if ($USER_TYPE == 'ADMINISTRATOR' || $USER_TYPE == 'DEVELOPER')
         {
           include_once 'assets/administrator/requirements.php'; 
+        }
+        
+      ?>
+
+    </div>
+
+    <!-- REQUIREMENTS SET UP -->
+    <div class="d-none page" id="page_requirements_setup">
+
+      <?php 
+
+        if ($USER_TYPE == 'ADMINISTRATOR' || $USER_TYPE == 'DEVELOPER')
+        {
+          include_once 'assets/administrator/requirements-setup.php'; 
+        }
+        
+      ?>
+
+    </div>
+
+    <!-- MONITORING -->
+    <div class="d-none page" id="page_monitoring">
+
+      <?php 
+
+        if ($USER_TYPE == 'ADMINISTRATOR' || $USER_TYPE == 'DEVELOPER')
+        {
+          include_once 'assets/administrator/monitoring.php'; 
         }
         
       ?>

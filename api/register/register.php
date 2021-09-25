@@ -15,7 +15,7 @@
         [
             //0
             'status'=>'200',
-            'feedback'=>'Registration Successful!',
+            'feedback'=>'Registration Successful, Kindly check your email.',
             'url'=>'../login',
         ],
         [

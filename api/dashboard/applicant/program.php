@@ -13,7 +13,7 @@
 
     $db = new db();
 
-    isset($_POST) ? ( isset($_POST['action']) ? ( $_POST['action'] === 'get' ? $output = get_() : ( isset($_POST['token']) && $_POST['token'] === $_SESSION['TOKEN'] ? ( $_POST['action'] === 'post' ? $output = post_() : ($_POST['action'] === 'delete' ? $output = delete_() : $_POST['action'] === 'put' ?  $output = prep_put_() : $output = 400 ))  : $output = 400 ) ) : $output = 400 ) : $output = 400;
+    isset($_POST) || isset($_GET) ? ( isset($_POST['action']) || isset($_GET['action']) ? ( $_GET['action'] === 'get' ? $output = get_() : ( isset($_POST['token']) && $_POST['token'] === $_SESSION['TOKEN'] ? ( $_POST['action'] === 'post' ? $output = post_() : ($_POST['action'] === 'delete' ? $output = delete_() : $output = 503))  : $output = 400 ) ) : $output = 400 ) : $output = 400;
 
     echo json_encode($output);  
 
@@ -80,7 +80,7 @@
 
     function prep_put_(){
 
-        $require_fields = ['token'=>'', 'applicant_id'=>'numeric', 'applicant_type'=>'alpha', 'program_id'=>'numeric'];
+        $require_fields = ['token'=>'', 'applicant_id'=>'numeric', 'applicant_type'=>'numeric', 'program_id'=>'numeric'];
 
         // validate entries
         $output =  required_fields_validated($require_fields, $_POST);
@@ -92,6 +92,12 @@
 
             // remove TOKEN     
             array_shift($required_keys);
+
+            array_push($required_keys, 'citizenship');
+
+            $citizenship = get_applicant_citizenship($_POST['applicant_type']);
+
+            $_POST['citizenship'] =  $citizenship[0]['citizenship'];
 
             // set query details
             $q['table'] = 'applicant_information';
@@ -105,19 +111,34 @@
             // insert requirements
             if ($output === 200){
 
+                clean_requirement_record($_POST['applicant_id']);
+
                 $requirement_ids = get_requirement($_POST['applicant_type']);
 
-                $sql = 'INSERT INTO applicant_requirement_records(applicant_id, requirement_id, requirement_status) VALUES (:applicant_id, :requirement_id, :requirement_status)';
+                $sql = '    INSERT INTO 
+                                        applicant_requirement_records
+                                        (
+                                            applicant_id, 
+                                            requirement_id, 
+                                            requirement_status
+                                        ) 
+                            VALUES      (
+                                            :applicant_id, 
+                                            :requirement_id, 
+                                            :requirement_status
+                                        )';
                 
                 $v[':applicant_id'] = substr($_POST['applicant_id'], 0, 32);
                 $v[':requirement_status'] = 'PENDING';
 
-                foreach ($requirement_ids as $key => $vx) {
-                    $v[':requirement_id'] = $vx['id'];
-                    $GLOBALS['db']->post_($sql, $v);
-                }
 
-                $output = 200;
+                foreach ($requirement_ids as $key => $vx) {
+
+                    $v[':requirement_id'] = $vx['id'];
+
+                    $GLOBALS['db']->post_($sql, $v);
+
+                }
 
             }
 
@@ -132,40 +153,45 @@
 
     function get_requirement($type){
 
-        $sql =  '  
-            SELECT 
-                    a.id,
-                    a.conditions
-            FROM 
-                    requirement_list a
-            INNER JOIN
-                    applicant_requirement_list b
-            ON
-                    a.id = b.requirement_id
-            WHERE
-                    b.applicant_type = :applicant_type
+        $sql =  '   SELECT 
+                            b.id
+                    FROM 
+                            requirement_setup_applicant_list as a
+                    INNER JOIN 
+                            requirement_list as b
+                    ON
+                            a.requirement_id = b.id
+                    WHERE
+                            applicant_type_id = :applicant_type
         ';
 
         return $GLOBALS['db']->get_( $sql,  [':applicant_type'=>$type] );
         
     }
 
-    function check_for_conditions(){
-        
-        $sql =  '  
-            SELECT 
-                    a.id,
-                    a.conditions
-            FROM 
-                    requirement_list a
-            INNER JOIN
-                    applicant_requirement_list b
-            ON
-                    a.id = b.requirement_id
-            WHERE
-                    b.applicant_type = :applicant_type
-        ';
+    function get_applicant_citizenship($id){
 
-        return $GLOBALS['db']->get_( $sql,  [':applicant_type'=>$type] );
-        
+        $sql =  '   SELECT 
+                            citizenship
+                    FROM 
+                            applicant_type_list
+                    WHERE
+                            id = :id
+                    ';
+
+        return $GLOBALS['db']->get_( $sql,  [':id'=>$id] );
     }
+
+    function clean_requirement_record($id){
+
+        $sql = 'DELETE FROM
+                            applicant_requirement_records
+                WHERE
+                            applicant_id=:id';
+
+        $v[':id'] = $id;
+
+        $GLOBALS['db']->post_($sql, $v);        
+    }
+
+

@@ -23,17 +23,17 @@
 
         $result = '';
 
-        $sql = 'SELECT id, room_number, name, description FROM room_list';
+        $sql = 'SELECT id, name FROM applicant_type_list';
         
         $db->get_( $sql, [] ) === 500 ?  $output = ['status'=>'500','feedback'=>'Get query fail!'] : $result = $db->get_( $sql, []);
-        
+
         return $result;
         
     }
 
     function post_(){
 
-        $require_fields = ['token'=>'',  'room_number'=>'numeric', 'name'=>'alpha', 'description'=>'alpha'];
+        $require_fields = ['token'=>'', 'name'=>'alpha'];
 
         // validate entries
         $output =  required_fields_validated($require_fields, $_POST);
@@ -50,26 +50,21 @@
 
             $status = false;
     
-            $sql = '
-                        INSERT INTO
-                                    room_list
+            $sql = '    INSERT INTO
+                                    applicant_type_list
                                     (
-                                        room_number,
-                                        name,
-                                        description
+                                        name
                                     )
                         VALUES
                                     (
-                                        :room_number, 
-                                        :name, 
-                                        :description
+                                        :name
                                     )';
     
             $ob = $db->connect();
     
             $stmt = $ob->prepare($sql);
     
-            $stmt->execute( [':room_number'=>$_POST['room_number'], ':name'=>$_POST['name'], ':description'=>$_POST['description']] ) ? $output = 200 : $output = 500;
+            $stmt->execute( [':name'=>$_POST['name']] ) ? $output = 200 : $output = 500;
             
         }
         else{
@@ -101,7 +96,7 @@
     
             $sql = '
                         DELETE FROM
-                                    room_list
+                                    applicant_type_list
                         WHERE
                                     id = :id';
     
