@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2021 at 08:09 PM
+-- Generation Time: Sep 29, 2021 at 04:19 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -46,6 +46,38 @@ INSERT INTO `applicant_accounts` (`id`, `email`, `mobile_no`, `password`, `date_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `applicant_family_record`
+--
+
+CREATE TABLE `applicant_family_record` (
+  `id` int(11) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
+  `father_name` text NOT NULL,
+  `father_occupation` text NOT NULL,
+  `father_mobile_no` text NOT NULL,
+  `father_email` text DEFAULT NULL,
+  `mother_name` text NOT NULL,
+  `mother_occupation` text NOT NULL,
+  `mother_mobile_no` text NOT NULL,
+  `mother_email` text DEFAULT NULL,
+  `no_siblings` int(11) NOT NULL,
+  `monthly_income` text NOT NULL,
+  `guardian_name` text DEFAULT NULL,
+  `guardian_occupation` text DEFAULT NULL,
+  `guardian_mobile_no` text DEFAULT NULL,
+  `guardian_email` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `applicant_family_record`
+--
+
+INSERT INTO `applicant_family_record` (`id`, `applicant_id`, `father_name`, `father_occupation`, `father_mobile_no`, `father_email`, `mother_name`, `mother_occupation`, `mother_mobile_no`, `mother_email`, `no_siblings`, `monthly_income`, `guardian_name`, `guardian_occupation`, `guardian_mobile_no`, `guardian_email`) VALUES
+(1, 52, 'Bernard', 'tes', 'test', 'test@email.com', 'test', 'test', 'test', 'test@email.com', 1, '50,000 ', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `applicant_information`
 --
 
@@ -69,15 +101,19 @@ CREATE TABLE `applicant_information` (
   `acr_no` text DEFAULT NULL,
   `passport_no` text DEFAULT NULL,
   `spouse` text DEFAULT NULL,
-  `applicant_type` int(11) DEFAULT NULL
+  `applicant_type` int(11) DEFAULT NULL,
+  `company` text DEFAULT NULL,
+  `position` text NOT NULL,
+  `income` text NOT NULL,
+  `working` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `applicant_information`
 --
 
-INSERT INTO `applicant_information` (`id`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`, `religion`, `civil_status`, `citizenship`, `acr_no`, `passport_no`, `spouse`, `applicant_type`) VALUES
-(17, 52, 1, '', 'Applicant', '', '', '', '0000-00-00', 0, '', 0, 'MALE', '', '', 'Filipino', '', '', '', 2);
+INSERT INTO `applicant_information` (`id`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`, `religion`, `civil_status`, `citizenship`, `acr_no`, `passport_no`, `spouse`, `applicant_type`, `company`, `position`, `income`, `working`) VALUES
+(17, 52, 4, 'languido', 'king dranreb', '', '', 'test', '2000-09-27', 20, 'Taguig', 2147483647, 'MALE', 'Jehovah\'s Witness', 'SINGLE', 'Filipino', '', '', '', 1, 'Privaate', 'Software Engineer', '1500', 1);
 
 -- --------------------------------------------------------
 
@@ -94,8 +130,16 @@ CREATE TABLE `applicant_mailing_address_information` (
   `province_no_st_sbdv` text NOT NULL,
   `province_brgy` text NOT NULL,
   `province_city` text NOT NULL,
-  `province_zipcode` text NOT NULL
+  `province_zipcode` text NOT NULL,
+  `applicant_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `applicant_mailing_address_information`
+--
+
+INSERT INTO `applicant_mailing_address_information` (`id`, `city_no_st_sbdv`, `city_brgy`, `city_city`, `city_zipcode`, `province_no_st_sbdv`, `province_brgy`, `province_city`, `province_zipcode`, `applicant_id`) VALUES
+(1, '221 malinao st', 'tibay', 'taguig', '1542', '225 Malabo', 'test', 'taguig', 'test', 52);
 
 -- --------------------------------------------------------
 
@@ -119,15 +163,43 @@ CREATE TABLE `applicant_requirement_records` (
 --
 
 INSERT INTO `applicant_requirement_records` (`id`, `applicant_id`, `requirement_id`, `file_name`, `file_directory`, `date_submitted`, `requirement_status`, `approvers_comment`) VALUES
-(250, 52, 13, '', '', '0000-00-00', 'PENDING', ''),
-(251, 52, 16, '', '', '0000-00-00', 'PENDING', ''),
-(252, 52, 21, '', '', '0000-00-00', 'PENDING', ''),
-(253, 52, 12, '', '', '0000-00-00', 'PENDING', ''),
-(254, 52, 11, '', '', '0000-00-00', 'PENDING', ''),
-(255, 52, 15, '', '', '0000-00-00', 'PENDING', ''),
-(256, 52, 14, '', '', '0000-00-00', 'PENDING', ''),
-(257, 52, 18, '', '', '0000-00-00', 'PENDING', ''),
-(258, 52, 19, '', '', '0000-00-00', 'PENDING', '');
+(312, 52, 13, '', '', '0000-00-00', 'PENDING', ''),
+(313, 52, 16, '', '', '0000-00-00', 'PENDING', ''),
+(314, 52, 21, '', '', '0000-00-00', 'PENDING', ''),
+(315, 52, 12, '', '', '0000-00-00', 'PENDING', ''),
+(316, 52, 11, '', '', '0000-00-00', 'PENDING', ''),
+(317, 52, 15, '', '', '0000-00-00', 'PENDING', ''),
+(318, 52, 14, '', '', '0000-00-00', 'PENDING', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applicant_scholastic_record`
+--
+
+CREATE TABLE `applicant_scholastic_record` (
+  `id` int(11) NOT NULL,
+  `hs_school` text NOT NULL,
+  `hs_school_address` text NOT NULL,
+  `hs_school_year` text NOT NULL,
+  `hs_honor_receive` text NOT NULL,
+  `hs_organization` text NOT NULL,
+  `hs_scholarship` text NOT NULL,
+  `shs_school` text NOT NULL,
+  `shs_school_address` text NOT NULL,
+  `shs_school_year` text NOT NULL,
+  `shs_honor_receive` text NOT NULL,
+  `shs_organization` text NOT NULL,
+  `shs_scholarship` text NOT NULL,
+  `col_school` text NOT NULL,
+  `col_school_address` text NOT NULL,
+  `col_school_year` text NOT NULL,
+  `col_honor_receive` text NOT NULL,
+  `col_organization` text NOT NULL,
+  `col_scholarship` text NOT NULL,
+  `col_course` text NOT NULL,
+  `col_major` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -402,6 +474,13 @@ ALTER TABLE `applicant_accounts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `applicant_family_record`
+--
+ALTER TABLE `applicant_family_record`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `applicant_id` (`applicant_id`);
+
+--
 -- Indexes for table `applicant_information`
 --
 ALTER TABLE `applicant_information`
@@ -414,7 +493,8 @@ ALTER TABLE `applicant_information`
 -- Indexes for table `applicant_mailing_address_information`
 --
 ALTER TABLE `applicant_mailing_address_information`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `applicant_id` (`applicant_id`);
 
 --
 -- Indexes for table `applicant_requirement_records`
@@ -423,6 +503,12 @@ ALTER TABLE `applicant_requirement_records`
   ADD PRIMARY KEY (`id`),
   ADD KEY `applicant_id` (`applicant_id`),
   ADD KEY `requirement_id` (`requirement_id`);
+
+--
+-- Indexes for table `applicant_scholastic_record`
+--
+ALTER TABLE `applicant_scholastic_record`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `applicant_type_list`
@@ -506,6 +592,12 @@ ALTER TABLE `applicant_accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
+-- AUTO_INCREMENT for table `applicant_family_record`
+--
+ALTER TABLE `applicant_family_record`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `applicant_information`
 --
 ALTER TABLE `applicant_information`
@@ -515,13 +607,19 @@ ALTER TABLE `applicant_information`
 -- AUTO_INCREMENT for table `applicant_mailing_address_information`
 --
 ALTER TABLE `applicant_mailing_address_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `applicant_requirement_records`
 --
 ALTER TABLE `applicant_requirement_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=319;
+
+--
+-- AUTO_INCREMENT for table `applicant_scholastic_record`
+--
+ALTER TABLE `applicant_scholastic_record`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `applicant_type_list`
@@ -594,12 +692,24 @@ ALTER TABLE `users`
 --
 
 --
+-- Constraints for table `applicant_family_record`
+--
+ALTER TABLE `applicant_family_record`
+  ADD CONSTRAINT `applicant_family_record_ibfk_1` FOREIGN KEY (`applicant_id`) REFERENCES `applicant_accounts` (`id`);
+
+--
 -- Constraints for table `applicant_information`
 --
 ALTER TABLE `applicant_information`
   ADD CONSTRAINT `applicant_information_ibfk_1` FOREIGN KEY (`applicant_id`) REFERENCES `applicant_accounts` (`id`),
   ADD CONSTRAINT `applicant_information_ibfk_2` FOREIGN KEY (`program_id`) REFERENCES `program_list` (`id`),
   ADD CONSTRAINT `applicant_information_ibfk_3` FOREIGN KEY (`applicant_type`) REFERENCES `applicant_type_list` (`id`);
+
+--
+-- Constraints for table `applicant_mailing_address_information`
+--
+ALTER TABLE `applicant_mailing_address_information`
+  ADD CONSTRAINT `applicant_mailing_address_information_ibfk_1` FOREIGN KEY (`applicant_id`) REFERENCES `applicant_accounts` (`id`);
 
 --
 -- Constraints for table `applicant_requirement_records`

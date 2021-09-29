@@ -1197,13 +1197,13 @@
 
                             <div class="row mt-2">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
                                     <label class="pt-0"> School Name</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
@@ -1213,13 +1213,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
                                     <label class="pt-0"> School Address</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
@@ -1229,13 +1229,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
                                     <label class="pt-0"> School Year Attended</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input class=" form-control form-control-sm" name="primary_school_address" type="text">
                                     <p class="text-secondary" style="font-size: 8pt;"> Ex. ( 2015 - 2020 )</p> 
@@ -1246,13 +1246,13 @@
 
                             <div class="row mt-2">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
                                     <label class="pt-0"> Honors Received</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input  type="text" class=" form-control form-control-sm" data-role="tagsinput" name="primary_school_address">
                                     <p class="text-secondary" style="font-size: 8pt;"> Click outside textbox to add another</p> 
@@ -1263,13 +1263,13 @@
 
                             <div class="row mt-2">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
-                                    <label class="pt-0"> Group/ Organization/ Club</label>        
+                                    <label class="pt-0"> Group/Org/Club</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input  type="text" class=" form-control form-control-sm" data-role="tagsinput" name="primary_school_address">
                                     <p class="text-secondary" style="font-size: 8pt;"> Ex. (Org. Name - Position) If applicable</p> 
@@ -1290,13 +1290,13 @@
 
                             <div class="row mt-2">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
                                     <label class="pt-0"> School Name</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
@@ -1306,13 +1306,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
                                     <label class="pt-0"> School Address</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
@@ -1322,13 +1322,13 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
                                     <label class="pt-0"> School Year Attended</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input class=" form-control form-control-sm" name="primary_school_address" type="text">
                                     <p class="text-secondary" style="font-size: 8pt;"> Ex. ( 2015 - 2020 )</p> 
@@ -1339,13 +1339,13 @@
 
                             <div class="row mt-2">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
                                     <label class="pt-0"> Honors Received</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input  type="text" class=" form-control form-control-sm" data-role="tagsinput" name="primary_school_address">
                                     <p class="text-secondary" style="font-size: 8pt;"> Click outside textbox to add another</p> 
@@ -1356,13 +1356,13 @@
 
                             <div class="row mt-2">
 
-                                <div class="col-lg-4  ">
+                                <div class="col-lg-3  ">
 
-                                    <label class="pt-0"> Group/ Organization/ Club</label>        
+                                    <label class="pt-0"> Group/Org/Club</label>        
 
                                 </div>
 
-                                <div class="col-lg-8 ">
+                                <div class="col-lg-9 ">
 
                                     <input  type="text" class=" form-control form-control-sm" data-role="tagsinput" name="primary_school_address">
                                     <p class="text-secondary" style="font-size: 8pt;"> Ex. (Org. Name - Position) If applicable</p> 
