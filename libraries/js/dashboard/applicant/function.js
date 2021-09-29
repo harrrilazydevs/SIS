@@ -1,18 +1,36 @@
 $(document).ready(function(){
 
-    prepare_fields();
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    })
+
     load_effect();
 
     /* LOADS */
 
-    // $('#md_applicant_first_login').modal('show');
-
     load_list_school();
-    load_profile();
     load_requirements();
 
-    
+    // $('.tags-input').tagsinput();
 
+    // update
+
+    $('.f_btn_update').on('click', function(){
+
+        $($(this).attr('form-class')).each(function(){ 
+            $(this).attr('readonly',false) }
+        )
+
+        $(this).addClass('d-none');
+
+        $($(this).attr('submit-btn-name')).removeClass('d-none');
+
+    })
+
+    // FUNCTION FOR CHANGING TAB PAGES
     var page = getCookie('page');
     if (page)
     {
@@ -37,11 +55,14 @@ $(document).ready(function(){
             }
         })
     }
+
 })
 
-
-// variables
+// GLOBAL VARIABLES
 var profile_tab = false;
+var applicant_school = '';
+var applicant_program = '';
+var applicant_type_id = '';
 
 
 // REQUIREMENTS
@@ -85,7 +106,6 @@ function append_to_table(data)
     $('#tbl_requirement tbody').append(output);
 
 }
-
 function add_events(){
 
     $('form#form_modal_applicant_requirement').on('submit', function (e) {
@@ -268,7 +288,6 @@ function add_events(){
         $('#md_confirm').modal('show')
     })
 }
-
 function load_requirements(){
 
     var user_id = $('.user_info').attr('id');
@@ -301,9 +320,62 @@ function load_requirements(){
     });
 
 }
+function load_list_school(){
+    $.ajax({ 
+    type: 'get', 
+    url: 'api/general/get_school_list.php', 
+    datatype: 'json', 
+    success: function (e){ 
+        var output =''; 
+        $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); 
+      
+        $('#sel_bi_school').empty(); 
+        $('#sel_bi_school').append(output);  
 
+        // for modals
+        $('#sel_school').empty(); 
+        $('#sel_school').append(output);  
 
+        
+    }, 
+    complete: function(){
 
+        load_programs(1);
+
+        // after loading school list, load profile
+        load_profile();
+    },
+    error: function(xhr) { 
+        display_error() }, 
+    }); 
+}
+function load_programs(school_id){ 
+    data = [];
+    data.push({name: 'action', value:'get'}, {name: 'id', value:school_id})
+    $.ajax({ type: 'get', 
+    url: 'api/general/program.php', 
+    data:data, 
+    datatype: 'json', 
+    success: function (e) 
+    {
+        var output ='<option value="0">-- Select a Program --</option>'; 
+
+        $.each(e, function(key,val){ 
+
+            if (val.id == applicant_program) output += '<option value="'+val.id+'" selected>'+val.name+'</option>'; 
+            else  output += '<option value="'+val.id+'">'+val.name+'</option>'; 
+           
+        }); 
+
+        $('#sel_bi_program').empty(); 
+        $('#sel_bi_program').append(output); 
+
+        $('#sel_program').empty(); 
+        $('#sel_program').append(output);
+
+    }, 
+    error: function(xhr) { display_error() }, }); 
+}
 function load_profile(){
 
     if($('input[name="firstname"]').val() === ""){
@@ -317,7 +389,7 @@ function load_profile(){
             dataType: 'json',
             beforeSend: function() {},
             success: function (e) {
-                
+
                 if (e.status == 403 || e.status == 400 || e.status == 500)
                 {
                     $('#md_applicant_post_requirement').modal('hide')
@@ -327,7 +399,7 @@ function load_profile(){
                 }
                 else
                 {
-
+                    // console.log(e)
                     $.each(e, function(key, val){
 
                         $('input[name="firstname"]').val(val.firstname);
@@ -335,21 +407,35 @@ function load_profile(){
                         $('input[name="lastname"]').val(val.lastname);
                         $('input[name="suffix"]').val(val.suffix);
                         $('input[name="date_of_birth"]').val(val.date_of_birth);
+                        $('input[name="place_of_birth"]').val(val.place_of_birth);
+                        $('input[name="mobile_no"]').val(val.mobile_no);
+                        $('input[name="religion"]').val(val.religion);
+                        $('input[name="citizenship"]').val(val.citizenship);
+                        $('select[name="gender"]').val(val.gender);
+                        $('select[name="civil_status"]').val(val.civil_status);
+                        $('#sel_profile_working_student').val(val.working)
                         
                         if(val.age >= 18){
                             $('input[name="age"]').val(val.age);
                         }
 
-                        $('input[name="place_of_birth"]').val(val.place_of_birth);
-                        $('input[name="mobile_no"]').val(val.mobile_no);
-                        $('select[name="gender"]').val(val.gender);
-                        $('input[name="religion"]').val(val.religion);
-                        $('select[name="civil_status"]').val(val.civil_status);
-                        $('input[name="citizenship"]').val(val.citizenship);
-                        
-                        $('#sel_school_id').val(val.school_id).change()
-                        $('#sel_program').val(val.program_id).change()
-    
+                        if (val.working == 1){
+                            $('#div_position').removeClass('d-none');
+                            $('#div_income').removeClass('d-none'); 
+                            $('#div_company').removeClass('d-none');
+                            $('input[name="company"]').val(val.company);
+                            $('input[name="position"]').val(val.position);
+                            $('input[name="income"]').val(val.income);
+                        }else{
+                            $('input[name="position"]').val('');
+                            $('input[name="income"]').val('');
+                            $('#div_position').addClass('d-none');
+                            $('#div_income').addClass('d-none');
+                        }
+                       
+                        applicant_school = val.school_id;
+                        applicant_program = val.program_id;
+
                         // foreign or filipino
                         if (val.citizenship.toLowerCase() !== 'filipino' && val.citizenship){
                             $('#div_acr').removeClass('d-none')
@@ -358,8 +444,7 @@ function load_profile(){
                             $('input[name="acr_no"]').val(val.acr_no);
                             $('input[name="passport_no"]').val(val.passport_no);
                         }
-                        else
-                        {
+                        else{
                             $('#div_acr').addClass('d-none')
                             $('#div_passport').addClass('d-none')
                         }
@@ -375,23 +460,124 @@ function load_profile(){
     
                         // display set applicant type if null
                         if (typeof val.applicant_type === "undefined" || !val.applicant_type) {
-                            
-                            get_applicant_type()
-                            
+                            set_applicant_type()
                         }
-    
+                        else{
+                            applicant_type_id = val.applicant_type;
+                        }
+
                     })
-                    
                 }
             },
-            complete: function() {},
-            error: function(xhr) { display_error() },
+            complete: function() {
+                if(applicant_type_id) get_applicant_type_name_by_id(applicant_type_id);
+                $('#sel_bi_school').val(applicant_school).change()
+                $('#sel_bi_program').val(applicant_program).change()
+
+                // load address after loading profile
+                load_address();
+            },
+            error: function(xhr) { 
+                display_error() 
+            },
         });
 
     }
 }
+function load_address(){
 
-function get_applicant_type(){
+    let data = [];
+    data.push({name: 'action', value:'get'},{name:'id', value:$('.user_info').attr('id')})
+    $.ajax({
+        type: 'get',
+        url: 'api/dashboard/applicant/address.php',
+        data:  data,
+        dataType: 'json',
+        beforeSend: function() {
+
+        },
+        success: function(e) {
+
+            if (e.status == 403 || e.status == 400 || e.status == 500)
+            {
+                $('#modal_fail .modal-body p').text(e.feedback)
+                $('#modal_fail .modal-footer button').text('Close');
+                $('#modal_fail').modal('show')
+            }
+            else{
+
+                $.each(e, function(key,val){
+                    $('input[name="city_no_st_sbdv"]').val(val.city_no_st_sbdv);
+                    $('input[name="city_brgy"]').val(val.city_brgy);
+                    $('input[name="city_city"]').val(val.city_city);
+                    $('input[name="city_zipcode"]').val(val.city_zipcode);
+                    $('input[name="province_no_st_sbdv"]').val(val.province_no_st_sbdv);
+                    $('input[name="province_brgy"]').val(val.province_brgy);
+                    $('input[name="province_city"]').val(val.province_city);
+                    $('input[name="province_zipcode"]').val(val.province_zipcode);
+                })
+            }
+        },
+        complete: function(){
+            
+            // after load address load family
+            load_family();
+
+        }
+    })
+
+}
+function load_family(){
+
+    let data = [];
+    data.push({name: 'action', value:'get'},{name:'id', value:$('.user_info').attr('id')})
+    $.ajax({
+        type: 'get',
+        url: 'api/dashboard/applicant/family.php',
+        data:  data,
+        dataType: 'json',
+        beforeSend: function() {
+
+        },
+        success: function(e) {
+
+            console.log(e)
+            if (e.status == 403 || e.status == 400 || e.status == 500)
+            {
+                $('#modal_fail .modal-body p').text(e.feedback)
+                $('#modal_fail .modal-footer button').text('Close');
+                $('#modal_fail').modal('show')
+            }
+            else{
+
+                $.each(e, function(key,val){
+                    $('input[name="no_siblings"]').val(val.no_siblings);
+                    $('input[name="monthly_income"]').val(val.monthly_income);
+                    $('input[name="father_name"]').val(val.father_name);
+                    $('input[name="father_occupation"]').val(val.father_occupation);
+                    $('input[name="father_mobile_no"]').val(val.father_mobile_no);
+                    $('input[name="father_email"]').val(val.father_email);
+                    $('input[name="mother_name"]').val(val.mother_name);
+                    $('input[name="mother_occupation"]').val(val.mother_occupation);
+                    $('input[name="mother_mobile_no"]').val(val.mother_mobile_no);
+                    $('input[name="mother_email"]').val(val.mother_email);
+                    $('input[name="guardian_name"]').val(val.guardian_name);
+                    $('input[name="guardian_occupation"]').val(val.guardian_occupation);
+                    $('input[name="guardian_mobile_no"]').val(val.guardian_mobile_no);
+                    $('input[name="guardian_email"]').val(val.guardian_email);
+                   
+                })
+            }
+        },
+        complete: function(){
+            
+            // after load address load family
+            // load_family();
+
+        }
+    })
+}
+function set_applicant_type(){
 
     data = [];
     data.push({name: 'action', value:'get'})
@@ -432,45 +618,28 @@ function get_applicant_type(){
 
     });
 }
-
-
-
-function load_list_school(){
-    $.ajax({ 
-    type: 'get', 
-    url: 'api/general/get_school_list.php', 
-    datatype: 'json', 
-    success: function (e){ 
-        var output =''; 
-        $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); 
-        load_programs(1);
-        $('#sel_school').empty(); $('#sel_school').append(output);  
-    }, 
-    error: function(xhr) { 
-        display_error() }, 
-    }); 
-}
-
-function load_programs(school_id){ 
+function get_applicant_type_name_by_id(id){
 
     data = [];
-    data.push({name: 'action', value:'get'}, {name: 'id', value:school_id})
-    $.ajax({ type: 'get', 
-    url: 'api/general/program.php', 
-    data:data, 
-    datatype: 'json', success: function (e) 
-    { var output =''; $.each(e, function(key,val){ output += '<option value="'+val.id+'">'+val.name+'</option>'; }); $('#sel_program').empty(); $('#sel_program').append(output);  }, error: function(xhr) { display_error() }, }); 
+    data.push({name: 'action', value:'get'})
+    data.push({name: 'id', value:id})
+    
+    $.ajax({
+        type: 'get',
+        url: 'api/dashboard/applicant/get_applicant_type.php',
+        data: data,
+        datatype: 'json',
+        beforeSend: function() { },
+        success: function (e) { 
+            $('#txt_applicant_type').text(e[0].name)
+        },
+        complete: function () { },
+        error: function(xhr) { },
+    });
 }
 
 
 
-// TABS
-function prepare_fields(){
-
-    // set read-only pag kaload
-    $('.form_bi').each(function(){ $(this).attr('readonly','readonly') })
-
-}
 
 
 // SET PROGRAM
@@ -524,6 +693,7 @@ $('#btn_bi_update').on('click', function(){
 $('form#f_applicant_bi').on('submit', function(e){
 
     e.preventDefault();
+
     data = $('#f_applicant_bi').serializeArray();
     data.push({name: 'action', value:'post'})
     $.ajax({
@@ -553,19 +723,21 @@ $('form#f_applicant_bi').on('submit', function(e){
         complete: function() {
 
             document.cookie = "page=nav_profile";
-          
+        
         },
         error: function(xhr) { display_error() },
     });
+
+  
+  
+
 })
 
 var applicant_citizenship = '';
 
-
 $('#txt_citizenship').on('click',function(){
     applicant_citizenship = $(this).val().toLowerCase();
 })
-
 $('#txt_citizenship').on('change',function(){
 
     if ( applicant_citizenship != $(this).val().toLowerCase() )
@@ -578,6 +750,11 @@ $('#txt_citizenship').on('change',function(){
         }
         else
         {
+            if( applicant_citizenship != 'filipino' )
+            {
+                $('#md_filipino').modal('show')
+            }
+            
             $('#div_acr').addClass('d-none')
             $('#div_passport').addClass('d-none')
             $('#div_acr').val('')
@@ -587,7 +764,6 @@ $('#txt_citizenship').on('change',function(){
 
     
 })
-
 $('#md_btn_not_filipino_cancel').on('click', function(){
     $('#txt_citizenship').val('Filipino');
     $('#div_acr').addClass('d-none')
@@ -595,13 +771,16 @@ $('#md_btn_not_filipino_cancel').on('click', function(){
     $('#div_acr').val('')
     $('#div_passport').val('')
 })
-
 $('#md_btn_not_filipino_update').on('click', function(){
     $('#md_not_filipino').modal('hide')
     get_applicant_type();
     $('#md_applicant_sel_program').modal('show')
 })
-
+$('#md_btn_filipino_update').on('click', function(){
+    $('#md_filipino').modal('hide')
+    get_applicant_type();
+    $('#md_applicant_sel_program').modal('show')
+})
 $('#txt_civil_status').on('change',function(){
     if($(this).val().toLowerCase() === 'married')
     {
@@ -611,10 +790,154 @@ $('#txt_civil_status').on('change',function(){
         $('#div_spouse').addClass('d-none')
     }
 })
+$('#sel_profile_working_student').on('change', function(){
+    if ( $(this).val() === '1' ){
+        $('#div_company').removeClass('d-none')
+        $('#div_position').removeClass('d-none')
+        $('#div_income').removeClass('d-none')
+    }else{
+        $('#div_company').addClass('d-none')
+        $('#div_position').addClass('d-none')
+        $('#div_income').addClass('d-none')
+        $('#txt_bi_position').val('')
+        $('#txt_bi_income').val('')
+        $('#txt_bi_company').val('')
+    }
+})
+
 
 
 // PROGRAM
-$('#sel_school').on('change', function(){ load_programs($(this).val()); })
+$('#sel_bi_school').on('change', function(){ 
+    load_programs($(this).val()); 
+})
+$('#sel_bi_program').on('change', function(){ 
+    if(applicant_program) $(this).val() == applicant_program ? $('#btn_program_submit').addClass('d-none') : $('#btn_program_submit').removeClass('d-none');
+})
+$('form#f_applicant_program').on('submit', function(e){
+    e.preventDefault();
+    data = $('#f_applicant_program').serializeArray();
+    data.push({name: 'action', value:'put'},{name: 'applicant_type', value:applicant_type_id})
+    $.ajax({
+        type: 'post',
+        url: 'api/dashboard/applicant/program.php',
+        data:  data,
+        dataType: 'json',
+        beforeSend: function() {},
+        success: function (e) {
+
+            console.log(e)
+
+            if (e == 200)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_success .modal-body p').text('Profile updated successfully.')
+                $('#modal_success .modal-footer button').text('Close');
+                $('#modal_success .modal-footer button').addClass('click_reload');
+                $('#modal_success').modal('show')
+            }
+            if (e.status == 403 || e.status == 400 || e.status == 500)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_fail .modal-body p').text(e.feedback)
+                $('#modal_fail .modal-footer button').text('Close');
+                $('#modal_fail').modal('show')
+            }
+        },
+        complete: function() {
+
+            document.cookie = "page=nav_degree";
+          
+        },
+        error: function(xhr) { display_error() },
+    });
+})
+
+
+// ADDRESS
+$('#btn_address_update').on('click', function(){
+    $('.form_address').each(function(){ $(this).attr('readonly',false) })
+    $(this).addClass('d-none');
+    $('#btn_address_save').removeClass('d-none');
+})
+$('form#f_applicant_address').on('submit', function(e){
+    e.preventDefault();
+    data = $('#f_applicant_address').serializeArray();
+    data.push({name: 'action', value:'post'})
+    $.ajax({
+        type: 'post',
+        url: 'api/dashboard/applicant/address.php',
+        data:  data,
+        dataType: 'json',
+        beforeSend: function() {},
+        success: function (e) {
+            if (e == 200)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_success .modal-body p').text('Address updated successfully.')
+                $('#modal_success .modal-footer button').text('Close');
+                $('#modal_success .modal-footer button').addClass('click_reload');
+                $('#modal_success').modal('show')
+            }
+            if (e.status == 403 || e.status == 400 || e.status == 500)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_fail .modal-body p').text(e.feedback)
+                $('#modal_fail .modal-footer button').text('Close');
+                $('#modal_fail').modal('show')
+            }
+        },
+        complete: function() {
+
+            document.cookie = "page=nav-mailing_address";
+          
+        },
+        error: function(xhr) { display_error() },
+    });
+})
+
+// FAMILY
+$('form#f_applicant_family').on('submit', function(e){
+    e.preventDefault();
+    data = $('#f_applicant_family').serializeArray();
+    data.push({name: 'action', value:'post'})
+    $.ajax({
+        type: 'post',
+        url: 'api/dashboard/applicant/family.php',
+        data:  data,
+        dataType: 'json',
+        beforeSend: function() {},
+        success: function (e) {
+            if (e == 200)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_success .modal-body p').text('Family record updated successfully.')
+                $('#modal_success .modal-footer button').text('Close');
+                $('#modal_success .modal-footer button').addClass('click_reload');
+                $('#modal_success').modal('show')
+            }
+            if (e.status == 403 || e.status == 400 || e.status == 500)
+            {
+                $('#md_applicant_post_requirement').modal('hide')
+                $('#modal_fail .modal-body p').text(e.feedback)
+                $('#modal_fail .modal-footer button').text('Close');
+                $('#modal_fail').modal('show')
+            }
+        },
+        complete: function() {
+
+            document.cookie = "page=nav-family_record";
+          
+        },
+        error: function(xhr) { display_error() },
+    });
+})
+
+
+
+
+
+
 
 
 

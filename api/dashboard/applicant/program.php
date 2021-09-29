@@ -13,14 +13,40 @@
 
     $db = new db();
 
-    isset($_POST) || isset($_GET) ? ( isset($_POST['action']) || isset($_GET['action']) ? ( $_GET['action'] === 'get' ? $output = get_() : ( isset($_POST['token']) && $_POST['token'] === $_SESSION['TOKEN'] ? ( $_POST['action'] === 'post' ? $output = post_() : ($_POST['action'] === 'delete' ? $output = delete_() : $output = 503))  : $output = 400 ) ) : $output = 400 ) : $output = 400;
+    $action = $_SERVER['REQUEST_METHOD'];
 
+    if (isset($action)){
+        if ($action === 'POST'){
+            if (isset($_POST['token']) && $_POST['token'] === $_SESSION['TOKEN']){
+                if ( $_POST['action'] === 'post' ){
+                    $output = post_();
+                }
+                else if ( $_POST['action'] === 'put' ){
+                    $output = prep_put_();
+                }
+                else if ( $_POST['action'] === 'delete' ){
+                    $output = delete_();
+                }
+                else{
+                    $output = 503;
+                }
+            }
+            else{
+                $output = 400;
+            }
+        }
+        else{
+            $output = get_();
+        }
+    }
+    else{
+        $output = 400;
+    }
+ 
     echo json_encode($output);  
 
-    // function get_(){
-    //     $sql = ' SELECT `spouse`,`passport_no`, `acr_no`, `applicant_id`, `program_id`, `lastname`, `firstname`, `middlename`, `status`, `suffix`, `date_of_birth`, `age`, `place_of_birth`, `mobile_no`, `gender`,`religion`,`civil_status`,`citizenship`,`school_id` FROM applicant_information a INNER JOIN program_list b ON a.program_id = b.id INNER JOIN school_list c ON b.school_id = c.id  WHERE applicant_id = :id ';
-    //     return $GLOBALS['db']->get_( $sql,  [$_POST['id']] );
-    // }
+    
+
 
     function delete_(){ }
 
@@ -80,6 +106,8 @@
 
     function prep_put_(){
 
+        var_dump($_POST);
+
         $require_fields = ['token'=>'', 'applicant_id'=>'numeric', 'applicant_type'=>'numeric', 'program_id'=>'numeric'];
 
         // validate entries
@@ -95,6 +123,7 @@
 
             array_push($required_keys, 'citizenship');
 
+            // get citizenship from applicant_types_list table
             $citizenship = get_applicant_citizenship($_POST['applicant_type']);
 
             $_POST['citizenship'] =  $citizenship[0]['citizenship'];

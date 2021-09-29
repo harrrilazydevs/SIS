@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="libraries/css/page_style.css">
     <link rel="stylesheet" href="libraries/bootstrap-4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="libraries/fontawesome-5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="libraries/tags/tags.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"/>
 
 
     <title> <?php echo $page_title ?></title>

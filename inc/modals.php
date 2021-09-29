@@ -381,7 +381,7 @@
 
     <!-- NOT FILIPINO MODAL -->
     <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_not_filipino">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content" style="">
                 <div class="modal-header text-center pt-3 pb-0">
                 <h6> Information </h6>
@@ -394,12 +394,12 @@
                     <br>
                     <br >
 
-                    <small >
+                  
                        <b>Note:</b><br>    
-                    If you primarily selected Filipino as <u>Applicant Type</u>, please update your <u>Applicant Type</u> to update your Requirement List.
+                    If you primarily selected FILIPINO as <b>Applicant Type</b>, please set your <b>Applicant Type</b> to FOREIGN.
                     
                     <br>
-                   </small>
+                   
                 </div>
 
                 <div class="modal-footer text-center">
@@ -407,7 +407,37 @@
                            
                         <div class="col px-0 btn-full-width">
                             <button class="btn btn-sm btn-secondary" id="md_btn_not_filipino_cancel" type="button"  data-dismiss="modal">Cancel</button>
-                            <button class="btn btn-sm btn-primary"  id="md_btn_not_filipino_update" type="button">Update Applicant Type</button>
+                            <button class="btn btn-sm btn-primary"  id="md_btn_not_filipino_update" type="button">Set Applicant Type</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- NOT FILIPINO MODAL -->
+    <div class="modal fade input-modal shadow"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="md_filipino">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="">
+                <div class="modal-header text-center pt-3 pb-0">
+                <h6> Information </h6>
+                </div>
+
+                <div class="modal-body">
+
+                    <p> You selected FOREIGN as <b>Applicant Type</b>, please set your <b>Applicant Type</b> to FILIPINO.</p>
+
+                    <small>  <b>Note:</b><br> This is important to update your Requirement List</small>
+                   
+                </div>
+
+                <div class="modal-footer text-center">
+                    <div class="row">
+                           
+                        <div class="col px-0 btn-full-width">
+                            <button class="btn btn-sm btn-secondary" id="md_btn_filipino_cancel" type="button"  data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-sm btn-primary"  id="md_btn_filipino_update" type="button">Set Applicant Type</button>
                         </div>
                     </div>
                 </div>

@@ -86,13 +86,14 @@
                             <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-mailing_address" role="tab">Address</a>
                             <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-family_record" role="tab">Family</a>
                             <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-scholastic_record" role="tab">Scholastic</a>
+                            <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-social_media" role="tab">Social Media</a>
                             <a class="nav-link ld_nav_link" data-toggle="tab" href="#nav-other_information" role="tab">Other</a>
                         </div>
                     </nav>
 
                     <div class="tab-content border rounded tab_border  shadow-sm py-3 px-3 " id="nav-tabContent">
 
-                        <!-- Application Status -->
+                    <!-- Application Status -->
                         <div class="tab-pane fade show active container" id="nav_application_status" role="tabpanel">
 
                             <div class="tab_loading text-center text-secondary mt-2">
@@ -224,66 +225,8 @@
                             </div>
 
                         </div>
-
-                        <!-- Program -->
-                        <div class="tab-pane fade container tab_container" id="nav_application_degree" role="tabpanel">
                          
-                            <div class="border-bottom text-secondary pb-2">
-
-                                <h6 class="my-0">Program</h6>
-                                <small class="text-secondary my-0">Choose the program you are applying to.</small>
-                               
-                            </div>
-
-                            <form id="f_applicant_degree">
-
-                                <div class="row mt-4">
-                                        
-                                    <div class="col-lg-2">
-                                    
-                                        <label class="pt-1"> School </label>
-                                    
-                                    </div>
-                                    
-                                    <div class="col-lg-10 text-left"> 
-                                    
-                                        <select id="sel_school"  class="form-control form-control-sm"></select>
-                                        
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="row mt-4">
-                                    
-                                    <div class="col-lg-2">
-                                        
-                                        <label class="pt-1"> Program </label>
-                                    
-                                    </div>
-                                    
-                                    <div class="col-lg-10 text-left"> 
-                                    
-                                        <select name="program_id" id="sel_program"  class="form-control form-control-sm"></select>
-                                    
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="row mt-4">
-
-                                    <div class="col text-right">
-
-                                        <button class="btn btn-secondary btn-sm">Update</button>
-
-                                    </div>
-                                    
-                                </div>
-
-                            </form>
-
-                        </div>
-                         
-                        <!-- Basic Information -->
+                    <!-- Profile -->
                         <div class="tab-pane fade container tab_container mb-3 " id="nav_profile" role="tabpanel">
 
                             <div class="tab_loading text-center text-secondary mt-2">
@@ -291,10 +234,10 @@
                             </div>
 
                             <div class="tab_content d-none">
+
                                 <form id="f_applicant_bi">
 
                                     <input type="hidden" value="<?php echo $_SESSION['TOKEN']?>" name='token'>
-
 
                                     <div class="border-bottom text-secondary">
 
@@ -317,6 +260,14 @@
                                         <h5 id="txt_applicant_id"><?php echo $_SESSION['uid']?></h5>
                                         </div>
                                     </div>
+                                    <div class="row mt-3">
+                                        <div class="col-lg-2">
+                                            <label class="pt-1"> Applicant Type</label>
+                                        </div>
+                                        <div class="col-lg-10 text-left"> 
+                                        <h6 class="pt-1" id="txt_applicant_type"></h6>
+                                        </div>
+                                    </div>
 
                                     <div class="row mt-4">
 
@@ -328,7 +279,7 @@
 
                                         <div class="col-lg-10 ">
 
-                                            <input class="form-control form-control-sm form_bi" name="firstname" type="text" >
+                                            <input class="form-control form-control-sm form_bi" readonly name="firstname" type="text" >
 
                                         </div>
 
@@ -344,7 +295,7 @@
 
                                         <div class="col-lg-10 ">
 
-                                            <input class="form-control form-control-sm form_bi" name="middlename" type="text" >
+                                            <input class="form-control form-control-sm form_bi" readonly name="middlename" type="text" >
 
                                         </div>
 
@@ -354,13 +305,14 @@
 
                                         <div class="col-lg-2  pl-3">
 
-                                            <label class="pt-1"> Last Name </label>        <label class="text-danger font-weight-bold">*</label>
+                                            <label class="pt-1"> Last Name </label>
+                                            <label class="text-danger font-weight-bold">*</label>
 
                                         </div>
 
                                         <div class="col-lg-10 ">
 
-                                            <input class=" form-control form-control-sm form_bi" name="lastname" type="text">
+                                            <input class=" form-control form-control-sm form_bi" readonly name="lastname" type="text">
 
                                         </div>
 
@@ -376,7 +328,7 @@
 
                                         <div class="col-lg-10  pl-3">
 
-                                            <input class="form-control form-control-sm form_bi" name="suffix" type="text">
+                                            <input class="form-control form-control-sm form_bi" readonly name="suffix" type="text">
 
                                         </div>
 
@@ -386,13 +338,14 @@
 
                                         <div class="col-lg-2  pl-3">
 
-                                            <label class="pt-1">Mobile No </label><label class="text-danger font-weight-bold">*</label>
+                                            <label class="pt-1">Mobile No </label>
+                                            <label class="text-danger font-weight-bold">*</label>
                                         
                                         </div>
 
                                         <div class="col-lg-10 ">
 
-                                            <input class="form-control form-control-sm form_bi" name="mobile_no" type="text" >
+                                            <input class="form-control form-control-sm form_bi" readonly name="mobile_no" type="text" >
                                             <div class="text-right">
                                                 <small class="text-muted"> ( 9055000000 ) </small>
                                             </div>
@@ -427,7 +380,7 @@
 
                                         <div class="col-lg-3 ">
 
-                                            <input class="form-control form-control-sm birthdate form_bi" aria-age="txt_applicant_age" name="date_of_birth" type="date">
+                                            <input class="form-control form-control-sm birthdate   form_bi" readonly aria-age="txt_applicant_age" name="date_of_birth" type="date">
 
                                         </div>
 
@@ -439,7 +392,7 @@
 
                                         <div class="col-lg-1 px-lg-0">
 
-                                            <input class="form-control form-control-sm" name="age" type="text" id="txt_applicant_age" readonly>
+                                            <input class="form-control form-control-sm" name="age"  type="text" id="txt_applicant_age" readonly>
 
                                         </div>
 
@@ -451,7 +404,7 @@
 
                                         <div class="col-lg-3 pl-0 ">
 
-                                            <input class="form-control form-control-sm form_bi" name="place_of_birth" type="text">
+                                            <input class="form-control form-control-sm form_bi" readonly name="place_of_birth" type="text">
 
                                         </div>
                                 
@@ -467,7 +420,7 @@
 
                                         <div class="col-lg-10 ">
 
-                                            <select name="gender" class="form-control form-control-sm form_bi">
+                                            <select name="gender" class="form-control form-control-sm form_bi" readonly>
                                                 <option value="MALE">Male</option>
                                                 <option value="FEMALE">Female</option>
                                             </select>
@@ -486,7 +439,7 @@
 
                                         <div class="col-lg-10 ">
                                             
-                                            <input class="form-control form-control-sm form_bi" name="religion" type="text">
+                                            <input class="form-control form-control-sm form_bi" readonly name="religion" type="text">
 
                                         </div>
                                 
@@ -502,7 +455,7 @@
 
                                         <div class="col-lg-10 ">
 
-                                            <input type="text" name="citizenship" id="txt_citizenship" class="form-control form-control-sm form_bi">
+                                            <input type="text" name="citizenship" id="txt_citizenship" class="form-control form-control-sm form_bi" readonly>
 
                                         </div>
                                 
@@ -518,7 +471,7 @@
 
                                         <div class="col-lg-10 ">
 
-                                            <input type="text" name="acr_no" id="txt_acr" class="form-control form-control-sm form_bi">
+                                            <input type="text" name="acr_no" id="txt_acr" class="form-control form-control-sm form_bi" readonly>
 
                                         </div>
                                 
@@ -534,7 +487,7 @@
 
                                         <div class="col-lg-10 ">
 
-                                            <input type="text" name="passport_no" id="txt_passport" class="form-control form-control-sm form_bi">
+                                            <input type="text" name="passport_no" id="txt_passport" class="form-control form-control-sm form_bi" readonly>
 
                                         </div>
                                 
@@ -550,7 +503,7 @@
 
                                         <div class="col-lg-10 ">
 
-                                            <select name="civil_status" id="txt_civil_status" class="form-control form-control-sm form_bi">
+                                            <select name="civil_status" id="txt_civil_status" class="form-control form-control-sm form_bi" readonly>
                                                 <option value="SINGLE">Single</option>
                                                 <option value="MARRIED">Married</option>
                                                 <option value="WINDOWED">Widowed</option>
@@ -570,7 +523,75 @@
 
                                         <div class="col-lg-10 ">
 
-                                            <input type="text" name="spouse" id="txt_citizenship" class="form-control form-control-sm form_bi">
+                                            <input type="text" name="spouse" id="txt_citizenship" class="form-control form-control-sm form_bi" readonly>
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4">
+
+                                        <div class="col-lg-2  pl-3 pr-lg-0">
+
+                                            <label class="pt-0 ">Working Student</label>     
+
+                                                                    
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <select name="working" id="sel_profile_working_student" class="form-control form-control-sm form_bi" readonly>
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>    
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4 d-none" id="div_company">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Company </label><label class="text-danger font-weight-bold"> *</label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input type="text" name="company" id="txt_bi_company" class="form-control form-control-sm form_bi" readonly>
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4 d-none" id="div_position">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Position </label><label class="text-danger font-weight-bold"> *</label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input type="text" name="position" id="txt_bi_position" class="form-control form-control-sm form_bi" readonly>
+
+                                        </div>
+                                
+                                    </div>
+
+                                    <div class="row mt-4 d-none" id="div_income">
+
+                                        <div class="col-lg-2  pl-3">
+
+                                            <label class="pt-1"> Income </label><label class="text-danger font-weight-bold"> *</label>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-10 ">
+
+                                            <input type="text" name="income" id="txt_bi_income" class="form-control form-control-sm form_bi" readonly>
 
                                         </div>
                                 
@@ -581,8 +602,8 @@
                                     <div class="row mt-4">
 
                                         <div class="col text-right  pl-3">
-                                            
-                                            <button class="btn btn-sm btn-secondary" type="button" id="btn_bi_update">Update</button>
+
+                                            <a class="btn btn-sm btn-secondary" id="btn_bi_update" style="font-size: 10pt !important;">Update</a>
                                         
                                             <button class="btn btn-primary d-none btn-sm" type="submit" id="btn_bi_save">Save Changes</button>
                                         
@@ -591,12 +612,73 @@
                                     </div>
 
                                 </form>
+
                             </div>
 
                         </div>
 
-                    <!-- Mailing Address -->
+                    <!-- Program -->
+                        <div class="tab-pane fade container tab_container" id="nav_application_degree" role="tabpanel">
+                         
+                            <div class="border-bottom text-secondary pb-2">
 
+                                <h6 class="my-0">Program</h6>
+                                <small class="text-secondary my-0">Choose the program you are applying to.</small>
+                               
+                            </div>
+
+                            <form id="f_applicant_program">
+
+                                <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                                <input type="hidden" name="applicant_id" value="<?php echo $_SESSION['uid']?>">
+
+                                <div class="row mt-4">
+                                        
+                                    <div class="col-lg-2">
+                                    
+                                        <label class="pt-1"> School </label>
+                                    
+                                    </div>
+                                    
+                                    <div class="col-lg-10 text-left"> 
+                                    
+                                        <select id="sel_bi_school"  class="form-control form-control-sm"></select>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row mt-4">
+                                    
+                                    <div class="col-lg-2">
+                                        
+                                        <label class="pt-1"> Program </label>
+                                    
+                                    </div>
+                                    
+                                    <div class="col-lg-10 text-left"> 
+                                    
+                                        <select name="program_id" id="sel_bi_program"  class="form-control form-control-sm"></select>
+                                    
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row mt-4">
+
+                                    <div class="col text-right">
+
+                                        <button class="btn btn-primary btn-sm d-none" id="btn_program_submit" type="submit">Save Changes</button>
+
+                                    </div>
+                                    
+                                </div>
+
+                            </form>
+
+                        </div>
+                    
+                    <!-- Mailing Address -->
                         <div class="tab-pane fade container tab_container" id="nav-mailing_address" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
@@ -616,166 +698,186 @@
 
                             </div>  
 
-                            <div class=" text-secondary">
+                            <form id="f_applicant_address">
 
-                                <div class="row">
+                                <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                                <input type="hidden" name="applicant_id" value="<?php echo $_SESSION['uid']?>">
 
-                                    <div class="col mt-4 mb-0">
+                                <div class=" text-secondary">
 
-                                        <h6  class="text-center" style="fontsize: 9pt !important;" >City Address</h6>
+                                    <div class="row">
+
+                                        <div class="col mt-4 mb-0">
+
+                                            <h6  class="text-center mb-3 pb-1" style="fontsize: 9pt !important;" >City Address</h6>
+
+                                        </div>
+                                    
+                                    </div>
+
+                                </div>  
+
+                                <div class="row mt-1">
+
+                                    <div class="col-lg-3 pl-3">
+
+                                        <label class="pt-1 "> Bldg/No/St/Sbdv </label>      
 
                                     </div>
-                                   
-                                </div>
 
-                            </div>  
+                                    <div class="col-lg-9 ">
 
-                            <div class="row mt-1">
+                                        <input class="form-control form-control-sm form_address" name="city_no_st_sbdv" type="text" readonly>
 
-                                <div class="col-lg-2  pl-3">
+                                    </div>
+                            
+                                </div> 
 
-                                    <label class="pt-1 "> No./St./Sbdv. </label>      
+                                <div class="row mt-4">
+                                    
+                                    <div class="col-lg-3 pl-3">
 
-                                </div>
+                                        <label class="pt-1"> Barangay </label>   
 
-                                <div class="col-lg-10 ">
+                                    </div>
 
-                                    <input class=" form-control form-control-sm" name="city_no_street_subdivision" type="text">
+                                    <div class="col-lg-9 ">
+                                        
+                                        <input class=" form-control form-control-sm form_address" name="city_brgy" type="text" readonly>
 
-                                </div>
-                          
-                            </div> 
+                                    </div>
+                            
+                                </div> 
 
-                            <div class="row mt-4">
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-3 pl-3">
+
+                                        <label class="pt-1"> City </label>     
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form_address" name="city_city" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-3 pl-3">
+
+                                        <label class="pt-1"> Zip Code </label>       
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form_address" name="city_zipcode" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class=" text-secondary">
+
+                                    <div class="row">
+
+                                        <div class="col mt-4 mb-0">
+
+                                            <h6 class="text-center mb-3 pb-1 border-bottom" style="fontsize: 9pt !important;" >Provincial Address</h6>
+
+                                        </div>
+                                    
+                                    </div>
+
+                                </div>  
+
                                 
-                                <div class="col-lg-2  pl-3">
 
-                                    <label class="pt-1"> Barangay </label>   
+                                <div class="row mt-1">
 
-                                </div>
+                                    <div class="col-lg-3  pl-3">
 
-                                <div class="col-lg-10 ">
-                                    
-                                    <input class=" form-control form-control-sm" name="city_barangay" type="text">
-
-                                </div>
-                          
-                            </div> 
-
-                            <div class="row mt-4">
-
-                                <div class="col-lg-2  pl-3">
-
-                                    <label class="pt-1"> City </label>     
-
-                                </div>
-
-                                <div class="col-lg-10 ">
-
-                                    <input class=" form-control form-control-sm" name="city_city" type="text">
-
-                                </div>
-                          
-                            </div> 
-
-                            <div class="row mt-4">
-
-                                <div class="col-lg-2  pl-3">
-
-                                    <label class="pt-1"> Zip Code </label>       
-
-                                </div>
-
-                                <div class="col-lg-10 ">
-
-                                    <input class=" form-control form-control-sm" name="city_zipcode" type="text">
-
-                                </div>
-                          
-                            </div> 
-
-                            <div class=" text-secondary">
-
-                                <div class="row">
-
-                                    <div class="col mt-4 mb-0">
-
-                                        <h6 class="text-center pl-2" style="fontsize: 9pt !important;" >Provincial Address</h6>
+                                        <label class="pt-1"> Bldg/No/St/Sbdv </label>        
 
                                     </div>
-                                  
-                                </div>
 
-                            </div>  
+                                    <div class="col-lg-9  pl-3">
 
-                            <div class="row mt-1">
+                                        <input class=" form-control form-control-sm form_address" name="province_no_st_sbdv" type="text" readonly>
 
-                                <div class="col-lg-2  pl-3">
+                                    </div>
+                            
+                                </div>  
 
-                                    <label class="pt-1"> Barangay </label>      
+                                <div class="row mt-4">
 
-                                </div>
+                                    <div class="col-lg-3  pl-3">
 
-                                <div class="col-lg-10  pl-3">
+                                        <label class="pt-1"> Barangay </label>      
 
-                                    <input class=" form-control form-control-sm" name="province_barangay" type="text">
+                                    </div>
 
-                                </div>
-                          
-                            </div> 
+                                    <div class="col-lg-9  pl-3">
 
-                            <div class="row mt-4">
+                                        <input class=" form-control form-control-sm form_address" name="province_brgy" type="text" readonly>
 
-                                <div class="col-lg-2  pl-3">
+                                    </div>
+                            
+                                </div> 
 
-                                    <label class="pt-1"> No./St./Sbdv. </label>        
+                                <div class="row mt-4">
 
-                                </div>
+                                    <div class="col-lg-3  pl-3">
 
-                                <div class="col-lg-10  pl-3">
+                                        <label class="pt-1"> City </label>    
 
-                                    <input class=" form-control form-control-sm" name="province_no_street_subdivision" type="text">
+                                    </div>
 
-                                </div>
-                          
-                            </div>  
+                                    <div class="col-lg-9 ">
+                                        
+                                        <input class=" form-control form-control-sm form_address" name="province_city" type="text" readonly>
 
-                            <div class="row mt-4">
+                                    </div>
+                            
+                                </div> 
 
-                                <div class="col-lg-2  pl-3">
+                                <div class="row mt-4">
 
-                                    <label class="pt-1"> City </label>    
+                                    <div class="col-lg-3  pl-3">
 
-                                </div>
+                                        <label class="pt-1"> Zip Code </label>     
 
-                                <div class="col-lg-10 ">
-                                    
-                                    <input class=" form-control form-control-sm" name="province_city" type="text">
+                                    </div>
 
-                                </div>
-                          
-                            </div> 
+                                    <div class="col-lg-9 ">
 
-                            <div class="row mt-4">
+                                        <input class=" form-control form-control-sm form_address" name="province_zipcode" type="text" readonly>
 
-                                <div class="col-lg-2  pl-3">
-
-                                    <label class="pt-1"> Zip Code </label>     
+                                    </div>
 
                                 </div>
 
-                                <div class="col-lg-10 ">
+                                <div class="row mt-4">
 
-                                    <input class=" form-control form-control-sm" name="province_zipcode" type="text">
+                                    <div class="col text-right  pl-3">
+                                        
+                                        <a class="btn btn-sm btn-secondary" id="btn_address_update">Update</a>
+
+                                        <button class="btn btn-primary d-none btn-sm" type="submit" id="btn_address_save">Save Changes</button>
+
+                                    </div>
 
                                 </div>
 
-                            </div>
+                            </form>
 
                         </div>
                     
                     <!-- Family Record -->
-
                         <div class="tab-pane fade container tab_container" id="nav-family_record" role="tabpanel">
                             <div class="border-bottom text-secondary">
 
@@ -791,107 +893,284 @@
 
                             </div>
 
-                            <div class="row mt-4">
+                            <form id="f_applicant_family">
 
-                                <div class="col-lg-2  pl-3 ">
+                                <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                                <input type="hidden" name="applicant_id" value="<?php echo $_SESSION['uid']?>">
 
-                                    <label class="pt-1 "> Father's Full Name </label> 
+                                <div class="row mt-4">
+
+                                        <div class="col-lg-3  pl-3">
+
+                                            <label class="pt-1 "> No. of Siblings </label>   
+
+                                        </div>
+
+                                        <div class="col-lg-9 ">
+
+                                            <input class=" form-control form-control-sm form-fr" name="no_siblings" type="text" readonly>
+
+                                        </div>
+                                
+                                    </div> 
+
+                                    <div class="row mt-4">
+
+                                        <div class="col-lg-3  pl-3">
+
+                                            <label class="pt-1 "> Monthly Family Income </label>    
+
+                                        </div>
+
+                                        <div class="col-lg-9 ">
+
+                                            <input name="monthly_income" id="" class="form-control form-control-sm form-fr" readonly></input>
+
+                                        </div>
+                                
+                                    </div> 
+
+                                <div class="row">
+
+                                    <div class="col mt-4 mb-0">
+
+                                        <h6  class="text-center text-secondary mb-3 pb-1 border-bottom" style="fontsize: 9pt !important;" >Father</h6>
+
+                                    </div>
+                                        
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-lg-3  pl-3 ">
+
+                                        <label class="pt-1 "> Full Name </label> 
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="father_name" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-3  pl-3 ">
+
+                                        <label class="pt-1 "> Occupation </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="father_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-3  pl-3 ">
+
+                                        <label class="pt-1 "> Mobile No </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="father_mobile_no" type="text" readonly>
+
+                                    </div>
+
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-3  pl-3 ">
+
+                                        <label class="pt-1 "> Email </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="father_email" type="text" readonly>
+
+                                    </div>
 
                                 </div>
 
-                                <div class="col-lg-10 ">
+                                <div class="row">
 
-                                    <input class=" form-control form-control-sm" name="fathers_fullname" type="text">
+                                    <div class="col mt-4 mb-0">
 
-                                </div>
-                          
-                            </div> 
+                                        <h6  class="text-center text-secondary mb-3 pb-1 border-bottom" style="fontsize: 9pt !important;" >Mother</h6>
 
-                            <div class="row mt-4">
-
-                                <div class="col-lg-2  pl-3 ">
-
-                                    <label class="pt-1 "> Occupation </label>        
-
+                                    </div>
+                                        
                                 </div>
 
-                                <div class="col-lg-10 ">
+                                <div class="row">
 
-                                    <input class=" form-control form-control-sm" name="fathers_occupation" type="text">
+                                    <div class="col-lg-3  pl-3">
 
-                                </div>
-                          
-                            </div> 
+                                        <label class="pt-1 "> Maiden Name </label>    
 
-                            <div class="row mt-4">
+                                    </div>
 
-                                <div class="col-lg-2  pl-3">
+                                    <div class="col-lg-9 ">
 
-                                    <label class="pt-1 "> Mother's Full Name </label>    
+                                        <input class=" form-control form-control-sm form-fr" name="mother_name" type="text" readonly>
 
-                                </div>
+                                    </div>
+                            
+                                </div> 
 
-                                <div class="col-lg-10 ">
+                                <div class="row mt-4">
 
-                                    <input class=" form-control form-control-sm" name="mothers_fullname" type="text">
+                                    <div class="col-lg-3  pl-3 ">
 
-                                </div>
-                          
-                            </div> 
+                                        <label class="pt-1 "> Occupation </label> 
 
-                            <div class="row mt-4">
+                                    </div>
 
-                                <div class="col-lg-2  pl-3 ">
+                                    <div class="col-lg-9 ">
 
-                                    <label class="pt-1 "> Occupation </label> 
+                                        <input class=" form-control form-control-sm form-fr" name="mother_occupation" type="text" readonly>
 
-                                </div>
+                                    </div>
+                            
+                                </div> 
 
-                                <div class="col-lg-10 ">
+                                <div class="row mt-4">
 
-                                    <input class=" form-control form-control-sm" name="mothers_occupation" type="text">
+                                    <div class="col-lg-3  pl-3 ">
 
-                                </div>
-                          
-                            </div> 
+                                        <label class="pt-1 "> Mobile No </label>        
 
-                            <div class="row mt-4">
+                                    </div>
 
-                                <div class="col-lg-2  pl-3">
+                                    <div class="col-lg-9 ">
 
-                                    <label class="pt-1 "> No. of Siblings </label>   
+                                        <input class=" form-control form-control-sm form-fr" name="mother_mobile_no" type="text" readonly>
 
-                                </div>
+                                    </div>
 
-                                <div class="col-lg-10 ">
+                                </div> 
 
-                                    <input class=" form-control form-control-sm" name="no_of_siblings" type="text">
+                                <div class="row mt-4">
 
-                                </div>
-                          
-                            </div> 
+                                    <div class="col-lg-3  pl-3 ">
 
-                            <div class="row mt-4">
+                                        <label class="pt-1 "> Email </label>        
 
-                                <div class="col-lg-2  pl-3">
+                                    </div>
 
-                                    <label class="pt-1 "> Monthly Family Income </label>    
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="mother_email" type="text" readonly>
+
+                                    </div>
 
                                 </div>
 
-                                <div class="col-lg-10 ">
+                                <div class="row">
 
-                                    <select name="monthly_family_income" id="" class="form-control form-control-sm"></select>
+                                    <div class="col mt-4 mb-0">
+
+                                        <h6  class="text-center text-secondary mb-3 pb-1 border-bottom" style="fontsize: 9pt !important;" >Guardian</h6>
+
+                                    </div>
+                                        
+                                </div>
+                                
+                                <div class="row">
+
+                                    <div class="col-lg-3  pl-3">
+
+                                        <label class="pt-1 "> Full Name </label>    
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="guardian_name" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-3  pl-3 ">
+
+                                        <label class="pt-1 "> Occupation </label> 
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="guardian_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-3  pl-3 ">
+
+                                        <label class="pt-1 "> Mobile No </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="guardian_mobile_no" type="text" readonly>
+
+                                    </div>
+
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-3  pl-3 ">
+
+                                        <label class="pt-1 "> Email </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-9 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="guardian_email" type="text" readonly>
+
+                                    </div>
 
                                 </div>
-                          
-                            </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col text-right  pl-3">
+                                        
+                                        <a class="btn btn-sm btn-secondary f_btn_update" form-class=".form-fr" submit-btn-name="#btn_family_save">Update</a>
+
+                                        <button class="btn btn-primary d-none btn-sm" type="submit" id="btn_family_save">Save Changes</button>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
 
                         </div> 
 
                     <!-- Scholastic Record -->
-
                         <div class="tab-pane fade container tab_container" id="nav-scholastic_record" role="tabpanel">
+                            
                             <div class="border-bottom text-secondary">
 
                                 <div class="row py-2">
@@ -906,11 +1185,21 @@
 
                             </div>
 
-                            <div class="row mt-4">
+                            <div class="row">
+
+                                <div class="col mt-4 mb-0">
+
+                                    <h6  class="text-center text-secondary mb-3 pb-1 " style="fontsize: 9pt !important;" >High School</h6>
+
+                                </div>
+                                    
+                            </div>
+
+                            <div class="row mt-2">
 
                                 <div class="col-lg-4  ">
 
-                                    <label class="  pt-0"> Primary School/Addr.,</label>        
+                                    <label class="pt-0"> School Name</label>        
 
                                 </div>
 
@@ -926,13 +1215,13 @@
 
                                 <div class="col-lg-4  ">
 
-                                    <label class="  pt-0"> Primary Year Attended</label>        
+                                    <label class="pt-0"> School Address</label>        
 
                                 </div>
 
                                 <div class="col-lg-8 ">
 
-                                    <input class=" form-control form-control-sm" name="primary_year_attended" type="text">
+                                    <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
                                 </div>
                           
@@ -940,104 +1229,143 @@
 
                             <div class="row mt-4">
 
-                                <div class="col-lg-4  pl-3 ">
+                                <div class="col-lg-4  ">
 
-                                    <label class="  pt-0 ">Secondary School/Addr.,</label>     
+                                    <label class="pt-0"> School Year Attended</label>        
 
-                                                            
                                 </div>
 
                                 <div class="col-lg-8 ">
 
-                                    <input class=" form-control form-control-sm" name="secondary_school_address" type="text">
+                                    <input class=" form-control form-control-sm" name="primary_school_address" type="text">
+                                    <p class="text-secondary" style="font-size: 8pt;"> Ex. ( 2015 - 2020 )</p> 
 
                                 </div>
                           
                             </div> 
 
-                            <div class="row mt-4">
+                            <div class="row mt-2">
 
-                                <div class="col-lg-4  pl-3 ">
+                                <div class="col-lg-4  ">
 
-                                    <label class="  pt-0"> Secondary School Year Attended</label>    
+                                    <label class="pt-0"> Honors Received</label>        
 
                                 </div>
 
                                 <div class="col-lg-8 ">
 
-                                    <input class=" form-control form-control-sm" name="secondary_school_year_attended" type="text">
+                                    <input  type="text" class=" form-control form-control-sm" data-role="tagsinput" name="primary_school_address">
+                                    <p class="text-secondary" style="font-size: 8pt;"> Click outside textbox to add another</p> 
 
                                 </div>
                           
                             </div> 
-                            
-                            <div class="row mt-4">
 
-                                <div class="col-lg-4  pl-3 ">
+                            <div class="row mt-2">
 
-                                    <label class="  pt-0 ">Honors Received</label>     
+                                <div class="col-lg-4  ">
+
+                                    <label class="pt-0"> Group/ Organization/ Club</label>        
 
                                 </div>
 
                                 <div class="col-lg-8 ">
+
+                                    <input  type="text" class=" form-control form-control-sm" data-role="tagsinput" name="primary_school_address">
+                                    <p class="text-secondary" style="font-size: 8pt;"> Ex. (Org. Name - Position) If applicable</p> 
+
+                                </div>
+                          
+                            </div> 
+
+                            <div class="row">
+
+                                <div class="col mt-4 mb-0">
+
+                                    <h6  class="text-center text-secondary mb-3 pb-1 border-bottom" style="fontsize: 9pt !important;" >Senior High School</h6>
+
+                                </div>
                                     
-                                    <input class=" form-control form-control-sm" name="honors_received" type="text">
-                                    
-                                    <p class="text-secondary " style="font-size: 8pt;"> Type N/A if not applicable</p> 
+                            </div>
+
+                            <div class="row mt-2">
+
+                                <div class="col-lg-4  ">
+
+                                    <label class="pt-0"> School Name</label>        
+
+                                </div>
+
+                                <div class="col-lg-8 ">
+
+                                    <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
                                 </div>
                           
                             </div> 
 
-                            <div class="row mt-3">
+                            <div class="row mt-4">
 
-                                <div class="col-lg-4  pl-3">
+                                <div class="col-lg-4  ">
 
-                                    <label class="  pt-0 ">Affiliated Educational Organization(s) and Position(s)</label>    
-                         
+                                    <label class="pt-0"> School Address</label>        
+
                                 </div>
 
                                 <div class="col-lg-8 ">
 
-                                    <input class=" form-control form-control-sm" name="affiliated_educational_organizations_and_position" type="text">
-
-                                    <p class="text-secondary" style="font-size: 8pt;"> Type N/A if not applicable</p> 
+                                    <input class=" form-control form-control-sm" name="primary_school_address" type="text">
 
                                 </div>
                           
                             </div> 
 
-                            <div class="row mt-3">
+                            <div class="row mt-4">
 
-                                <div class="col-lg-4  pl-3">
+                                <div class="col-lg-4  ">
 
-                                    <label class="  pt-0 ">Scholarships/Grants Received</label>     
+                                    <label class="pt-0"> School Year Attended</label>        
 
-                                                            
                                 </div>
 
                                 <div class="col-lg-8 ">
 
-                                    <input class=" form-control form-control-sm" name="scholarships_grants_received" type="text">
-
-                                    <p class="text-secondary" style="font-size: 8pt;"> Type N/A if not applicable</p> 
+                                    <input class=" form-control form-control-sm" name="primary_school_address" type="text">
+                                    <p class="text-secondary" style="font-size: 8pt;"> Ex. ( 2015 - 2020 )</p> 
 
                                 </div>
                           
                             </div> 
 
-                            <div class="row mt-3">
+                            <div class="row mt-2">
 
-                                <div class="col-lg-4  pl-3">
+                                <div class="col-lg-4  ">
 
-                                    <label class="  pt-0 ">Are you a working student?</label>     
+                                    <label class="pt-0"> Honors Received</label>        
 
-                                                            
                                 </div>
 
                                 <div class="col-lg-8 ">
 
-                                    <select name="working_student" id="" class="form-control form-control-sm"></select>    
+                                    <input  type="text" class=" form-control form-control-sm" data-role="tagsinput" name="primary_school_address">
+                                    <p class="text-secondary" style="font-size: 8pt;"> Click outside textbox to add another</p> 
+
+                                </div>
+                          
+                            </div> 
+
+                            <div class="row mt-2">
+
+                                <div class="col-lg-4  ">
+
+                                    <label class="pt-0"> Group/ Organization/ Club</label>        
+
+                                </div>
+
+                                <div class="col-lg-8 ">
+
+                                    <input  type="text" class=" form-control form-control-sm" data-role="tagsinput" name="primary_school_address">
+                                    <p class="text-secondary" style="font-size: 8pt;"> Ex. (Org. Name - Position) If applicable</p> 
 
                                 </div>
                           
@@ -1045,8 +1373,197 @@
 
                         </div>
 
-                    <!-- Other Information -->
+                    <!-- Social Media & messenger -->
+                        <div class="tab-pane fade container tab_container" id="nav-social_media" role="tabpanel">
+                         
+                            <div class="border-bottom text-secondary pb-2">
 
+                                <h6 class="my-0">Social Media & Messenger Accounts</h6>
+                                <small class="text-secondary my-0">We want to stay connected! Kindly enter your account names.</small>
+                                
+                            </div>
+
+                            <form id="f_applicant_program">
+
+                                <input type="hidden" name="token" value="<?php echo $_SESSION['TOKEN']?>">
+                                <input type="hidden" name="applicant_id" value="<?php echo $_SESSION['uid']?>">
+
+                                <div class="row mt-4">
+
+                                    <div class="col mb-0">
+
+                                        <h6  class="text-center text-secondary mb-3 pb-1 " style="fontsize: 9pt !important;" >Email</h6>
+
+                                    </div>
+                                        
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-lg-2  pl-3 ">
+
+                                        <label class="pt-1 "> Email 1 </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="fathers_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-2  pl-3 ">
+
+                                        <label class="pt-1 "> Email 2 </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="fathers_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row">
+
+                                    <div class="col mt-4 mb-0">
+
+                                        <h6  class="text-center text-secondary mb-3 pb-1 border-bottom" style="fontsize: 9pt !important;" >Messenger</h6>
+
+                                    </div>
+                                        
+                                </div>
+
+                                <div class="row  mt-2">
+
+                                    <div class="col-lg-2  pl-3 ">
+
+                                        <label class="pt-1 "> Viber </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="fathers_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-2  pl-3 ">
+
+                                        <label class="pt-1 "> FB Messenger </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="fathers_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-2  pl-3 ">
+
+                                        <label class="pt-1 "> Telegram </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="fathers_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row">
+
+                                    <div class="col mt-4 mb-0">
+
+                                        <h6  class="text-center text-secondary mb-3 pb-1 border-bottom" style="fontsize: 9pt !important;" >Social Media</h6>
+
+                                    </div>
+                                        
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-lg-2  pl-3 ">
+
+                                        <label class="pt-1 "> Facebook </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="fathers_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-2  pl-3 ">
+
+                                        <label class="pt-1 "> Twitter </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="fathers_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+                                <div class="row mt-4">
+
+                                    <div class="col-lg-2  pl-3 ">
+
+                                        <label class="pt-1 "> Instagram </label>        
+
+                                    </div>
+
+                                    <div class="col-lg-10 ">
+
+                                        <input class=" form-control form-control-sm form-fr" name="fathers_occupation" type="text" readonly>
+
+                                    </div>
+                            
+                                </div> 
+
+
+
+
+                                <div class="row mt-4">
+
+                                    <div class="col text-right">
+
+                                        <button class="btn btn-primary btn-sm d-none" id="btn_program_submit" type="submit">Save Changes</button>
+
+                                    </div>
+                                    
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    <!-- Other Information -->
                         <div class="tab-pane fade container tab_container" id="nav-other_information" role="tabpanel">
 
                             <div class="border-bottom text-secondary">
